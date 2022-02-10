@@ -87,7 +87,7 @@ body {
   z-index: 1;
 }
 
-.dropdown-content a, .dropdown-content .dropdown-2l {
+.dropdown-content a, .dropdown-content span, .dropdown-content .dropdown-2l {
   float: none;
   color: black;
   padding: 12px 16px;
@@ -132,6 +132,10 @@ body {
   display: block;
 }
 
+arrow {
+	position:absolute;
+	right:5%;
+}
 
 /* Main 
 */

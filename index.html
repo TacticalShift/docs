@@ -1,97 +1,112 @@
 <!DOCTYPE html>
-<html>
- <head>
-  <meta charset="utf-8"/>
-  <title>
-   Documentation
-  </title>
-  <link href="src/img/ts_icon.png" rel="icon"/>
-  <link href="src/style.css" rel="stylesheet"/>
-  <script crossorigin="anonymous" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" src="https://code.jquery.com/jquery-3.4.1.min.js">
-  </script>
-  <script src="MissionInfo.txt">
-  </script>
-  <script src="src/validator.js">
-  </script>
-  <script src="src/app.js">
-  </script>
- </head>
- <body>
-  <body>
-   <div id="header">
-    <div id="header-title">
-     <span>
-      <a href="https://tacticalshift.github.io" style="text-decoration: none; color: inherit;">
-       tS
-      </a>
-     </span>
-     <tt id="header-sans">
-      Docs
-     </tt>
-    </div>
-    <div class="navbar">
-     <div class="dropdown">
-      <button class="dropbtn">
-       MMO
-      </button>
-      <div class="dropdown-content">
-       <div class="dropdown-2l">
-        <a href="./Other.html">
-         Other
-         <span style="text-align:right">
-          &gt;
-         </span>
-        </a>
-        <div class="dropdown-2l-content">
-        </div>
-       </div>
-       <div class="dropdown-2l">
-        <a href="./tsFramework.html">
-         tsFramework
-         <span style="text-align:right">
-          &gt;
-         </span>
-        </a>
-        <div class="dropdown-2l-content">
-        </div>
-       </div>
-      </div>
-     </div>
-     <div class="dropdown">
-      <button class="dropbtn">
-       SOP
-      </button>
-      <div class="dropdown-content">
-       <a href="./documentation_communications.html">
-        documentation_communications
-       </a>
-       <a href="./documentation_sop_aircrew.html">
-        documentation_sop_aircrew
-       </a>
-      </div>
-     </div>
-     <div class="dropdown">
-      <button class="dropbtn">
-       SRV
-      </button>
-      <div class="dropdown-content">
-      </div>
-     </div>
-    </div>
-   </div>
-   <div id="wrapper">
-    <div class="title">
-     <h1>
-      Welcome to TacticalShift Documentation!
-     </h1>
-    </div>
-    <div class="toc">
-     <ul>
-     </ul>
-    </div>
-    <div class="article">
-    </div>
-   </div>
-  </body>
- </body>
+<html lang="us">
+	<head>
+		<meta charset="utf-8"/>
+
+		<title>tS Docs</title>		
+		
+		<link rel="icon" href="src/img/ts_icon.png">
+		<link rel="stylesheet" href="src/style.css">
+		<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+		integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+		crossorigin="anonymous"></script>
+	</head>
+	<body>	
+		<div id="header">
+			<div id="header-title">
+				<span><a href="https://tacticalshift.github.io" style="text-decoration: none; color: inherit;">tS</a></span> <tt id='header-sans'>Docs</tt>
+			</div>
+			
+			<div class="navbar">
+				<div class="dropdown">
+					<button class="dropbtn">SOP</button>
+					<div class="dropdown-content">
+						<a href="#">Графические меры контроля</a>
+						<a href="#">Формации</a>				
+					</div>
+				</div>
+				<div class="dropdown">
+					<button class="dropbtn">MMO</button>
+					<div class="dropdown-content">
+						<a href="#">Правила оформления репозитория</a>
+						
+						<div class="dropdown-2l">
+							<span href="#">Обзор tSFramework<arrow>⇨</arrow></span>
+							<div class="dropdown-2l-content">
+								<a href="#1">dzn Gear</a>		
+								<a href="#1">dzn Dynai</a>	
+								<a href="#1">dzn Gear</a>		
+								<a href="#1">dzn Dynai</a>	
+							</div>
+						</div>
+							
+						<a href="#">Наборы снаряжения</a>						
+					</div>
+				</div>
+				<div class="dropdown">
+					<button class="dropbtn">SRV</button>
+					<div class="dropdown-content">
+						<a href="#">Правила игрового дня</a>
+					</div>
+				</div> 
+			</div>
+		</div>
+
+		<div id="wrapper">
+			
+			<div class="title"><h1>Графические меры контроля</h1></div>
+			<div class="toc">
+				<ol>
+					<li><a href="#">Section 1</a></li>
+					<li><a href="#deafness">Deafness</a></li>
+				</ol>
+			</div>
+			
+			<div class="article">
+				<h2>ACE (Advanced Combat Environment 3)</h2>
+				<p>ACE это мод, дополняющий механику Arma 3 в ряде аспектов и делающий игру более реалистичной и увлекательной. Детали можно найти <a href="https://ace3mod.com/">на сайте мода</a>.</p><p>Рассмотрим необходимые навыки для успешного использования ACE в ходе игр.</p>
+
+				<h3>Общее</h5>
+
+				<h5>⚠ Гранаты</h5>
+				<p>Обязательно избавьтесь от возможности бросать гранаты кнопкой клавиатуры!<br>Зайдите в <mark>Настройки (Settings) → Управление (Controls) → Бросать (Throw)</mark> и удалите все назначенные кнопки.</p>
+				<p>Для того чтобы бросить гранату в игре, воспользуйтесь сочетанием клавиш <kbd>Shift</kbd>+<kbd>G</kbd>.</p>
+
+				<h5>⎘ Двери</h5>
+				<p>ACE предоставляет возможность открывать двери с помощью сочетания клавиш <kbd>Ctrl</kbd>+<kbd>Space</kbd>.</p>
+				<p>Старайтесь использовать эту комбинацию вместо использования меню действий, т.к. на некоторых картах и/или в некоторых зданиях действия из меню не работают.</p>
+
+				<h5>☹ Кровопотеря</h5>
+				<p>Ранения часто приводят к потере крови через полученную рану. Большая потеря крови может привести к бессознательному состоянию игрока. Из этого состояние невозможно вывести в полевых условиях – потребуется эвакуировать тело в тыл (своими силами или привлекая поддержку).</p>
+				<ul>
+					<li>Следите за полученными ранами и бинтуйте каждую рану полностью, на раненых конечностях сперва применяйте турникеты (жгуты), а затем бинтуйте;</li>
+					<li>Если рана была серьезная (размера больше малой/minor) - после бинтовки продолжайте следить за состоянием раны, она может повторно открыться и кровоточить;</li>
+					<li>При серьезной кровопотере на индикаторе положения тела появится индикатор в форме капли, когда капля станет “пустой” - вы потеряете сознание! Следите за индикатором и сообщайте вашему командиру, когда состояние становится критическим.</li>
+				</ul>
+
+				<h5 id="deafness">☹ Оглушение</h5>
+				<p>Частая стрельба или близкий взрыв способствуют потере слуха. Чтобы предотвратить это, не забывайте использовать <i>беруши (earplugs)</i>.</p>
+				<p>Оглушение пройдет через 5-15 минут, если вы будете находиться вдали от звуков боя</p>
+
+				<h5>☹ Заклинивание оружия</h5>
+				<p>При частой стрельбе и плохой удаче ваше оружие может заклинить (прекратить стрелять до того, как были израсходованы все патроны).</p>
+				<p>Чтобы устранить проблему используйте сочетание клавиш <kbd>Shift</kbd>+<kbd>R</kbd>.</p>
+
+				<h5>☹ Backblast</h5>
+				<p>Во время выстрела противотанкового гранатомета позади стрелка образуется область в которой вы можете получить серьезные повреждения. Размер области может достигать 20 метров в ширину и до 50 метров в длину!</p>
+				<ul>
+					<li><warn>⚠ Никогда не стойте позади гранатометчика</warn>, старайтесь занять позицию слева или справа от него. Не стесняйтесь предупредить гранатометчика о том, что вы находитесь у него за спиной.</li>
+					<li>Когда вы стреляете из гранатомета - <highlight>оповестите окружающих о намерении произвести выстрел</highlight>!</li>
+				</ul>
+
+				<h5>☹ Overpressure</h5>
+				<p>Выстрела танковой пушки образует зону повышенного давления перед дульным срезом пушки. Находясь в этой зоне вы можете получить серьезные повреждения. Размер области может достигать 30-50 метров в диаметре!</p>
+				<ul>
+					<li><warn>⚠ Никогда не стойте перед танковой пушкой</warn>, старайтесь занять позицию позади или в отдалении от танка.</li>
+					<li>Когда вы являетесь стрелком в танке и находитесь рядом с пехотой - <i>оповестите окружающих о намерении произвести выстрел</i>!</li>
+				</ul>
+			</div>
+		</div>
+
+	</body>
 </html>
