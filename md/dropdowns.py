@@ -3,6 +3,42 @@ from pathlib import Path
 import bs4
 import xml.etree.ElementTree as etree
 import templatehtml
+import re
+import json
+
+SECTION_CONFIGURATION = {
+    # Порядок следования секций в navbar'е
+    "order": ["_docs", "_sop", "_tco", "_mmo", "_srv"],
+
+    # Описание секции
+    "_sop": {
+        "title": "SOPs",  # Отображаемое название секции в navbar'e
+        # Текст для всплывающего текста при наведении (опционально), html-свойство title
+        "tooltip": "Standard Operation Procedures",
+        "src": "SOP"  # Имя папки первого уровня где хранятся страницы
+    },
+    "_docs": {
+        "title": "Документация",
+        "src": "Docs"
+    },
+    "_tco": {
+        "title": "TCO",
+        "tooltip": "Training Center Office",
+        "src": "TCO"
+    },
+    "_mmo": {
+        "title": "MMO",
+        "tooltip": "Mission Making Office",
+        "src": "MMO"
+    },
+    "_srv": {
+        "title": "SRV",
+        "tooltip": "Server magic",
+        "src": "SRV"
+    }
+}
+
+# @Meta(key1=value1, key2=value2, key3=value3)
 
 
 def makefolderdict(pathstr: str):
@@ -29,7 +65,10 @@ def makefolderdict(pathstr: str):
     print(dropdowndict)
     return dropdowndict
 
-# print(len(res))
+
+for folder, value in SECTION_CONFIGURATION.items():
+    print(folder)
+    print(value)
 
 
 def makedropdowns(dropdowndict: dict):

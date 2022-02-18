@@ -1,4 +1,5 @@
 from msilib.schema import Extension
+from markdown import Markdown
 from markdown.inlinepatterns import SimpleTagInlineProcessor
 import markdown
 from markdown.preprocessors import Preprocessor
@@ -7,7 +8,8 @@ from markdown.extensions.toc import TocExtension
 import re
 from markdown.inlinepatterns import InlineProcessor
 import xml.etree.ElementTree as etree
-import mdx_grid_tables
+from md.tablepreprocessor import TablesPreprocessor
+from tablepreprocessor import TablesPreprocessor as dznTablesPreproc
 import templatehtml
 import dropdowns
 import bs4
@@ -39,17 +41,16 @@ class TagsExtension(Extension):
         TAGMARK_PATTERN = r'\^(.*?)\^'
         HIGHTLIGHT_PATTERN = r'\^\^(.*?)\^\^'
         WARN_PATTERN = r'\!(.*?)\!'
+        md.inlinePatterns.register(KeyboardInlineProcessor(
+            KEYBOARD_PATTERN, 'kbd'), 'del', 175)
+        md.inlinePatterns.register(KeyboardInlineProcessor(
+            TAGMARK_PATTERN, 'mark'), 'mark', 176)
+        md.inlinePatterns.register(KeyboardInlineProcessor(
+            HIGHTLIGHT_PATTERN, 'highlight'), 'highlight', 177)
+        md.inlinePatterns.register(KeyboardInlineProcessor(
+            WARN_PATTERN, 'warn'), 'warn', 178)
         md.inlinePatterns.register(
-            ColorInlineProcessor(COLOR_PATTERN, md), 'del', 175)
-
-        md.inlinePatterns.register(KeyboardInlineProcessor(
-            KEYBOARD_PATTERN, 'kbd'), 'del', 176)
-        md.inlinePatterns.register(KeyboardInlineProcessor(
-            TAGMARK_PATTERN, 'mark'), 'mark', 177)
-        md.inlinePatterns.register(KeyboardInlineProcessor(
-            HIGHTLIGHT_PATTERN, 'highlight'), 'highlight', 178)
-        md.inlinePatterns.register(KeyboardInlineProcessor(
-            WARN_PATTERN, 'warn'), 'warn', 179)
+            ColorInlineProcessor(COLOR_PATTERN, md), 'coloring', 179)
 
 
 class TitleFinderPreprocessor(Preprocessor):
@@ -73,43 +74,61 @@ class TitleFinderPreprocessor(Preprocessor):
 class TitleFinderExtension(Extension):
     def extendMarkdown(self, md):
         md.registerExtension(self)
+        md.title = "PlaceHolder"
+        md.articletitle = "Placeholder"
         md.preprocessors.register(
             TitleFinderPreprocessor(md), 'title_finder', 25)
 
 
-class PriorityFinderPreprocessor(Preprocessor):
+class NoRenderPreprocessor(Preprocessor):
     def run(self, lines):
         new_lines = []
 
         for line in lines:
-            n = re.search("\{priority:(.*?)}", line)
-            if n:
-                self.md.priority = int(n.group(1))
-                print(self.md.priority)
-            else:
+            n = re.search("NORENDER", line)
+            if not n:
                 new_lines.append(line)
         return new_lines
 
 
-class PriorityFinderExtension(Extension):
+class NoRenderExtension(Extension):
     def extendMarkdown(self, md):
-        md.priority = 100
         md.registerExtension(self)
         md.preprocessors.register(
-            PriorityFinderPreprocessor(md), 'prio_finder', 26)
+            NoRenderPreprocessor(md), 'prio_finder', 26)
+
+
+class TablePreprocessorWrapper(Preprocessor):
+    def run(self, lines):
+        return dznTablesPreproc.preprocess(lines)
+
+
+class TablePreprocessorExtension(Extension):
+    def extendMarkdown(self, md: Markdown) -> None:
+        md.registerExtension(self)
+        md.preprocessors.register()
 
 
 def makepage(input_text: str, dropdown: str):
 
-    md = markdown.Markdown(extensions=[
-        TitleFinderExtension(), 'tables', TagsExtension(
-        ), TocExtension(marker=None, toc_depth="2-6"),
-        mdx_grid_tables.GridTableExtension(), 'attr_list', PriorityFinderExtension()])
+    md = markdown.Markdown(
+        extensions=[
+            TitleFinderExtension(),
+            'tables',
+            TagsExtension(),
+            TocExtension(
+                marker=None,
+                toc_depth="2-6"),
+            TablePreprocessorExtension(),
+            'attr_list',
+            NoRenderExtension()
+        ]
+    )
     article_text = md.convert(input_text)
-    print(md.priority)
     page = md.toc
     body = templatehtml.PAGE_BODY.format(dropdowns=dropdown,
-                                         body=article_text, toc=md.toc, articletitle=md.articletitle)
+                                         body=article_text, toc=md.toc,
+                                         articletitle=md.articletitle)
     head = templatehtml.PAGE_HEAD.format(title=md.title)
     page = templatehtml.PAGE.format(head=head, body=body)
     md.reset()
@@ -141,7 +160,9 @@ if __name__ == "__main__":
                     # print(
                     #     "/".join([rootdir, folder, subfolder, subelement.split('.')[0]+".md"]))
                     makehtmlfile(
-                        "/".join([rootdir, folder, subfolder, subelement.split('.')[0]+".md"]), "../"+subelement, dropdown)
+                        "/".join([rootdir, folder, subfolder,
+                                 subelement.split('.')[0]+".md"]),
+                        "../"+subelement, dropdown)
                 makehtmlfile(
                     "/".join([rootdir, subfolder+".md"]), "../"+subfolder+".html", dropdown)
                 # makesectionportal()
@@ -149,7 +170,8 @@ if __name__ == "__main__":
                 # print("/".join([rootdir, folder,
                 #                 element.split('.')[0]+".md"]))
                 makehtmlfile("/".join([rootdir, folder,
-                                       element.split('.')[0]+".md"]), "../"+element, dropdown)
+                                       element.split('.')[0]+".md"]),
+                             "../"+element, dropdown)
     makehtmlfile("/".join([rootdir, "index.md"]), "../index.html", dropdown)
 
 # with open(inputfilename.split('.')[0]+".html", 'w', encoding='utf-8') as htmlpage:
