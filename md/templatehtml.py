@@ -51,7 +51,7 @@ HTML_DROPDOWN_SECTION = '''
     </div>
 '''
 
-HTML_DROPDOWN_ELEMENT = '<a href="{url}">{title}</a>'
+HTML_DROPDOWN_ELEMENT = '''<a href="{url}">{title}</a>'''
 
 HTML_DROPDOWN_EXTENDED = '''
 	<div class="dropdown-2l">
