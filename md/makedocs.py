@@ -8,7 +8,6 @@ from markdown.extensions.toc import TocExtension
 import re
 from markdown.inlinepatterns import InlineProcessor
 import xml.etree.ElementTree as etree
-from md.tablepreprocessor import TablesPreprocessor
 from tablepreprocessor import TablesPreprocessor as dznTablesPreproc
 import templatehtml
 import dropdowns
@@ -100,16 +99,18 @@ class NoRenderExtension(Extension):
 
 class TablePreprocessorWrapper(Preprocessor):
     def run(self, lines):
-        return dznTablesPreproc.preprocess(lines)
+        wrp = dznTablesPreproc()
+        return wrp.preprocess(lines)
 
 
 class TablePreprocessorExtension(Extension):
     def extendMarkdown(self, md: Markdown) -> None:
         md.registerExtension(self)
-        md.preprocessors.register()
+        md.preprocessors.register(
+            TablePreprocessorWrapper(md), 'TablePreproc', 27)
 
 
-def makepage(input_text: str, dropdown: str):
+def makepage(input_text: str, title: str, dropdown: str):
 
     md = markdown.Markdown(
         extensions=[
@@ -119,28 +120,29 @@ def makepage(input_text: str, dropdown: str):
             TocExtension(
                 marker=None,
                 toc_depth="2-6"),
-            TablePreprocessorExtension(),
+            # TablePreprocessorExtension(),
             'attr_list',
             NoRenderExtension()
         ]
     )
     article_text = md.convert(input_text)
     page = md.toc
-    body = templatehtml.PAGE_BODY.format(dropdowns=dropdown,
-                                         body=article_text, toc=md.toc,
-                                         articletitle=md.articletitle)
-    head = templatehtml.PAGE_HEAD.format(title=md.title)
-    page = templatehtml.PAGE.format(head=head, body=body)
+    body = templatehtml.HTML_BODY.format(navbar=dropdown,
+                                         article=article_text, toc=md.toc,
+                                         title=title)
+    head = templatehtml.HTML_HEAD.format(title=title)
+    page = templatehtml.HTML_PAGE.format(head=head, body=body)
     md.reset()
     soup = bs4.BeautifulSoup(page, "html.parser")
     return soup.prettify()
 
 
-def makehtmlfile(inputpath: str, filename: str, dropdown: str):
-    with open(inputpath, "r", encoding="utf-8") as input_file:
+def makehtmlfile(inputpath: str, filename: str, dropdown: str, title: str):
+    print(inputpath)
+    with open("."+inputpath, "r", encoding="utf-8") as input_file:
         input_text = input_file.read()
         input_file.close()
-    htmlpage = makepage(input_text, dropdown)
+    htmlpage = makepage(input_text, title, dropdown)
     with open(filename, "w", encoding="utf-8", errors="xmlcharrefreplace") as output_file:
         output_file.write(htmlpage)
         output_file.close()
@@ -150,33 +152,49 @@ def makehtmlfile(inputpath: str, filename: str, dropdown: str):
 
 
 if __name__ == "__main__":
-    rootdir = "Markdowndocs"
-    dropdowndict = dropdowns.makefolderdict(rootdir)
-    dropdown = dropdowns.makedropdowns(dropdowndict)
-    for folder, item in dropdowndict.items():
-        for subfolder, element in item.items():
-            if (type(element) == dict):
-                for subkey, subelement in element.items():
-                    # print(
-                    #     "/".join([rootdir, folder, subfolder, subelement.split('.')[0]+".md"]))
+    rootdir = ""
+    config = dropdowns.SECTION_CONFIGURATION
+    dropdowndict = dropdowns.makenavbardict()
+    dropdown = dropdowns.makenavbar()
+    for section, item in dropdowndict.items():
+        for filename, meta in item:
+            folder = config[section]['src']
+            makehtmlfile(
+                "/".join([rootdir, folder, filename+".md"]),
+                "../"+filename+".html",
+                dropdown,
+                meta['Title']
+            )
+            if 'Subfolder' in meta:
+                for subfilename, submeta in meta['Subfolder']:
                     makehtmlfile(
-                        "/".join([rootdir, folder, subfolder,
-                                 subelement.split('.')[0]+".md"]),
-                        "../"+subelement, dropdown)
-                makehtmlfile(
-                    "/".join([rootdir, subfolder+".md"]), "../"+subfolder+".html", dropdown)
-                # makesectionportal()
-            else:
-                # print("/".join([rootdir, folder,
-                #                 element.split('.')[0]+".md"]))
-                makehtmlfile("/".join([rootdir, folder,
-                                       element.split('.')[0]+".md"]),
-                             "../"+element, dropdown)
-    makehtmlfile("/".join([rootdir, "index.md"]), "../index.html", dropdown)
+                        "/".join([rootdir, folder, filename+".md"]),
+                        "../"+filename+".html",
+                        dropdown,
+                        meta['Title']
+                    )
 
-# with open(inputfilename.split('.')[0]+".html", 'w', encoding='utf-8') as htmlpage:
-#     htmlpage.write(page)
-#     htmlpage.close()
+                # if (type(element) == dict):
+                #     for subkey, subelement in element.items():
+                #         # print(
+                #         #     "/".join([rootdir, folder, subfolder, subelement.split('.')[0]+".md"]))
+                #         makehtmlfile(
+                #             "/".join([rootdir, folder, subfolder,
+                #                      subelement.split('.')[0]+".md"]),
+                #             "../"+subelement, dropdown)
+                #     makehtmlfile(
+                #         "/".join([rootdir, subfolder+".md"]), "../"+subfolder+".html", dropdown)
+                #     # makesectionportal()
+                # else:
+                #     # print("/".join([rootdir, folder,
+                #     #                 element.split('.')[0]+".md"]))
+                #     makehtmlfile("/".join([rootdir, folder,
+                #                            element.split('.')[0]+".md"]),
+                #                  "../"+element, dropdown)
 
-# with open("output.html", "w", encoding="utf-8", errors="xmlcharrefreplace") as output_file:
-#     output_file.write(html_text)
+                # with open(inputfilename.split('.')[0]+".html", 'w', encoding='utf-8') as htmlpage:
+                #     htmlpage.write(page)
+                #     htmlpage.close()
+
+                # with open("output.html", "w", encoding="utf-8", errors="xmlcharrefreplace") as output_file:
+                #     output_file.write(html_text)

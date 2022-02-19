@@ -1,4 +1,4 @@
-@Meta(key1=value1, key2=value, Position=10)
+@Meta(key1=value1, key2=value, Position=10) NORENDER
 
 # Правила коммуникации
 

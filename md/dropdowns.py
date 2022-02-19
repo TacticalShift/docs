@@ -99,17 +99,18 @@ def makefolderdict(pathstr: str):
                 meta['Title'] = readtitle(x)
             if not 'Position' in meta:
                 meta['Position'] = 1000
+            folderdict[filename] = meta
             if 'Subpages' in meta:
-                subdict = makesubfolderdict(
-                    "\\".join([x, meta['Subpages']]))
+                subpath = "\\".join([path.name, meta['Subpages']])
+                subdict = makesubfolderdict(subpath)
                 sublist = subdict.items()
                 sublist = sorted(
                     sublist,
                     key=lambda x: int(x[1]['Position']),
                     reverse=False
                 )
-                folderdict['Subpages'] = sublist
-            folderdict[filename] = meta
+                folderdict[filename]['Subfolder'] = sublist
+
     folderlist = folderdict.items()
     folderlist = sorted(
         folderlist,
@@ -137,7 +138,7 @@ def makedropdowns(navbardict: dict):
         for item in value:
             filename, meta = item
             element = ""
-            if 'Subfolder' in meta:
+            if 'Subpages' in meta:
                 subpages = makesubpages(meta['Subfolder'])
                 if 'Hide' in meta and int(meta['Hide']) == 1:
                     element = templatehtml.HTML_DROPDOWN_EXTENDED_INACTIVE.format(
@@ -164,7 +165,7 @@ def makedropdowns(navbardict: dict):
     return dropdowns
 
 
-def makenavbarlist():
+def makenavbardict():
     config = SECTION_CONFIGURATION
     navbardict = {}
     for section in config["order"]:
@@ -174,11 +175,8 @@ def makenavbarlist():
 
 
 def makenavbar():
-    dropdowns = makedropdowns(makenavbarlist())
+    dropdowns = makedropdowns(makenavbardict())
     navbar = templatehtml.HTML_NAVBAR_SECTION.format(
         dropdowns="".join(dropdowns))
     soup = bs4.BeautifulSoup(navbar, "html.parser")
     return soup.prettify()
-
-
-print(makenavbar())
