@@ -115,7 +115,7 @@ def makefolderdict(pathstr: str):
                 meta['Position'] = 1000
             folderdict[filename] = meta
             if 'Subpages' in meta:
-                subpath = "\\".join([path.name, meta['Subpages']])
+                subpath = "/".join([path.name, meta['Subpages']])
                 subdict = makesubfolderdict(subpath)
                 sublist = subdict.items()
                 sublist = sorted(
@@ -138,9 +138,9 @@ def makesubpages(folder: str, subfolder: str, fileslist: list):
     subpages = []
     for file in fileslist:
         filename, meta = file
-        filepath = "\\".join([folder, subfolder, filename])
+        filepath = "/".join([folder, subfolder, filename])
         subpages.append(templatehtml.HTML_DROPDOWN_ELEMENT.
-                        format(url=("..\\"+filepath+".html"),
+                        format(url=("/"+filepath+".html"),
                                title=meta['Title'])
                         )
     return subpages
@@ -164,13 +164,13 @@ def makedropdowns(navbardict: dict):
                     )
                 else:
                     element = templatehtml.HTML_DROPDOWN_EXTENDED.format(
-                        url="..\\"+config[key]['src']+"\\"+filename+".html",
+                        url="/"+config[key]['src']+"/"+filename+".html",
                         title=meta['Title'],
-                        subpages=subpages
+                        subpages="".join(subpages)
                     )
             else:
-                filepath = "\\".join([config[key]['src'], filename])
-                element = templatehtml.HTML_DROPDOWN_ELEMENT.format(url="..\\"+filepath + ".html",
+                filepath = "/".join([config[key]['src'], filename])
+                element = templatehtml.HTML_DROPDOWN_ELEMENT.format(url="/"+filepath + ".html",
                                                                     title=meta['Title']
                                                                     )
             elements.append(element)
