@@ -12,8 +12,8 @@ HTML_HEAD = '''
 	<meta charset="utf-8"/>
 	<title>tS Docs - {title}</title>		
 		
-	<link rel="icon" href="src/img/ts_icon.png">
-	<link rel="stylesheet" href="src/style.css">
+	<link rel="icon" href="../src/img/ts_icon.png">
+	<link rel="stylesheet" href="../src/style.css">
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"
 	integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
 	crossorigin="anonymous"></script>

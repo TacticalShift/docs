@@ -1,11 +1,7 @@
-
 from pathlib import Path
-from turtle import title
 import bs4
-import xml.etree.ElementTree as etree
 import templatehtml
 import re
-import json
 import codecs
 
 SECTION_CONFIGURATION = {
@@ -57,6 +53,22 @@ def readmeta(filepath: str):
     return meta
 
 
+def readkeywords(filepath: str):
+    file = codecs.open(
+        filepath, 'r', "utf_8_sig")
+    line = file.readline(10000)
+    keywords = []
+    while line:
+        i = re.search("@Keywords\((.*?)\)", line)
+        if i:
+            for item in i.group(1).split(','):
+                keywords.append(item)
+            break
+        line = file.readline(10000)
+
+    return keywords
+
+
 def readtitle(filepath: str):
     file = codecs.open(
         filepath, 'r', "utf_8_sig")
@@ -79,6 +91,7 @@ def makesubfolderdict(pathstr: str):
             filename = x.name.split(".")[0]
             meta = {}
             meta = readmeta(x)
+            meta['Keywords'] = readkeywords(x)
             if not 'Title' in meta:
                 meta['Title'] = readtitle(x)
             if not 'Position' in meta:
@@ -95,6 +108,7 @@ def makefolderdict(pathstr: str):
             filename = x.name.split(".")[0]
             meta = {}
             meta = readmeta(x)
+            meta['Keywords'] = readkeywords(x)
             if not 'Title' in meta:
                 meta['Title'] = readtitle(x)
             if not 'Position' in meta:
@@ -120,14 +134,16 @@ def makefolderdict(pathstr: str):
     return folderlist
 
 
-def makesubpages(fileslist: list):
+def makesubpages(folder: str, subfolder: str, fileslist: list):
     subpages = []
     for file in fileslist:
         filename, meta = file
+        filepath = "\\".join([folder, subfolder, filename])
         subpages.append(templatehtml.HTML_DROPDOWN_ELEMENT.
-                        format(url=(".\\"+filename+".html"),
+                        format(url=("..\\"+filepath+".html"),
                                title=meta['Title'])
                         )
+    return subpages
 
 
 def makedropdowns(navbardict: dict):
@@ -139,20 +155,22 @@ def makedropdowns(navbardict: dict):
             filename, meta = item
             element = ""
             if 'Subpages' in meta:
-                subpages = makesubpages(meta['Subfolder'])
+                subpages = makesubpages(
+                    config[key]['src'], meta['Subpages'], meta['Subfolder'])
                 if 'Hide' in meta and int(meta['Hide']) == 1:
                     element = templatehtml.HTML_DROPDOWN_EXTENDED_INACTIVE.format(
                         title=meta['Title'],
-                        subpages=subpages
+                        subpages="".join(subpages)
                     )
                 else:
                     element = templatehtml.HTML_DROPDOWN_EXTENDED.format(
-                        url=".\\"+filename+".html",
+                        url="..\\"+config[key]['src']+"\\"+filename+".html",
                         title=meta['Title'],
                         subpages=subpages
                     )
             else:
-                element = templatehtml.HTML_DROPDOWN_ELEMENT.format(url=(filename+".html"),
+                filepath = "\\".join([config[key]['src'], filename])
+                element = templatehtml.HTML_DROPDOWN_ELEMENT.format(url="..\\"+filepath + ".html",
                                                                     title=meta['Title']
                                                                     )
             elements.append(element)

@@ -19,6 +19,8 @@ class TablesPreprocessor():
     HTML_ATTR_CELL_COLSPAN = 'colspan="%s"'
     HTML_ATTR_STYLE = 'style="%s"'
 
+    LOG_LEVEL: int
+
     @dataclass
     class Attributes:
         """
@@ -74,7 +76,7 @@ class TablesPreprocessor():
         attributes: list
         colspan: int = 1
 
-    def __init__(self, log_level=0):
+    def __init__(self, log_level: int = 0):
         self.LOG_LEVEL = log_level  # 0 - None, 1 - Enable, 2 - Verbose
 
     """Main public method.
@@ -132,6 +134,7 @@ class TablesPreprocessor():
 
     # Parses found table, it's structure and applied styles
     def __parse_table(self, table):
+
         LOG = True and self.LOG_LEVEL > 0  # Toggles log for method
         VERBOSE = LOG and self.LOG_LEVEL > 1
 
@@ -181,9 +184,7 @@ class TablesPreprocessor():
     def __parse_cell(self, line):
         LOG = True and self.LOG_LEVEL > 0  # Toggles log for method
         VERBOSE = LOG and self.LOG_LEVEL > 1
-
         LOG and print("[Parse Cell] Parsing cell: %s" % line)
-
         cell_attributes = TablesPreprocessor.Attributes()
         row_attributes = None
         table_attributes = None
@@ -248,6 +249,7 @@ class TablesPreprocessor():
             cell_template = TablesPreprocessor.HTML_TABLE_CELL if i > header_size else TablesPreprocessor.HTML_TABLE_HEADER_CELL
             cells_html = []
             for cell in row.cells:
+                cspan = ""
                 if cell.colspan > 1:
                     cspan = ' ' + TablesPreprocessor.HTML_ATTR_CELL_COLSPAN % cell.colspan
 

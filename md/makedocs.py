@@ -12,6 +12,7 @@ from tablepreprocessor import TablesPreprocessor as dznTablesPreproc
 import templatehtml
 import dropdowns
 import bs4
+from pathlib import Path
 
 
 class ColorInlineProcessor(InlineProcessor):
@@ -41,7 +42,7 @@ class TagsExtension(Extension):
         HIGHTLIGHT_PATTERN = r'\^\^(.*?)\^\^'
         WARN_PATTERN = r'\!(.*?)\!'
         md.inlinePatterns.register(KeyboardInlineProcessor(
-            KEYBOARD_PATTERN, 'kbd'), 'del', 175)
+            KEYBOARD_PATTERN, 'kbd'), 'kbd', 175)
         md.inlinePatterns.register(KeyboardInlineProcessor(
             TAGMARK_PATTERN, 'mark'), 'mark', 176)
         md.inlinePatterns.register(KeyboardInlineProcessor(
@@ -107,7 +108,7 @@ class TablePreprocessorExtension(Extension):
     def extendMarkdown(self, md: Markdown) -> None:
         md.registerExtension(self)
         md.preprocessors.register(
-            TablePreprocessorWrapper(md), 'TablePreproc', 27)
+            TablePreprocessorWrapper(), 'TablePreproc', 1)
 
 
 def makepage(input_text: str, title: str, dropdown: str):
@@ -120,7 +121,7 @@ def makepage(input_text: str, title: str, dropdown: str):
             TocExtension(
                 marker=None,
                 toc_depth="2-6"),
-            # TablePreprocessorExtension(),
+            TablePreprocessorExtension(),
             'attr_list',
             NoRenderExtension()
         ]
@@ -138,7 +139,6 @@ def makepage(input_text: str, title: str, dropdown: str):
 
 
 def makehtmlfile(inputpath: str, filename: str, dropdown: str, title: str):
-    print(inputpath)
     with open("."+inputpath, "r", encoding="utf-8") as input_file:
         input_text = input_file.read()
         input_file.close()
@@ -146,9 +146,6 @@ def makehtmlfile(inputpath: str, filename: str, dropdown: str, title: str):
     with open(filename, "w", encoding="utf-8", errors="xmlcharrefreplace") as output_file:
         output_file.write(htmlpage)
         output_file.close()
-
-
-# def makesectionportal():
 
 
 if __name__ == "__main__":
@@ -159,42 +156,25 @@ if __name__ == "__main__":
     for section, item in dropdowndict.items():
         for filename, meta in item:
             folder = config[section]['src']
+            outputpath = "/".join([folder, filename])
+            pathfolder = Path("../"+folder)
+            pathfolder.mkdir(exist_ok=True)
             makehtmlfile(
                 "/".join([rootdir, folder, filename+".md"]),
-                "../"+filename+".html",
+                "../"+outputpath+".html",
                 dropdown,
                 meta['Title']
             )
             if 'Subfolder' in meta:
                 for subfilename, submeta in meta['Subfolder']:
+                    pathfolder = Path("../" + folder+"/" + meta['Subpages'])
+                    pathfolder.mkdir(exist_ok=True)
+                    outputpath = "/".join([folder,
+                                          meta['Subpages'], subfilename])
                     makehtmlfile(
-                        "/".join([rootdir, folder, filename+".md"]),
-                        "../"+filename+".html",
+                        "/".join([rootdir, folder, filename,
+                                 subfilename+".md"]),
+                        "../"+outputpath+".html",
                         dropdown,
-                        meta['Title']
+                        submeta['Title']
                     )
-
-                # if (type(element) == dict):
-                #     for subkey, subelement in element.items():
-                #         # print(
-                #         #     "/".join([rootdir, folder, subfolder, subelement.split('.')[0]+".md"]))
-                #         makehtmlfile(
-                #             "/".join([rootdir, folder, subfolder,
-                #                      subelement.split('.')[0]+".md"]),
-                #             "../"+subelement, dropdown)
-                #     makehtmlfile(
-                #         "/".join([rootdir, subfolder+".md"]), "../"+subfolder+".html", dropdown)
-                #     # makesectionportal()
-                # else:
-                #     # print("/".join([rootdir, folder,
-                #     #                 element.split('.')[0]+".md"]))
-                #     makehtmlfile("/".join([rootdir, folder,
-                #                            element.split('.')[0]+".md"]),
-                #                  "../"+element, dropdown)
-
-                # with open(inputfilename.split('.')[0]+".html", 'w', encoding='utf-8') as htmlpage:
-                #     htmlpage.write(page)
-                #     htmlpage.close()
-
-                # with open("output.html", "w", encoding="utf-8", errors="xmlcharrefreplace") as output_file:
-                #     output_file.write(html_text)

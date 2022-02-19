@@ -1,1 +1,1 @@
-@Meta(Position=10, Subpages = Other, Title = Other) NORENDER
+@Meta(Position=10, Subpages = Other, Title = Other, Hide=1) NORENDER
