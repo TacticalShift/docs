@@ -1,6 +1,4 @@
-from msilib.schema import Extension
 from markdown import Markdown
-from markdown.inlinepatterns import SimpleTagInlineProcessor
 import markdown
 from markdown.preprocessors import Preprocessor
 from markdown.extensions import Extension
@@ -13,6 +11,7 @@ import templatehtml
 import dropdowns
 import bs4
 from pathlib import Path
+import keywordsmaker
 
 
 class ColorInlineProcessor(InlineProcessor):
@@ -95,7 +94,7 @@ class NoRenderExtension(Extension):
     def extendMarkdown(self, md):
         md.registerExtension(self)
         md.preprocessors.register(
-            NoRenderPreprocessor(md), 'prio_finder', 26)
+            NoRenderPreprocessor(md), 'no_render', 26)
 
 
 class TablePreprocessorWrapper(Preprocessor):
@@ -108,10 +107,10 @@ class TablePreprocessorExtension(Extension):
     def extendMarkdown(self, md: Markdown) -> None:
         md.registerExtension(self)
         md.preprocessors.register(
-            TablePreprocessorWrapper(), 'TablePreproc', 1)
+            TablePreprocessorWrapper(), 'TablePreproc', 35)
 
 
-def makepage(input_text: str, title: str, dropdown: str):
+def makepage(input_text, title: str, dropdown: str):
 
     md = markdown.Markdown(
         extensions=[
@@ -121,7 +120,7 @@ def makepage(input_text: str, title: str, dropdown: str):
             TocExtension(
                 marker=None,
                 toc_depth="2-6"),
-            TablePreprocessorExtension(),
+            # TablePreprocessorExtension(),
             'attr_list',
             NoRenderExtension()
         ]
@@ -140,8 +139,11 @@ def makepage(input_text: str, title: str, dropdown: str):
 
 def makehtmlfile(inputpath: str, filename: str, dropdown: str, title: str):
     with open("."+inputpath, "r", encoding="utf-8") as input_file:
-        input_text = input_file.read()
+        input_text = input_file.readlines()
         input_file.close()
+    wrp = dznTablesPreproc()
+    input_text = wrp.preprocess(input_text)
+    input_text = "\n".join(input_text)
     htmlpage = makepage(input_text, title, dropdown)
     with open(filename, "w", encoding="utf-8", errors="xmlcharrefreplace") as output_file:
         output_file.write(htmlpage)
@@ -153,6 +155,7 @@ if __name__ == "__main__":
     config = dropdowns.SECTION_CONFIGURATION
     dropdowndict = dropdowns.makenavbardict()
     dropdown = dropdowns.makenavbar()
+    keywordsmaker.keywordsmaker()
     for section, item in dropdowndict.items():
         for filename, meta in item:
             folder = config[section]['src']

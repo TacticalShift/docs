@@ -62,7 +62,7 @@ def readkeywords(filepath: str):
         i = re.search("@Keywords\((.*?)\)", line)
         if i:
             for item in i.group(1).split(','):
-                keywords.append(item)
+                keywords.append(item.strip())
             break
         line = file.readline(10000)
 

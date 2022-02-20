@@ -105,9 +105,7 @@ class TablesPreprocessor():
     def __find_tables(self):
         LOG = False and self.LOG_LEVEL > 0  # Toggles log for method
         VERBOSE = LOG and self.LOG_LEVEL > 1
-
         LOG and print('[Preprocess table] Started')
-
         tables = []
         is_codeblock = False
         for i, line in enumerate(self.lines):
@@ -147,7 +145,6 @@ class TablesPreprocessor():
         for i, line in enumerate(table.raw_lines):
             LOG and print("[Parse table] Line: %s :: Columns in row: %s" % (
                 line, line.count('|') - 1))
-
             if table.header_border_at < 0:
                 stripped = line.strip('|').strip()
                 is_border = stripped[0] == '-' and len(
