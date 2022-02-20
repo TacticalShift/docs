@@ -1,4 +1,5 @@
 from dataclasses import dataclass, field
+import re
 
 
 class TablesPreprocessor():
@@ -108,9 +109,14 @@ class TablesPreprocessor():
         LOG and print('[Preprocess table] Started')
 
         tables = []
+        is_codeblock = False
         for i, line in enumerate(self.lines):
             VERBOSE and print(
                 '[Preprocess table] Read line %s: %s' % (i, line))
+            if re.search("```", line):
+                is_codeblock = not is_codeblock
+            if is_codeblock:
+                continue
             if line.startswith("|") and line.endswith("|"):
                 VERBOSE and print('[Preprocess table] Line is a table row!')
                 if tables and tables[-1].ends_at == -1:
