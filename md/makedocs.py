@@ -153,18 +153,18 @@ def makehtmlfile(inputpath: str, filename: str, dropdown: str, title: str):
 if __name__ == "__main__":
     rootdir = ""
     config = dropdowns.SECTION_CONFIGURATION
-    dropdowndict = dropdowns.makenavbardict()
-    dropdown = dropdowns.makenavbar()
-    keywordsmaker.keywordsmaker()
-    for section, item in dropdowndict.items():
+    dropdown_dict = dropdowns.make_navbardict()
+    dropdown = dropdowns.make_navbar()
+    keywordsmaker.keywords_maker()
+    for section, item in dropdown_dict.items():
         for filename, meta in item:
             folder = config[section]['src']
-            outputpath = "/".join([folder, filename])
+            output_path = "/".join([folder, filename])
             pathfolder = Path("../"+folder)
             pathfolder.mkdir(exist_ok=True)
             makehtmlfile(
                 "/".join([rootdir, folder, filename+".md"]),
-                "../"+outputpath+".html",
+                "../"+output_path+".html",
                 dropdown,
                 meta['Title']
             )
@@ -172,12 +172,12 @@ if __name__ == "__main__":
                 for subfilename, submeta in meta['Subfolder']:
                     pathfolder = Path("../" + folder+"/" + meta['Subpages'])
                     pathfolder.mkdir(exist_ok=True)
-                    outputpath = "/".join([folder,
-                                          meta['Subpages'], subfilename])
+                    output_path = "/".join([folder,
+                                            meta['Subpages'], subfilename])
                     makehtmlfile(
                         "/".join([rootdir, folder, filename,
                                  subfilename+".md"]),
-                        "../"+outputpath+".html",
+                        "../"+output_path+".html",
                         dropdown,
                         submeta['Title']
                     )

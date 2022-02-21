@@ -11,7 +11,7 @@ const KEYWORDS  =
 '''
 
 
-def makekeywords(navbardict: dict):
+def make_keywords(navbardict: dict):
     articles = []
     keywords = {}
     config = dropdowns.SECTION_CONFIGURATION
@@ -48,16 +48,13 @@ def makekeywords(navbardict: dict):
     return (articles, keywords)
 
 
-def keywordsmaker():
-    outputart, outputkeys = makekeywords(dropdowns.makenavbardict())
-    articlestr = ARTCILE_TEMPLATE.format(articles=json.dumps(
-        outputart, indent=4, ensure_ascii=False))
-    keywordstr = KEYWORDS_TEMPLATE.format(
-        keywords=json.dumps(outputkeys, indent=4))
+def keywords_maker():
+    output_article, output_keys = make_keywords(dropdowns.make_navbardict())
+    article_str = ARTCILE_TEMPLATE.format(articles=json.dumps(
+        output_article, indent=4, ensure_ascii=False))
+    keyword_str = KEYWORDS_TEMPLATE.format(
+        keywords=json.dumps(output_keys, indent=4))
     with open("../src/keywords.js", "w", encoding="utf-8", errors="xmlcharrefreplace") as output_file:
-        output_file.write(articlestr)
-        output_file.write(keywordstr)
+        output_file.write(article_str)
+        output_file.write(keyword_str)
         output_file.close()
-
-
-keywordsmaker()

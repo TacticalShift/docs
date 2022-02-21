@@ -40,7 +40,7 @@ SECTION_CONFIGURATION = {
 # @Meta(key1=value1, key2=value2, key3=value3)
 
 
-def readmeta(filepath: str):
+def read_meta(filepath: str):
     file = codecs.open(
         filepath, 'r', "utf_8_sig")
     line = file.readline(10000)
@@ -53,7 +53,7 @@ def readmeta(filepath: str):
     return meta
 
 
-def readkeywords(filepath: str):
+def read_keywords(filepath: str):
     file = codecs.open(
         filepath, 'r', "utf_8_sig")
     line = file.readline(10000)
@@ -69,7 +69,7 @@ def readkeywords(filepath: str):
     return keywords
 
 
-def readtitle(filepath: str):
+def read_title(filepath: str):
     file = codecs.open(
         filepath, 'r', "utf_8_sig")
     title = "None"
@@ -83,40 +83,40 @@ def readtitle(filepath: str):
     return title
 
 
-def makesubfolderdict(pathstr: str):
+def make_subfolderdict(pathstr: str):
     path = Path(pathstr)
     subfolderdict = {}
     for x in path.iterdir():
         if x.is_file():
             filename = x.name.split(".")[0]
             meta = {}
-            meta = readmeta(x)
-            meta['Keywords'] = readkeywords(x)
+            meta = read_meta(x)
+            meta['Keywords'] = read_keywords(x)
             if not 'Title' in meta:
-                meta['Title'] = readtitle(x)
+                meta['Title'] = read_title(x)
             if not 'Position' in meta:
                 meta['Position'] = 1000
             subfolderdict[filename] = meta
     return subfolderdict
 
 
-def makefolderdict(pathstr: str):
+def make_folderdict(pathstr: str):
     path = Path(pathstr)
     folderdict = {}
     for x in path.iterdir():
         if x.is_file():
             filename = x.name.split(".")[0]
             meta = {}
-            meta = readmeta(x)
-            meta['Keywords'] = readkeywords(x)
+            meta = read_meta(x)
+            meta['Keywords'] = read_keywords(x)
             if not 'Title' in meta:
-                meta['Title'] = readtitle(x)
+                meta['Title'] = read_title(x)
             if not 'Position' in meta:
                 meta['Position'] = 1000
             folderdict[filename] = meta
             if 'Subpages' in meta:
                 subpath = "/".join([path.name, meta['Subpages']])
-                subdict = makesubfolderdict(subpath)
+                subdict = make_subfolderdict(subpath)
                 sublist = subdict.items()
                 sublist = sorted(
                     sublist,
@@ -134,9 +134,9 @@ def makefolderdict(pathstr: str):
     return folderlist
 
 
-def makesubpages(folder: str, subfolder: str, fileslist: list):
+def make_subpages(folder: str, subfolder: str, files_list: list):
     subpages = []
-    for file in fileslist:
+    for file in files_list:
         filename, meta = file
         filepath = "/".join([folder, subfolder, filename])
         subpages.append(templatehtml.HTML_DROPDOWN_ELEMENT.
@@ -146,16 +146,16 @@ def makesubpages(folder: str, subfolder: str, fileslist: list):
     return subpages
 
 
-def makedropdowns(navbardict: dict):
+def make_dropdowns(navbar_dict: dict):
     config = SECTION_CONFIGURATION
     dropdowns = []
-    for key, value in navbardict.items():
+    for key, value in navbar_dict.items():
         elements = []
         for item in value:
             filename, meta = item
             element = ""
             if 'Subpages' in meta:
-                subpages = makesubpages(
+                subpages = make_subpages(
                     config[key]['src'], meta['Subpages'], meta['Subfolder'])
                 if 'Hide' in meta and int(meta['Hide']) == 1:
                     element = templatehtml.HTML_DROPDOWN_EXTENDED_INACTIVE.format(
@@ -174,26 +174,28 @@ def makedropdowns(navbardict: dict):
                                                                     title=meta['Title']
                                                                     )
             elements.append(element)
-        dropdowns.append(templatehtml.HTML_DROPDOWN_SECTION.format(tooltip=config[key]['tooltip'],
-                                                                   title=config[key]['title'],
-                                                                   elements="".join(
-                                                                       elements)
-                                                                   )
+        dropdowns.append(templatehtml.HTML_DROPDOWN_SECTION.
+                         format(
+                             tooltip=config[key]['tooltip'],
+                             title=config[key]['title'],
+                             elements="".join(
+                                 elements)
+                         )
                          )
     return dropdowns
 
 
-def makenavbardict():
+def make_navbardict():
     config = SECTION_CONFIGURATION
-    navbardict = {}
+    navbar_dict = {}
     for section in config["order"]:
         folder = config[section]['src']
-        navbardict[section] = makefolderdict(folder)
-    return navbardict
+        navbar_dict[section] = make_folderdict(folder)
+    return navbar_dict
 
 
-def makenavbar():
-    dropdowns = makedropdowns(makenavbardict())
+def make_navbar():
+    dropdowns = make_dropdowns(make_navbardict())
     navbar = templatehtml.HTML_NAVBAR_SECTION.format(
         dropdowns="".join(dropdowns))
     soup = bs4.BeautifulSoup(navbar, "html.parser")
