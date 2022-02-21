@@ -1,5 +1,4 @@
 from pathlib import Path
-import bs4
 import templatehtml
 import re
 import codecs
@@ -198,5 +197,4 @@ def make_navbar():
     dropdowns = make_dropdowns(make_navbardict())
     navbar = templatehtml.HTML_NAVBAR_SECTION.format(
         dropdowns="".join(dropdowns))
-    soup = bs4.BeautifulSoup(navbar, "html.parser")
-    return soup.prettify()
+    return navbar

@@ -1,17 +1,18 @@
 from markdown import Markdown
-import markdown
 from markdown.preprocessors import Preprocessor
 from markdown.extensions import Extension
 from markdown.extensions.toc import TocExtension
-import re
 from markdown.inlinepatterns import InlineProcessor
+
+import re
+from pathlib import Path
 import xml.etree.ElementTree as etree
+
 from tablepreprocessor import TablesPreprocessor as dznTablesPreproc
+
+import keywordsmaker
 import templatehtml
 import dropdowns
-import bs4
-from pathlib import Path
-import keywordsmaker
 
 
 class ColorInlineProcessor(InlineProcessor):
@@ -112,7 +113,7 @@ class TablePreprocessorExtension(Extension):
 
 def makepage(input_text, title: str, dropdown: str):
 
-    md = markdown.Markdown(
+    md = Markdown(
         extensions=[
             TitleFinderExtension(),
             'tables',
@@ -133,8 +134,7 @@ def makepage(input_text, title: str, dropdown: str):
     head = templatehtml.HTML_HEAD.format(title=title)
     page = templatehtml.HTML_PAGE.format(head=head, body=body)
     md.reset()
-    soup = bs4.BeautifulSoup(page, "html.parser")
-    return soup.prettify()
+    return page
 
 
 def makehtmlfile(inputpath: str, filename: str, dropdown: str, title: str):
