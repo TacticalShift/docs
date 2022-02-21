@@ -164,7 +164,7 @@ def make_dropdowns(navbar_dict: dict):
                 else:
                     element = templatehtml.HTML_DROPDOWN_EXTENDED.format(
                         url="/".join(["/docs", config[key]
-                                     ['src'], filename, ".html"]),
+                                     ['src'], filename+".html"]),
                         title=meta['Title'],
                         subpages="".join(subpages)
                     )
