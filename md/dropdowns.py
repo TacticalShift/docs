@@ -137,7 +137,7 @@ def make_subpages(folder: str, subfolder: str, files_list: list):
     subpages = []
     for file in files_list:
         filename, meta = file
-        filepath = "/".join([folder, subfolder, filename])
+        filepath = "/".join(["docs", folder, subfolder, filename])
         subpages.append(templatehtml.HTML_DROPDOWN_ELEMENT.
                         format(url=("/"+filepath+".html"),
                                title=meta['Title'])
@@ -163,12 +163,13 @@ def make_dropdowns(navbar_dict: dict):
                     )
                 else:
                     element = templatehtml.HTML_DROPDOWN_EXTENDED.format(
-                        url="/"+config[key]['src']+"/"+filename+".html",
+                        url="/".join(["/docs", config[key]
+                                     ['src'], filename, ".html"]),
                         title=meta['Title'],
                         subpages="".join(subpages)
                     )
             else:
-                filepath = "/".join([config[key]['src'], filename])
+                filepath = "/".join(["docs", config[key]['src'], filename])
                 element = templatehtml.HTML_DROPDOWN_ELEMENT.format(url="/"+filepath + ".html",
                                                                     title=meta['Title']
                                                                     )

@@ -111,7 +111,7 @@ class TablePreprocessorExtension(Extension):
             TablePreprocessorWrapper(), 'TablePreproc', 35)
 
 
-def makepage(input_text, title: str, dropdown: str):
+def make_page(input_text, title: str, dropdown: str):
 
     md = Markdown(
         extensions=[
@@ -137,14 +137,14 @@ def makepage(input_text, title: str, dropdown: str):
     return page
 
 
-def makehtmlfile(inputpath: str, filename: str, dropdown: str, title: str):
+def make_htmlfile(inputpath: str, filename: str, dropdown: str, title: str):
     with open("."+inputpath, "r", encoding="utf-8") as input_file:
         input_text = input_file.readlines()
         input_file.close()
     wrp = dznTablesPreproc()
     input_text = wrp.preprocess(input_text)
     input_text = "\n".join(input_text)
-    htmlpage = makepage(input_text, title, dropdown)
+    htmlpage = make_page(input_text, title, dropdown)
     with open(filename, "w", encoding="utf-8", errors="xmlcharrefreplace") as output_file:
         output_file.write(htmlpage)
         output_file.close()
@@ -162,7 +162,7 @@ if __name__ == "__main__":
             output_path = "/".join([folder, filename])
             pathfolder = Path("../"+folder)
             pathfolder.mkdir(exist_ok=True)
-            makehtmlfile(
+            make_htmlfile(
                 "/".join([rootdir, folder, filename+".md"]),
                 "../"+output_path+".html",
                 dropdown,
@@ -174,10 +174,11 @@ if __name__ == "__main__":
                     pathfolder.mkdir(exist_ok=True)
                     output_path = "/".join([folder,
                                             meta['Subpages'], subfilename])
-                    makehtmlfile(
+                    make_htmlfile(
                         "/".join([rootdir, folder, filename,
                                  subfilename+".md"]),
                         "../"+output_path+".html",
                         dropdown,
                         submeta['Title']
                     )
+    make_htmlfile("/index.md", "../index.html", dropdown, "tsDocs")
