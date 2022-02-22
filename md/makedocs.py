@@ -117,6 +117,7 @@ def make_page(input_text, title: str, dropdown: str):
         extensions=[
             TitleFinderExtension(),
             'tables',
+            'fenced_code',
             TagsExtension(),
             TocExtension(
                 marker=None,

@@ -139,7 +139,7 @@
 <p>Сборник документации в виде статичных html страниц размещенных на github pages.</p>
 <p>Для добавления и редактирвания страниц используются .md файлы (файлы разметки markdown) и особый билд-скрипт на python3, который конвертирует файлы в html. Все файлы лежат в одном репозитории.</p>
 <h2 id="_1"><a name="struct"></a>Структура репозитория</h2>
-<p><code>.
+<pre><code>.
 |   // Таблица стилей
 ├── src
 │   └── style.css
@@ -166,7 +166,8 @@
 |   ├── SubSection1
 │   │   └── page5.html
 │   ├── page3.html
-│   └── page4.html</code></p>
+│   └── page4.html
+</code></pre>
 <p>Исходные .md файлы рассортированы в папки, не более 2х уровней глубины.
 В конфиге билд-скрипте задана структура первого уровня, структуры второго уровня задаются непосредственно в метаданных головной страницы.</p>
 <h2 id="md"><a name="md"></a>MD страницы</h2>
@@ -174,8 +175,8 @@
 Страницы должны использовать стандартный markdown syntax с некоторыми расширениями.</p>
 <h3 id="metadata"><a name="md_meta"></a>Metadata</h3>
 <p>Первой строкой должна идти строка метаданных вида</p>
-<p><code>md
-@Meta(key1=value1, key2=value2, key3=value3)</code></p>
+<pre><code class="language-md">@Meta(key1=value1, key2=value2, key3=value3)
+</code></pre>
 <p>пары ключ-значения разделяются запятыми.
 Ключи:</p>
 <ul>
@@ -196,27 +197,27 @@
 <h3 id="1-"><a name="dd_1st_level"></a>Секции (дропдауны 1-го уровня)</h3>
 <p>Список секций хардкодится в билд-скрипт - имя дропдауна и папка для страниц.
 Порядок секций в навигационной панели тоже задается в билд-скрипте.</p>
-<p>```py
-SECTION_CONFIGURATION = {
- "order": ["_docs", "_sop", "_tco", "_mmo", "_srv"],  # Порядок следования секций в navbar'е</p>
-<p># Описание секции
- "_sop": {
-  "title": "SOPs",  # Отображаемое название секции в navbar'e
-  "tooltip": "Standard Operation Procedures",  # Текст для всплывающего текста при наведении (опционально), html-свойство title
-  "src": "SOP"  # Имя папки первого уровня где хранятся страницы
+<pre><code class="language-py">SECTION_CONFIGURATION = {
+ &quot;order&quot;: [&quot;_docs&quot;, &quot;_sop&quot;, &quot;_tco&quot;, &quot;_mmo&quot;, &quot;_srv&quot;],  # Порядок следования секций в navbar'е
+
+ # Описание секции
+ &quot;_sop&quot;: {
+  &quot;title&quot;: &quot;SOPs&quot;,  # Отображаемое название секции в navbar'e
+  &quot;tooltip&quot;: &quot;Standard Operation Procedures&quot;,  # Текст для всплывающего текста при наведении (опционально), html-свойство title
+  &quot;src&quot;: &quot;SOP&quot;  # Имя папки первого уровня где хранятся страницы
  },
- "_docs": {
-  "title": "Документация",
-  "src": "Docs"
+ &quot;_docs&quot;: {
+  &quot;title&quot;: &quot;Документация&quot;,
+  &quot;src&quot;: &quot;Docs&quot;
  },
- "_tco": {
-  "title": "TCO",
-  "tooltip": "Training Center Office",
-  "src": "TCO"
+ &quot;_tco&quot;: {
+  &quot;title&quot;: &quot;TCO&quot;,
+  &quot;tooltip&quot;: &quot;Training Center Office&quot;,
+  &quot;src&quot;: &quot;TCO&quot;
  }
  ...
 };
-```</p>
+</code></pre>
 <p>Все страницы в указанной папке для секции рассматриваются как элементы дропдауна. При этом исходя из метаданныз конкретной страницы задается сам факт добавления страницы в дропдаун (флаг <code>Hide</code>), положение страницы в дропдауне (ключ <code>Position</code>) и отображаемое название страницы в дропдауне (ключ <code>Title</code>).</p>
 <h3 id="2-"><a name="dd_2nd_level"></a>Дропдауны 2-го уровня</h3>
 <p>Если в метаданных страницы имеется не пустой ключ <code>Subpages</code>, то для данной страницы в дропдауне добавляется дропдаун 2го уровня и наполняется страницами найденными в директории <code>/md/&lt;SomeSection&gt;/&lt;Subpages_Value&gt;/</code> (например, на странице <code>/md/MMO/tsFramework.md</code> в метаданных указано <code>Subpages=tSF</code>, дропдаун 2го уровня будет собран из страниц в <code>/md/MMO/tSF/*.md</code>).</p>
@@ -266,26 +267,24 @@ SECTION_CONFIGURATION = {
 </ul>
 <p>Вычлененные заголовки (Mata.Title или заголовок <code>#</code>) имеют отдельную роль в формировании страницы. Если значение Meta.Title задано, то используем его в HTML-заголовке страницы (чтобы на вкладке браузера было видно что за страница открыта). Если Meta.Title не задан, то везде используется первый найденный заголовок первого уровня - в HTML-заголовке страницы и как название статьи (выделено отдельным элементом, см. шаблоны).</p>
 <h3 id="html"><a name="html"></a>HTML</h3>
-<p>```html</p>
-<div class="navbar"> <!-- Собственно панель с разделами -->
-    <div class="dropdown"> <!-- Блок задающий раздел -->
-        <button class="dropbtn">SOP</button>  <!-- Заголовок раздела - тут SOP -->
-            <div class="dropdown-content">  <!-- Блок элементов дропдауна -->
-                <a href="#">Графические меры контроля</a>  <!-- Элемент дропдауна, где href = ссылка на соответствующую страницу-->
-                <a href="#">Формации</a>    
-            </div>
-        </div>
-    </div>
-<p></div>
-```</p>
+<pre><code class="language-html">&lt;div class=&quot;navbar&quot;&gt; &lt;!-- Собственно панель с разделами --&gt;
+    &lt;div class=&quot;dropdown&quot;&gt; &lt;!-- Блок задающий раздел --&gt;
+        &lt;button class=&quot;dropbtn&quot;&gt;SOP&lt;/button&gt;  &lt;!-- Заголовок раздела - тут SOP --&gt;
+            &lt;div class=&quot;dropdown-content&quot;&gt;  &lt;!-- Блок элементов дропдауна --&gt;
+                &lt;a href=&quot;#&quot;&gt;Графические меры контроля&lt;/a&gt;  &lt;!-- Элемент дропдауна, где href = ссылка на соответствующую страницу--&gt;
+                &lt;a href=&quot;#&quot;&gt;Формации&lt;/a&gt;    
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
 <h2 id="_6"><a name='t'></a>Шаблоны</h2>
 <h3 id="_7"><a name='t_page'></a>Страница</h3>
 <ul>
 <li><code>{head}</code> - шаблон <code>HTML_HEAD</code></li>
 <li><code>{body}</code> - шаблон <code>HTML_BODY</code></li>
 </ul>
-<p><code>py
-HTML_PAGE = '''&lt;!DOCTYPE html&gt;
+<pre><code class="language-py">HTML_PAGE = '''&lt;!DOCTYPE html&gt;
 &lt;html&gt;
     &lt;head&gt;
         {head}
@@ -293,23 +292,23 @@ HTML_PAGE = '''&lt;!DOCTYPE html&gt;
     &lt;body&gt;
         {body}
     &lt;/body&gt;
-&lt;/html&gt;'''</code></p>
+&lt;/html&gt;'''
+</code></pre>
 <h3 id="_8"><a name='t_head'></a>Заголовок страницы</h3>
 <ul>
 <li><code>{title}</code> -- заголовок страницы (Meta.Title или первый <code>#</code>)</li>
 </ul>
-<p>```py
-HTML_HEAD = '''
- <meta charset="utf-8"/>
- <title>tS Docs - {title}</title>  </p>
-<p><link rel="icon" href="src/img/ts_icon.png">
- <link rel="stylesheet" href="src/style.css">
- 
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"
- integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
- crossorigin="anonymous"></script></p>
-<p>'''
-```</p>
+<pre><code class="language-py">HTML_HEAD = '''
+ &lt;meta charset=&quot;utf-8&quot;/&gt;
+ &lt;title&gt;tS Docs - {title}&lt;/title&gt;  
+
+ &lt;link rel=&quot;icon&quot; href=&quot;src/img/ts_icon.png&quot;&gt;
+ &lt;link rel=&quot;stylesheet&quot; href=&quot;src/style.css&quot;&gt;
+ &lt;script src=&quot;https://code.jquery.com/jquery-3.4.1.min.js&quot;
+ integrity=&quot;sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=&quot;
+ crossorigin=&quot;anonymous&quot;&gt;&lt;/script&gt;
+'''
+</code></pre>
 <h3 id="_9"><a name='t_body'></a>Тело страницы</h3>
 <ul>
 <li><code>{navbar}</code> -- навигационная панель</li>
@@ -317,92 +316,85 @@ HTML_HEAD = '''
 <li><code>{toc}</code> -- table of content страницы</li>
 <li><code>{article}</code> -- сам текст страницы (распаршенный markdown)</li>
 </ul>
-<p>```py
-HTML_BODY = '''</p>
-<div id="header">
- <div id="header-title">
-  <span><a href="https://tacticalshift.github.io" style="text-decoration: none; color: inherit;">tS</a></span> <tt id='header-sans'>Docs</tt>
- </div>
+<pre><code class="language-py">HTML_BODY = '''
+&lt;div id=&quot;header&quot;&gt;
+ &lt;div id=&quot;header-title&quot;&gt;
+  &lt;span&gt;&lt;a href=&quot;https://tacticalshift.github.io&quot; style=&quot;text-decoration: none; color: inherit;&quot;&gt;tS&lt;/a&gt;&lt;/span&gt; &lt;tt id='header-sans'&gt;Docs&lt;/tt&gt;
+ &lt;/div&gt;
  {navbar}
-</div>
-<div id="wrapper">
- <div class="title"><h1>{title}</h1></div>
- <div class="toc">
+&lt;/div&gt;
+&lt;div id=&quot;wrapper&quot;&gt;
+ &lt;div class=&quot;title&quot;&gt;&lt;h1&gt;{title}&lt;/h1&gt;&lt;/div&gt;
+ &lt;div class=&quot;toc&quot;&gt;
   {toc}
- </div>
- <div class="article">
+ &lt;/div&gt;
+ &lt;div class=&quot;article&quot;&gt;
   {article}
- </div>
-</div>
-<p>'''
-```</p>
+ &lt;/div&gt;
+&lt;/div&gt;
+'''
+</code></pre>
 <h3 id="navbar"><a name='t_navbar'></a>Navbar</h3>
 <ul>
 <li><code>{dropdowns}</code> -- секции-дропдауны</li>
 </ul>
-<p>```py
-HTML_NAVBAR_SECTION = '''
- 
-<div class="navbar">
+<pre><code class="language-py">HTML_NAVBAR_SECTION = '''
+ &lt;div class=&quot;navbar&quot;&gt;
   {dropdowns}
- </div></p>
-<p>'''
-```</p>
+ &lt;/div&gt;
+'''
+</code></pre>
 <h3 id="1"><a name='t_dd'></a>Секция (Дропдаун 1го уровня)</h3>
 <ul>
 <li><code>{title}</code> -- название секции (из <code>SECTION_CONFIGURATION</code>)</li>
 <li><code>{tooltip}</code> -- подсказка для названия секции (из <code>SECTION_CONFIGURATION[sectionName]["tooltip"]</code>)</li>
 <li><code>{elements}</code> -- элементы списка</li>
 </ul>
-<p><code>py
-HTML_DROPDOWN_SECTION = '''
-    &lt;div class="dropdown"&gt;
-        &lt;button class="dropbtn" title="{tooltip}"&gt;{title}&lt;/button&gt;
-        &lt;div class="dropdown-content"&gt;
+<pre><code class="language-py">HTML_DROPDOWN_SECTION = '''
+    &lt;div class=&quot;dropdown&quot;&gt;
+        &lt;button class=&quot;dropbtn&quot; title=&quot;{tooltip}&quot;&gt;{title}&lt;/button&gt;
+        &lt;div class=&quot;dropdown-content&quot;&gt;
           {elements}
         &lt;/div&gt;
     &lt;/div&gt;
-'''</code></p>
+'''
+</code></pre>
 <h3 id="-_1"><a name='t_dd_element'></a>Элемент-ссылка дропдауна</h3>
 <ul>
 <li><code>{url}</code> -- относительная ссылка на страницу</li>
 <li><code>{title}</code> -- заголовок страницы (из Meta.Title или первого <code>#</code>)</li>
 </ul>
-<p><code>py
-HTML_DROPDOWN_ELEMENT = '&lt;a href="{url}"&gt;{title}&lt;/a&gt;'</code></p>
+<pre><code class="language-py">HTML_DROPDOWN_ELEMENT = '&lt;a href=&quot;{url}&quot;&gt;{title}&lt;/a&gt;'
+</code></pre>
 <h3 id="-2"><a name='t_dd2'></a>Элемент-ссылка списка с дропдауном 2го уровня</h3>
 <ul>
 <li><code>{url}</code> -- относительная ссылка на страницу</li>
 <li><code>{title}</code> -- заголовок страницы (из Meta.Title или первого <code>#</code>)</li>
 <li><code>{subpages}</code> -- элементы дропдауна второго уровня (элементы по шаблону <code>HTML_DROPDOWN_ELEMENT</code>)</li>
 </ul>
-<p>```py
-HTML_DROPDOWN_EXTENDED = '''
- 
-<div class="dropdown-2l">
-  <a href="{url}">{title}<arrow>⇨</arrow></a>
-  <div class="dropdown-2l-content">
+<pre><code class="language-py">HTML_DROPDOWN_EXTENDED = '''
+ &lt;div class=&quot;dropdown-2l&quot;&gt;
+  &lt;a href=&quot;{url}&quot;&gt;{title}&lt;arrow&gt;⇨&lt;/arrow&gt;&lt;/a&gt;
+  &lt;div class=&quot;dropdown-2l-content&quot;&gt;
    {subpages}
-  </div>
- </div></p>
-<p>'''
-```</p>
+  &lt;/div&gt;
+ &lt;/div&gt;
+'''
+</code></pre>
 <h3 id="2"><a name='t_dd2_inactive'></a>Элемент списка (неактивный) с дропдауном 2го уровня</h3>
 <ul>
 <li><code>{title}</code> -- заголовок страницы (из Meta.Title или первого <code>#</code>)</li>
 <li><code>{subpages}</code> -- элементы дропдауна второго уровня (элементы по шаблону <code>HTML_DROPDOWN_ELEMENT</code>)</li>
 </ul>
-<p>```py
-HTML_DROPDOWN_EXTENDED_INACTIVE = '''
- 
-<div class="dropdown-2l">
-  <span>{title}<arrow>⇨</arrow></span>
-  <div class="dropdown-2l-content">
+<pre><code class="language-py">HTML_DROPDOWN_EXTENDED_INACTIVE = '''
+ &lt;div class=&quot;dropdown-2l&quot;&gt;
+  &lt;span&gt;{title}&lt;arrow&gt;⇨&lt;/arrow&gt;&lt;/span&gt;
+  &lt;div class=&quot;dropdown-2l-content&quot;&gt;
    {subpages}
-  </div>
- </div></p>
-<p>'''
-```</p>
+  &lt;/div&gt;
+ &lt;/div&gt;
+'''
+</code></pre>
 	</div>
 </div>
 
