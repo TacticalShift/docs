@@ -1,5 +1,5 @@
 
-const articles = 
+const ARTICLES = 
     [
     {
         "title": "tS Docs",

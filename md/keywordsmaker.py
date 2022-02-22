@@ -2,7 +2,7 @@ import json
 import dropdowns
 
 ARTCILE_TEMPLATE = '''
-const articles = 
+const ARTICLES = 
     {articles}
 '''
 KEYWORDS_TEMPLATE = '''
