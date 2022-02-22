@@ -2,9 +2,9 @@ const SearchWidget = {
     LOG: {
         INFO: 1,
         VERBOSE: 2,
-    },  
+    },
     constants: {
-        URL: "../docs/search.html?search={query}",
+        URL: "/docs/search.html?search={query}",
         SEARCH_BAR: "search-bar",
         SEARCH_BUTTON: "search-button",
         SEARCH_FIELD: "search-field",
@@ -27,12 +27,12 @@ const SearchWidget = {
         focusedId: -1
     },
 
-    log: function(lvl, msg) {
-        if (lvl > this.LOG_LEVEL) return 
+    log: function (lvl, msg) {
+        if (lvl > this.LOG_LEVEL) return
         console.log(msg)
     },
 
-    init: function(log_level) {
+    init: function (log_level) {
         this.LOG_LEVEL = log_level
         this.log(this.LOG.INFO, '[SearchWidget] Initialization started...')
 
@@ -41,7 +41,7 @@ const SearchWidget = {
         this.searchInput = document.getElementById(this.constants.SEARCH_FIELD)
 
         this.searchButton.addEventListener('click', (e) => {
-            SearchWidget.onButtonClick() 
+            SearchWidget.onButtonClick()
         })
         this.searchInput.addEventListener('keyup', (e) => {
             SearchWidget.onKeyUp(e)
@@ -53,7 +53,7 @@ const SearchWidget = {
         this.log(this.LOG.INFO, '[SearchWidget] Initialized!')
     },
 
-    onButtonClick: function() {
+    onButtonClick: function () {
         let query = this.getSearchQuery()
         let url = this.constants.URL.replace("{query}", encodeURI(query))
         window.open(url, "_self")
@@ -87,7 +87,7 @@ const SearchWidget = {
             this.onQueryChange()
         }
     },
-    onQueryChange: function() {
+    onQueryChange: function () {
         let query = this.getSearchQuery()
         let autocomplete = Autocompleter.autocomplete(query)
 
@@ -103,11 +103,11 @@ const SearchWidget = {
         this.log(this.LOG.VERBOSE, '[SearchWidget.onQueryChange] Showing proposals')
         this.showProposals(autocomplete.word, autocomplete.proposals)
     },
-    getSearchQuery: function() {
+    getSearchQuery: function () {
         return this.searchInput.value
     },
 
-    showProposals: function(word, proposals) {
+    showProposals: function (word, proposals) {
         this.hideProposals()
 
         let dropdown = document.createElement("div")
@@ -128,10 +128,10 @@ const SearchWidget = {
                 SearchWidget.selectProposal(el)
             })
         })
-        
+
         this.proposalsMenu.shown = true
     },
-    hideProposals: function() {
+    hideProposals: function () {
         this.proposalsMenu.focused = false
         this.proposalsMenu.focusedId = -1
         this.proposalsMenu.shown = false
@@ -142,10 +142,10 @@ const SearchWidget = {
         }
         el.remove()
     },
-    getProposal: function(idx) {
+    getProposal: function (idx) {
         this.log(this.LOG.VERBOSE, `[SearchWidget.getProposal] By index ${idx}`)
         let items = document.getElementById(this.constants.AUTO_ID).getElementsByTagName("div")
-        if (idx > items.length - 1 ) {
+        if (idx > items.length - 1) {
             idx = items.length - 1
             this.log(this.LOG.VERBOSE, `[SearchWidget.getProposal] Max index reached, correction = ${idx}`)
         } else if (idx < 0) {
@@ -161,7 +161,7 @@ const SearchWidget = {
             list: items
         }
     },
-    focusOnProposal: function(idx) {
+    focusOnProposal: function (idx) {
         this.proposalsMenu.focused = true
         let items = this.getProposal(idx)
 
@@ -170,7 +170,7 @@ const SearchWidget = {
         }
         items.selected.setAttribute("class", this.constants.AUTO_ITEM_FOCUSED_CLASS)
     },
-    selectProposal: function(item) {
+    selectProposal: function (item) {
         if (item == null) {
             item = this.getProposal(this.proposalsMenu.focusedId).selected
         }
@@ -179,11 +179,11 @@ const SearchWidget = {
         currentValue = currentValue.substring(0, currentValue.length - this.lastWord.length)
 
         this.searchInput.value = currentValue + fullword;
-        
+
         this.hideProposals()
     }
 }
 
-document.addEventListener('DOMContentLoaded', function(){
-    SearchWidget.init(SearchWidget.LOG.INFO) 
+document.addEventListener('DOMContentLoaded', function () {
+    SearchWidget.init(SearchWidget.LOG.INFO)
 })
