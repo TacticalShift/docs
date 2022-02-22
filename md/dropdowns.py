@@ -45,10 +45,13 @@ def read_meta(filepath: str):
     line = file.readline(10000)
     i = re.search("@Meta\((.*?)\)", line)
     meta = {}
-    if i:
-        for item in i.group(1).split(','):
-            key, value = item.split('=')
-            meta[key.strip()] = value.strip()
+    while line:
+        if i:
+            for item in i.group(1).split(','):
+                key, value = item.split('=')
+                meta[key.strip()] = value.strip()
+            break
+        line = file.readline(10000)
     return meta
 
 

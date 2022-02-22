@@ -100,7 +100,7 @@ class NoRenderExtension(Extension):
 
 class TablePreprocessorWrapper(Preprocessor):
     def run(self, lines):
-        wrp = dznTablesPreproc()
+        wrp = dznTablesPreproc(self.md, log_level=0)
         return wrp.preprocess(lines)
 
 
@@ -108,7 +108,7 @@ class TablePreprocessorExtension(Extension):
     def extendMarkdown(self, md: Markdown) -> None:
         md.registerExtension(self)
         md.preprocessors.register(
-            TablePreprocessorWrapper(), 'TablePreproc', 35)
+            TablePreprocessorWrapper(md), 'TablePreproc', 35)
 
 
 def make_page(input_text, title: str, dropdown: str):
@@ -121,7 +121,7 @@ def make_page(input_text, title: str, dropdown: str):
             TocExtension(
                 marker=None,
                 toc_depth="2-6"),
-            # TablePreprocessorExtension(),
+            TablePreprocessorExtension(),
             'attr_list',
             NoRenderExtension()
         ]
@@ -139,11 +139,11 @@ def make_page(input_text, title: str, dropdown: str):
 
 def make_htmlfile(inputpath: str, filename: str, dropdown: str, title: str):
     with open("."+inputpath, "r", encoding="utf-8") as input_file:
-        input_text = input_file.readlines()
+        input_text = input_file.read()
         input_file.close()
-    wrp = dznTablesPreproc()
-    input_text = wrp.preprocess(input_text)
-    input_text = "\n".join(input_text)
+    # wrp = dznTablesPreproc()
+    # input_text = wrp.preprocess(input_text)
+    # input_text = "".join(input_text)
     htmlpage = make_page(input_text, title, dropdown)
     with open(filename, "w", encoding="utf-8", errors="xmlcharrefreplace") as output_file:
         output_file.write(htmlpage)

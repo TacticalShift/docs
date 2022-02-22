@@ -2,19 +2,13 @@
 const articles = 
     [
     {
-        "title": "None",
-        "section": "Docs",
-        "url": "/docs1.html",
-        "keywords": []
-    },
-    {
         "title": "tS Docs",
         "section": "Docs",
         "url": "/tsDocs.html",
         "keywords": []
     },
     {
-        "title": "AI Platoon leadership (Командование ботовзводом)",
+        "title": "Командование ботовзводом",
         "section": "SOP",
         "url": "/AI_Platoon_leadership.html",
         "keywords": [
@@ -25,6 +19,12 @@ const articles =
         ]
     },
     {
+        "title": "AI_Crew",
+        "section": "SOP",
+        "url": "/documentation_sop_aircrew.html",
+        "keywords": []
+    },
+    {
         "title": "Правила коммуникации",
         "section": "SOP",
         "url": "/documentation_communications.html",
@@ -33,12 +33,6 @@ const articles =
             "keyword2",
             "keyword3"
         ]
-    },
-    {
-        "title": "Полностью русский заголовок",
-        "section": "SOP",
-        "url": "/documentation_sop_aircrew.html",
-        "keywords": []
     },
     {
         "title": "Other",

@@ -1,4 +1,4 @@
-@Meta(key1=value1, key2=value, Position=10) NORENDER
+@Meta( Position=10) NORENDER
 @Keywords(keyword1, keyword2, keyword3) NORENDER
 
 # Правила коммуникации
@@ -11,9 +11,9 @@
 
 ### Компас
 
-|  **Норс-Вэст**  *North-West*  *Северо-запад*  **N-W** |  **Норс**  *North*  *Cевер*  **N** |  **Норс-Ист**  *North-East*  *Северо-восток*  **N-E** |
-|  **Вэст**  *West*  *Запад*  **W** | ![kompas] |  **Ист**  *East*  *Восток*  **E** |
-|  **Саус-Вэст**  *South-West*  *Юго-запад*  **S-W** |  **Саус**  *South*  *Юг*  **S** |  **Саус-Ист**  *South-East*  *Юго-восток*  **S-E** |
+| **Норс-Вэст** <br> *North-West* <br> *Северо-запад* <br> **N-W** |  **Норс** <br> *North* <br> *Север* <br> **N** |  **Норс-Ист** <br> *North-East* <br> *Северо-восток* <br> **N-E** |
+|  **Вэст** <br> *West* <br> *Запад* <br> **W** | ![kompas] |  **Ист** <br> *East* <br> *Восток* <br> **E** |
+|  **Саус-Вэст** <br> *South-West* <br> *Юго-запад* <br> **S-W** |  **Саус** <br> *South* <br> *Юг* <br> **S** |  **Саус-Ист** <br> *South-East* <br> *Юго-восток* <br> **S-E** |
 
 ### Направление / Азимут
 

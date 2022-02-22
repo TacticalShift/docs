@@ -1,4 +1,4 @@
-﻿@Meta(key1=value1, key2=value, Position=1) NORENDER
+﻿@Meta(Position=1, Title=Командование ботовзводом) NORENDER
 @Keywords(keyword1, keyword2, keyword3, keyword4) NORENDER
 
 # AI Platoon leadership (Командование ботовзводом)
