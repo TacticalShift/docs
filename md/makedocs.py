@@ -108,7 +108,7 @@ class TablePreprocessorExtension(Extension):
     def extendMarkdown(self, md: Markdown) -> None:
         md.registerExtension(self)
         md.preprocessors.register(
-            TablePreprocessorWrapper(md), 'TablePreproc', 35)
+            TablePreprocessorWrapper(md), 'TablePreproc', 10)
 
 
 def make_page(input_text, title: str, dropdown: str):
@@ -116,14 +116,12 @@ def make_page(input_text, title: str, dropdown: str):
     md = Markdown(
         extensions=[
             TitleFinderExtension(),
-            'tables',
             'fenced_code',
             TagsExtension(),
             TocExtension(
                 marker=None,
                 toc_depth="2-6"),
             TablePreprocessorExtension(),
-            'attr_list',
             NoRenderExtension()
         ]
     )
