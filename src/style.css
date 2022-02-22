@@ -256,6 +256,7 @@ arrow {
 	display: inline-block;
 	border-right: 1px solid black;
 	padding-right: 10px;
+	word-break: break-word;
 }
 
 
@@ -302,6 +303,12 @@ a:hover {
 	color: #c52334;
 }
 
+pre {
+	background-color: #e7dddd;
+	padding: 10px;
+	border-radius: 10px;
+}
+
 mark {
 	background-color: #b6b6b6;
     border: 2px solid #b6b6b6;
@@ -336,4 +343,22 @@ kbd {
 
 table {
 	border-collapse:collapse;
+}
+
+/* Table classes 
+*/
+.zebra-table tr:nth-child(even) {
+	background-color: #dadada;
+}
+
+.zebra-table tr:nth-child(odd) {
+	background-color: #999;
+}
+
+.col1-center tr td:nth-child(1), .col2-center tr td:nth-child(2), .col3-center tr td:nth-child(3), .col4-center tr td:nth-child(4) {
+   text-align: center;
+}
+
+.col1-right tr td:nth-child(1), .col2-right tr td:nth-child(2), .col3-right tr td:nth-child(3), .col4-right tr td:nth-child(4) {
+   text-align: right;
 }
