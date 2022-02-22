@@ -3,13 +3,17 @@ const ARTICLES =
     [
     {
         "title": "tS Docs",
-        "section": "Docs",
+        "section": [
+            "Docs"
+        ],
         "url": "/Docs/tsDocs.html",
         "keywords": []
     },
     {
         "title": "Командование ботовзводом",
-        "section": "SOP",
+        "section": [
+            "SOP"
+        ],
         "url": "/SOP/AI_Platoon_leadership.html",
         "keywords": [
             "keyword1",
@@ -20,13 +24,17 @@ const ARTICLES =
     },
     {
         "title": "AI_Crew",
-        "section": "SOP",
+        "section": [
+            "SOP"
+        ],
         "url": "/SOP/documentation_sop_aircrew.html",
         "keywords": []
     },
     {
         "title": "Правила коммуникации",
-        "section": "SOP",
+        "section": [
+            "SOP"
+        ],
         "url": "/SOP/documentation_communications.html",
         "keywords": [
             "keyword1",
@@ -36,7 +44,9 @@ const ARTICLES =
     },
     {
         "title": "Other",
-        "section": "MMO",
+        "section": [
+            "MMO"
+        ],
         "url": "/MMO/Other.html",
         "keywords": []
     },
@@ -55,7 +65,9 @@ const ARTICLES =
     },
     {
         "title": "tsFramework",
-        "section": "MMO",
+        "section": [
+            "MMO"
+        ],
         "url": "/MMO/tsFramework.html",
         "keywords": []
     },
@@ -70,7 +82,9 @@ const ARTICLES =
     },
     {
         "title": "How to server",
-        "section": "SRV",
+        "section": [
+            "SRV"
+        ],
         "url": "/SRV/howtoserver.html",
         "keywords": []
     }

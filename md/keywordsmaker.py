@@ -21,7 +21,7 @@ def make_keywords(navbardict: dict):
             article = {'title': None, "section": None,
                        "url": None, "keywords": None}
             article['title'] = meta['Title']
-            article['section'] = config[key]['src']
+            article['section'] = [config[key]['src']]
             article['url'] = "/"+config[key]['src']+"/"+filename+".html"
             article['keywords'] = meta["Keywords"]
             for keyword in meta['Keywords']:
