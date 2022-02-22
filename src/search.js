@@ -31,7 +31,7 @@ const Searcher = {
     },
     constants: {
         PAGE_TITLE: "tS Docs - Поиск: {query}",
-        URL_FORMAT: "/search.html?search={url}",
+        URL_FORMAT: "/docs/search.html?search={url}",
         TOC_SECTION: "<ol>{list}</ol>",
         TOC_LIST_ITEM: "<li><a href='{url}'>{title} ({count})</a></li>",
         TOC_LIST_INVALID_ITEM: "<li>{title} ✕</li>",
@@ -40,15 +40,15 @@ const Searcher = {
         RESULT_KEYWORD_MATCHED: "<span class='keyword-included'>✓ {keyword}</span>",
         RESULT_KEYWORD_MISSED: "<span class='keyword-excluded'>✕ {keyword}</span>"
     },
-    
-    log: function(lvl, msg) {
+
+    log: function (lvl, msg) {
         if (lvl > this.LOG_LEVEL) return
         console.log(msg)
     },
-    init: function(logLevel) {
+    init: function (logLevel) {
         this.LOG_LEVEL = logLevel
     },
-    search: function() {
+    search: function () {
         // Starts searchning process
         this.log(this.LOG.INFO, '[Searcher.search] Parsing request')
         this._parseRequest()
@@ -61,7 +61,7 @@ const Searcher = {
         this._renderSearchResults(articles)
     },
 
-    _parseRequest: function() {
+    _parseRequest: function () {
         // Parses search request from URL parameter
         let url = new URL(window.location.href);
         let searchQuery = url.searchParams.get('search')
@@ -78,8 +78,8 @@ const Searcher = {
 
         // Remove extra spaces
         searchQuery = searchQuery.trim()
-                                 .replace(/\s{2,}/g,' ')
-                                 .replace(/\s*\|\s*/g,'|')
+            .replace(/\s{2,}/g, ' ')
+            .replace(/\s*\|\s*/g, '|')
 
         this.log(this.LOG.VERBOSE, `[Searcher.parseRequest] Normalized query: ${searchQuery}`)
 
@@ -88,7 +88,7 @@ const Searcher = {
         searchQuery.split(Rule.AND.syntax).forEach(el => {
             this.log(this.LOG.VERBOSE, `[Searcher.parseRequest] Unwrapped by AND: [${el}]`)
             unwrapped = el.split(Rule.OR.syntax)
-            
+
             for (let i = 0; i < unwrapped.length; ++i) {
                 this.log(this.LOG.VERBOSE, `[Searcher.parseRequest] Unwrapped by OR: [${unwrapped[i]}]`)
                 rules.push(new FilterRule(
@@ -104,18 +104,18 @@ const Searcher = {
             this.log(this.LOG.VERBOSE, `[Searcher.parseRequest] FilteRule params: ${kword.keyword}`)
             let valid_keywords = (Autocompleter.autocomplete(kword.keyword)).proposals
 
-            if (valid_keywords.length === 0) {                
+            if (valid_keywords.length === 0) {
                 this.log(this.LOG.VERBOSE, `[Searcher.parseRequest] Invalid keyword. Skipping rule...`)
                 this.invalidKeywords.push(kword.keyword)
                 return;
             }
-            
+
             let firstKeywordProcessed = false
             valid_keywords.forEach(el => {
                 this.log(this.LOG.VERBOSE, `[Searcher.parseRequest] Valid keyword found: ${el}`)
                 this.filterRules.push(new FilterRule(
-                    el, 
-                    this.filterRules.length == 0 ? Rule.AND : firstKeywordProcessed ? Rule.OR : kword.rule, 
+                    el,
+                    this.filterRules.length == 0 ? Rule.AND : firstKeywordProcessed ? Rule.OR : kword.rule,
                     kword.exclude
                 ))
                 if (!firstKeywordProcessed) { firstKeywordProcessed = true }
@@ -123,7 +123,7 @@ const Searcher = {
         })
         this.log(this.LOG.VERBOSE, `[Searcher.parseRequest] ${this.filterRules.length} valid keywords rules found`)
     },
-    _renderKeywordsList: function() {
+    _renderKeywordsList: function () {
         // Renders the keywords listing
         let listing = []
         if (this.query === '') {
@@ -140,15 +140,15 @@ const Searcher = {
         let toc_element = document.getElementsByClassName("toc")[0]
         toc_element.innerHTML = html
     },
-    _formatKeywordList: function(keywordsListing, invalidKeywords) {
+    _formatKeywordList: function (keywordsListing, invalidKeywords) {
         // Format HTML list from keywords
         let html = []
         keywordsListing.forEach(kword => {
             let articlesCount = KEYWORDS[kword]
             let url = this.constants.URL_FORMAT.replace("{url}", kword)
             let toc_item = this.constants.TOC_LIST_ITEM.replace("{url}", url)
-                                                       .replace("{title}", kword)
-                                                       .replace("{count}", articlesCount)
+                .replace("{title}", kword)
+                .replace("{count}", articlesCount)
             html.push(toc_item)
         })
 
@@ -159,7 +159,7 @@ const Searcher = {
         return this.constants.TOC_SECTION.replace("{list}", html.join("\n"))
     },
 
-    _selectArticles: function() {
+    _selectArticles: function () {
         // Return list of articles selected by keywords and filtered
         /*
                     A && B      Each el with both A and B (intersection of A and B)
@@ -208,21 +208,21 @@ const Searcher = {
         this.log(this.LOG.INFO, `[Searcher._selectArticles] Selected ${filteredArticles.length} articles`)
         return filteredArticles
     },
-    _renderSearchResults: function(articles) {
+    _renderSearchResults: function (articles) {
         // Renders results on the HTML page
         this.log(this.LOG.VERBOSE, `[Searcher._renderSearchResults] Rendering started for ${articles.length} articles`)
         let html = this._formatSearchResults(articles)
         let results_element = document.getElementsByClassName("search-result")[0]
         results_element.innerHTML = html
     },
-    _formatSearchResults: function(articles) {
+    _formatSearchResults: function (articles) {
         // Formats found results into valid HTML
         this.log(this.LOG.VERBOSE, `[Searcher._formatSearchResults] Formating ${articles.length} articles`)
 
         let queryTitle = this.query === '' ? "(список статей)" : this.query
         // Update title
         document.title = this.constants.PAGE_TITLE.replace("{query}", queryTitle)
-        
+
         // Update header
         let headerElement = document.getElementsByClassName("title")[0].getElementsByTagName("small")[0]
         headerElement.innerHTML = queryTitle
@@ -241,9 +241,9 @@ const Searcher = {
 
             html.push(
                 this.constants.RESULT_ITEM.replace("{url}", article.url)
-                                          .replace("{title}", article.displayName)
-                                          .replace("{keywords}", kwordLabels.join(" "))
-                                         
+                    .replace("{title}", article.displayName)
+                    .replace("{keywords}", kwordLabels.join(" "))
+
             )
         })
 
@@ -251,7 +251,7 @@ const Searcher = {
     }
 }
 
-document.addEventListener('DOMContentLoaded', function(){
+document.addEventListener('DOMContentLoaded', function () {
     Searcher.init(Searcher.LOG.INFO)
     Searcher.search()
 })
