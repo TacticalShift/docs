@@ -143,9 +143,18 @@ def make_htmlfile(inputpath: str, filename: str, dropdown: str, title: str):
     # wrp = dznTablesPreproc()
     # input_text = wrp.preprocess(input_text)
     # input_text = "".join(input_text)
-    htmlpage = make_page(input_text, title, dropdown)
+    html_page = make_page(input_text, title, dropdown)
     with open(filename, "w", encoding="utf-8", errors="xmlcharrefreplace") as output_file:
-        output_file.write(htmlpage)
+        output_file.write(html_page)
+        output_file.close()
+
+
+def make_searh_page(filename: str, dropdown: str):
+    body = templatehtml.HTML_BODY_SEARCH_PAGE.format(navbar=dropdown)
+    head = templatehtml.HTML_HEAD_SEARCH_PAGE
+    html_page = templatehtml.HTML_PAGE.format(head=head, body=body)
+    with open(filename, "w", encoding="utf-8") as output_file:
+        output_file.write(html_page)
         output_file.close()
 
 
@@ -181,3 +190,4 @@ if __name__ == "__main__":
                         submeta['Title']
                     )
     make_htmlfile("/index.md", "../index.html", dropdown, "tsDocs")
+    make_searh_page("../search.html", dropdown)
