@@ -4,13 +4,13 @@ const articles =
     {
         "title": "tS Docs",
         "section": "Docs",
-        "url": "/tsDocs.html",
+        "url": "/Docs/tsDocs.html",
         "keywords": []
     },
     {
         "title": "Командование ботовзводом",
         "section": "SOP",
-        "url": "/AI_Platoon_leadership.html",
+        "url": "/SOP/AI_Platoon_leadership.html",
         "keywords": [
             "keyword1",
             "keyword2",
@@ -21,13 +21,13 @@ const articles =
     {
         "title": "AI_Crew",
         "section": "SOP",
-        "url": "/documentation_sop_aircrew.html",
+        "url": "/SOP/documentation_sop_aircrew.html",
         "keywords": []
     },
     {
         "title": "Правила коммуникации",
         "section": "SOP",
-        "url": "/documentation_communications.html",
+        "url": "/SOP/documentation_communications.html",
         "keywords": [
             "keyword1",
             "keyword2",
@@ -37,7 +37,7 @@ const articles =
     {
         "title": "Other",
         "section": "MMO",
-        "url": "/Other.html",
+        "url": "/MMO/Other.html",
         "keywords": []
     },
     {
@@ -46,7 +46,7 @@ const articles =
             "MMO",
             "Other"
         ],
-        "url": "/MMO/other1.html",
+        "url": "/MMO/Other/other1.html",
         "keywords": [
             "keyword1",
             "keyword2",
@@ -56,7 +56,7 @@ const articles =
     {
         "title": "tsFramework",
         "section": "MMO",
-        "url": "/tsFramework.html",
+        "url": "/MMO/tsFramework.html",
         "keywords": []
     },
     {
@@ -65,13 +65,13 @@ const articles =
             "MMO",
             "tsFramework"
         ],
-        "url": "/MMO/tsframework1.html",
+        "url": "/MMO/tsFramework/tsframework1.html",
         "keywords": []
     },
     {
         "title": "How to server",
         "section": "SRV",
-        "url": "/howtoserver.html",
+        "url": "/SRV/howtoserver.html",
         "keywords": []
     }
 ]

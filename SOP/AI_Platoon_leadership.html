@@ -2,25 +2,27 @@
 <html>
     <head>
         
-	<meta charset="utf-8"/>
-	<title>tS Docs - Командование ботовзводом</title>		
-		
-	<link rel="icon" href="/docs/src/img/ts_icon.png">
-	<link rel="stylesheet" href="/docs/src/style.css">
-	<script src="https://code.jquery.com/jquery-3.4.1.min.js"
-	integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-	crossorigin="anonymous"></script>
+    <meta charset="utf-8"/>
+    <title>tS Docs - Командование ботовзводом</title>        
+        
+    <link rel="icon" href="/docs/src/img/ts_icon.png">
+    <link rel="stylesheet" href="/docs/src/style.css">
+    
+    <script src="/docs/src/keywords.js"></script>
+    <script src="/docs/src/ruleEnum.js"></script>
+    <script src="/docs/src/autocompleter.js"></script>
+    <script src="/docs/src/searchWidget.js"></script>
 
     </head>
     <body>
         
-<div id="header">
-	<div id="header-title">
-		<span><a href="https://tacticalshift.ru" style="text-decoration: none; color: inherit;">tS</a></span> <tt id='header-sans'>Docs</tt>
-	</div>
-	
-	<div class="navbar">
-		
+    <div id="header">
+        <div id="header-title">
+            <span><a href="https://tacticalshift.ru" style="text-decoration: none; color: inherit;">tS</a></span> <tt id='header-sans'>Docs</tt>
+        </div>
+        
+    <div class="navbar">
+        
     <div class="dropdown">
         <button class="dropbtn" title="Documantation">Документация</button>
         <div class="dropdown-content">
@@ -46,19 +48,19 @@
         <button class="dropbtn" title="Mission Making Office">MMO</button>
         <div class="dropdown-content">
           
-	<div class="dropdown-2l">
-		<span>Other<arrow>⇨</arrow></span>
-		<div class="dropdown-2l-content">
-			<a href="/docs/MMO/Other/other1.html">Other</a>
-		</div>
-	</div>
+    <div class="dropdown-2l">
+        <span>Other<arrow>⇨</arrow></span>
+        <div class="dropdown-2l-content">
+            <a href="/docs/MMO/Other/other1.html">Other</a>
+        </div>
+    </div>
 
-	<div class="dropdown-2l">
-		<a href="/docs/MMO/tsFramework.html">tsFramework<arrow>⇨</arrow></a>
-		<div class="dropdown-2l-content">
-			<a href="/docs/MMO/tsFramework/tsframework1.html">Framewok</a>
-		</div>
-	</div>
+    <div class="dropdown-2l">
+        <a href="/docs/MMO/tsFramework.html">tsFramework<arrow>⇨</arrow></a>
+        <div class="dropdown-2l-content">
+            <a href="/docs/MMO/tsFramework/tsframework1.html">Framewok</a>
+        </div>
+    </div>
 
         </div>
     </div>
@@ -70,12 +72,17 @@
         </div>
     </div>
 
-	</div>
 
-</div>
-<div id="wrapper">
-	<div class="title"><h1>Командование ботовзводом</h1></div>
-		<div class="toc">
+        <div id="search-bar">
+            <input id="search-field" placeholder="Поиск по ключевым словам..."></input>
+            <button id="search-button"><img src="/docs/src/img/search.png"></button>
+        </div>
+    </div>
+
+    </div>
+    <div id="wrapper">
+        <div class="title"><h1>Командование ботовзводом</h1></div>
+            <div class="toc">
 <ul>
 <li><a href="#_1">Инициализация командного интерфейса</a></li>
 <li><a href="#_2">Базовый менеджмент отрядов</a></li>
@@ -92,8 +99,8 @@
 </ul>
 </div>
 
-	<div class="article">
-	<p>В тестовой сборке для Tactical Shift появился мод Drongo’s Enhanced Command, предназначенный для управления любыми доступными наземными отрядами ИИ на уровне командира отделения, взвода или даже роты.</p>
+        <div class="article">
+        <p>В тестовой сборке для Tactical Shift появился мод Drongo’s Enhanced Command, предназначенный для управления любыми доступными наземными отрядами ИИ на уровне командира отделения, взвода или даже роты.</p>
 <h2 id="_1">Инициализация командного интерфейса</h2>
 <p>Активируйте базовый интерфейс через <em>ACE-меню</em> → <em>Drongo’s Enhanced Command</em></p>
 <p>Нажмите <em>кнопку перехода во взводный режим командования</em> (кнопка с фуражкой)
@@ -272,8 +279,8 @@
 <p>Сопровождение техники: техника должна использовать скорость SLOW, а пехота – NORMAL. Назначьте пехоте построение STAGGERED COLUMN и ведите между техникой.</p>
 <h2 id="_12">Послесловие</h2>
 <p>Данное руководство ещё нельзя считать законченным, и в него могут вводится коррективы по мере того, как мы будем использовать ботовзводы. Drongo's Enhanced Command не является идеальным инструментом, однако, хоть боты и капризны, их присутствие даст нашим кожанным бойцам определённую поддержку и вовлечённость в битвы ощутимо большего масштаба, чем ранее. После сбора информации с тестовых игр в эту методичку будут вноситься изменения, касающиеся функциональности мода. Кроме того, опытные командиры смогут предложить свои алгоритмы для выполнения специфических задач. В бой, товарищ, будь AWARE, всегда AWARE!</p>
-	</div>
-</div>
+        </div>
+    </div>
 
     </body>
 </html>
