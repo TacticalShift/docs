@@ -22,7 +22,8 @@ def make_keywords(navbardict: dict):
                        "url": None, "keywords": None}
             article['title'] = meta['Title']
             article['section'] = [config[key]['src']]
-            article['url'] = "/"+config[key]['src']+"/"+filename+".html"
+            article['url'] = "/".join(["/docs", config[key]
+                                      ['src'], filename+".html"])
             article['keywords'] = meta["Keywords"]
             for keyword in meta['Keywords']:
                 if keyword in keywords:
@@ -35,8 +36,8 @@ def make_keywords(navbardict: dict):
                     article = {'title': None, "section": None, "url": None}
                     article['title'] = submeta['Title']
                     article['section'] = [config[key]['src'], meta['Subpages']]
-                    article['url'] = "/"+config[key]['src'] + \
-                        "/"+meta['Subpages']+"/"+subfilename+".html"
+                    article['url'] = "/".join(["/docs", config[key]
+                                              ['src'], meta['Subpages'], subfilename+".html"])
                     article['keywords'] = submeta["Keywords"]
                     articles.append(article)
                     for keyword in submeta['Keywords']:

@@ -6,7 +6,7 @@ const ARTICLES =
         "section": [
             "Docs"
         ],
-        "url": "/Docs/tsDocs.html",
+        "url": "/docs/Docs/tsDocs.html",
         "keywords": []
     },
     {
@@ -14,7 +14,7 @@ const ARTICLES =
         "section": [
             "SOP"
         ],
-        "url": "/SOP/AI_Platoon_leadership.html",
+        "url": "/docs/SOP/AI_Platoon_leadership.html",
         "keywords": [
             "keyword1",
             "keyword2",
@@ -27,7 +27,7 @@ const ARTICLES =
         "section": [
             "SOP"
         ],
-        "url": "/SOP/documentation_sop_aircrew.html",
+        "url": "/docs/SOP/documentation_sop_aircrew.html",
         "keywords": []
     },
     {
@@ -35,7 +35,7 @@ const ARTICLES =
         "section": [
             "SOP"
         ],
-        "url": "/SOP/documentation_communications.html",
+        "url": "/docs/SOP/documentation_communications.html",
         "keywords": [
             "keyword1",
             "keyword2",
@@ -47,7 +47,7 @@ const ARTICLES =
         "section": [
             "MMO"
         ],
-        "url": "/MMO/Other.html",
+        "url": "/docs/MMO/Other.html",
         "keywords": []
     },
     {
@@ -56,7 +56,7 @@ const ARTICLES =
             "MMO",
             "Other"
         ],
-        "url": "/MMO/Other/other1.html",
+        "url": "/docs/MMO/Other/other1.html",
         "keywords": [
             "keyword1",
             "keyword2",
@@ -68,7 +68,7 @@ const ARTICLES =
         "section": [
             "MMO"
         ],
-        "url": "/MMO/tsFramework.html",
+        "url": "/docs/MMO/tsFramework.html",
         "keywords": []
     },
     {
@@ -77,7 +77,7 @@ const ARTICLES =
             "MMO",
             "tsFramework"
         ],
-        "url": "/MMO/tsFramework/tsframework1.html",
+        "url": "/docs/MMO/tsFramework/tsframework1.html",
         "keywords": []
     },
     {
@@ -85,7 +85,7 @@ const ARTICLES =
         "section": [
             "SRV"
         ],
-        "url": "/SRV/howtoserver.html",
+        "url": "/docs/SRV/howtoserver.html",
         "keywords": []
     }
 ]
