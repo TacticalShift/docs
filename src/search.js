@@ -212,7 +212,7 @@ const Searcher = {
         // Renders results on the HTML page
         this.log(this.LOG.VERBOSE, `[Searcher._renderSearchResults] Rendering started for ${articles.length} articles`)
         let html = this._formatSearchResults(articles)
-        let results_element = document.getElementsByClassName("search-result")[0]
+        let results_element = document.getElementsByClassName("article")[0]
         results_element.innerHTML = html
     },
     _formatSearchResults: function (articles) {
