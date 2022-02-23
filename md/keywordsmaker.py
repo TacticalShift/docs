@@ -49,8 +49,10 @@ def make_keywords(navbardict: dict):
     return (articles, keywords)
 
 
-def keywords_maker():
-    output_article, output_keys = make_keywords(dropdowns.make_navbardict())
+def keywords_maker(navbardict: dict = None):
+    if navbardict != None:
+        output_article, output_keys = make_keywords(
+            navbardict if navbardict else dropdowns.make_navbardict())
     article_str = ARTCILE_TEMPLATE.format(articles=json.dumps(
         output_article, indent=4, ensure_ascii=False))
     keyword_str = KEYWORDS_TEMPLATE.format(
