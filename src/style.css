@@ -355,10 +355,10 @@ table {
 	background-color: #999;
 }
 
-.col1-center tr td:nth-child(1), .col2-center tr td:nth-child(2), .col3-center tr td:nth-child(3), .col4-center tr td:nth-child(4) {
+.col1-center tr td:nth-child(1), .col2-center tr td:nth-child(2), .col3-center tr td:nth-child(3), .col4-center tr td:nth-child(4), .col5-center tr td:nth-child(5), .col6-center tr td:nth-child(6) {
    text-align: center;
 }
 
-.col1-right tr td:nth-child(1), .col2-right tr td:nth-child(2), .col3-right tr td:nth-child(3), .col4-right tr td:nth-child(4) {
+.col1-right tr td:nth-child(1), .col2-right tr td:nth-child(2), .col3-right tr td:nth-child(3), .col4-right tr td:nth-child(4), .col5-right tr td:nth-child(5), .col6-right tr td:nth-child(6) {
    text-align: right;
 }

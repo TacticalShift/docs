@@ -11,7 +11,7 @@
 
 ### Компас
 
-| **Норс-Вэст** <br> *North-West* <br> *Северо-запад* <br> **N-W** |  **Норс** <br> *North* <br> *Север* <br> **N** |  **Норс-Ист** <br> *North-East* <br> *Северо-восток* <br> **N-E** |
+| {: table.class: col2-center col3-right :} **Норс-Вэст** <br> *North-West* <br> *Северо-запад* <br> **N-W** |  **Норс** <br> *North* <br> *Север* <br> **N** |  **Норс-Ист** <br> *North-East* <br> *Северо-восток* <br> **N-E** |
 |  **Вэст** <br> *West* <br> *Запад* <br> **W** | ![kompas] |  **Ист** <br> *East* <br> *Восток* <br> **E** |
 |  **Саус-Вэст** <br> *South-West* <br> *Юго-запад* <br> **S-W** |  **Саус** <br> *South* <br> *Юг* <br> **S** |  **Саус-Ист** <br> *South-East* <br> *Юго-восток* <br> **S-E** |
 

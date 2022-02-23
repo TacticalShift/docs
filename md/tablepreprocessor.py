@@ -1,5 +1,4 @@
 from dataclasses import dataclass, field
-from markdown import Markdown
 import os
 
 
@@ -76,8 +75,7 @@ class TablesPreprocessor():
         attributes: list
         colspan: int = 1
 
-    def __init__(self, markdown_engine: Markdown, log_level=0):
-        self.markdown_engine = markdown_engine
+    def __init__(self, log_level=0):
         self.LOG_LEVEL = log_level  # 0 - None, 1 - Enable, 2 - Verbose
 
     """Main public method.
@@ -149,7 +147,7 @@ class TablesPreprocessor():
             LOG and print("[Parse table] Line: %s :: Columns in row: %s" % (line, line.count('|') - 1))
 
             if table.header_border_at < 0:
-                stripped = line.strip('|').strip()
+                stripped = line.replace('|', '').replace(' ','')
                 is_border = stripped[0] == '-' and len(stripped) > 2 and stripped == len(stripped) * stripped[0]
                 VERBOSE and print("[Parse table] Stripped line %s is a border? %s" % (stripped, is_border))
                 if is_border:
@@ -223,7 +221,7 @@ class TablesPreprocessor():
             attr_block_start = line.find(TablesPreprocessor.STYLE_MACRO_OPEN)
             attr_block_end = line.find(TablesPreprocessor.STYLE_MACRO_CLOSE)
 
-        content = self.markdown_engine.convert(line.strip())
+        content = line.strip()
         cell = TablesPreprocessor.Cell(content=content, attributes=cell_attributes)
         LOG and print("[Parse Cell] Cell parsed.")
         VERBOSE and print("[Parse Cell] Cell read: %s, Row style: %s, Table style: %s" % (cell, row_attributes, table_attributes))
@@ -335,7 +333,7 @@ if __name__ == "__main__":
         doc.close()
 
     # Table preprocessing
-    TablesPreprocessor(markdown_engine=Markdown(), log_level=2).preprocess(lines)
+    TablesPreprocessor(log_level=2).preprocess(lines)
     
     print('\n'.join(lines[-10:]))
 

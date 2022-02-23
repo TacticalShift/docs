@@ -102,7 +102,7 @@ class NoRenderExtension(Extension):
 
 class TablePreprocessorWrapper(Preprocessor):
     def run(self, lines):
-        wrp = dznTablesPreproc(self.md, log_level=0)
+        wrp = dznTablesPreproc(log_level=0)
         return wrp.preprocess(lines)
 
 
