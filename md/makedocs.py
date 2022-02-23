@@ -5,6 +5,7 @@ from markdown.extensions.toc import TocExtension
 from markdown.inlinepatterns import InlineProcessor
 
 import sys
+import traceback
 import re
 from pathlib import Path
 import xml.etree.ElementTree as etree
@@ -195,7 +196,7 @@ if __name__ == "__main__":
         dropdown = dropdowns.make_navbar()
         keywordsmaker.keywords_maker()
     except Exception as e:
-        print(e)
+        traceback.print_exception(e)
         print('[ERROR] Error occured during data preparation!')
         input('Press any key to close...')
         sys.exit(-1)
@@ -231,7 +232,7 @@ if __name__ == "__main__":
         dm.make_htmlfile("/index.md", "../index.html", dropdown, "tsDocs")
         dm.make_searh_page("../search.html", dropdown)
     except Exception as e:
-        print(e)
+        traceback.print_exception(e)
         print('[ERROR] Error occured on converting pages!')
         input('Press any key to close...')
         sys.exit(-1)
