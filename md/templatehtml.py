@@ -20,8 +20,15 @@ HTML_HEAD = '''
     <script src="/docs/src/autocompleter.js"></script>
     <script src="/docs/src/searchWidget.js"></script>
     <script>
-        url = new URL(window.location.href)
-        if (url.protocol === "file:") localCssPath = "src/style.css"; urlParts = url.pathname.split("/"); if (urlParts[urlParts.length - 2] != "docs") localCssPath = "../src/style.css"; document.getElementById("main-css").href = localCssPath;
+        document.addEventListener("DOMContentLoaded", function () {{
+            let url = new URL(window.location.href)
+            if (url.protocol !== "file:") return
+            
+            let localCssPath = "src/style.css" 
+            let urlParts = url.pathname.split("/")
+            if (urlParts[urlParts.length - 2] != "docs") localCssPath = "../src/style.css"
+            document.getElementById("main-css").href = localCssPath
+        }})
     </script>
 '''
 
