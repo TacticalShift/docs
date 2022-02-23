@@ -195,10 +195,10 @@ if __name__ == "__main__":
         dropdown_dict = dropdowns.make_navbardict()
         dropdown = dropdowns.make_navbar()
         keywordsmaker.keywords_maker()
-    except Exception as e:
-        traceback.print_exception(e)
+    except Exception:
+        print(traceback.format_exc())
         print('[ERROR] Error occured during data preparation!')
-        input('Press any key to close...')
+        input('Press Enter to close...')
         sys.exit(-1)
 
     try:
@@ -231,10 +231,10 @@ if __name__ == "__main__":
 
         dm.make_htmlfile("/index.md", "../index.html", dropdown, "tsDocs")
         dm.make_searh_page("../search.html", dropdown)
-    except Exception as e:
-        traceback.print_exception(e)
+    except Exception:
+        print(traceback.format_exc())
         print('[ERROR] Error occured on converting pages!')
-        input('Press any key to close...')
+        input('Press Enter to close...')
         sys.exit(-1)
 
     input("\n\n" + 25*'-' + "\nAll done! Have a nice day!")

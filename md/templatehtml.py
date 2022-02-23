@@ -10,24 +10,28 @@ HTML_PAGE = '''<!DOCTYPE html>
 
 HTML_HEAD = '''
     <meta charset="utf-8"/>
-    <title>tS Docs - {title}</title>        
-        
+    <title>tS Docs - {title}</title>
+
     <link rel="icon" href="/docs/src/img/ts_icon.png">
-    <link rel="stylesheet" href="/docs/src/style.css">
-    
+    <link id="main-css" rel="stylesheet" href="/docs/src/style.css">
+
     <script src="/docs/src/keywords.js"></script>
     <script src="/docs/src/ruleEnum.js"></script>
     <script src="/docs/src/autocompleter.js"></script>
     <script src="/docs/src/searchWidget.js"></script>
+    <script>
+        url = new URL(window.location.href)
+        if (url.protocol === "file:") localCssPath = "src/style.css"; urlParts = url.pathname.split("/"); if (urlParts[urlParts.length - 2] != "docs") localCssPath = "../src/style.css"; document.getElementById("main-css").href = localCssPath;
+    </script>
 '''
 
 HTML_HEAD_SEARCH_PAGE = '''
     <meta charset="utf-8"/>
-    <title>tS Docs - Поиск</title>        
-        
+    <title>tS Docs - Поиск</title>
+
     <link rel="icon" href="/docs/src/img/ts_icon.png">
     <link rel="stylesheet" href="/docs/src/style.css">
-    
+
     <script src="/docs/src/keywords.js"></script>
     <script src="/docs/src/ruleEnum.js"></script>
     <script src="/docs/src/autocompleter.js"></script>
