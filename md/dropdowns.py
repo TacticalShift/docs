@@ -105,7 +105,13 @@ def make_subfolderdict(pathstr: str):
 def make_folderdict(pathstr: str):
     path = Path(pathstr)
     folderdict = {}
+
+    print('[Dropdowns.make_folderdict] Checking for', path)
+    if not path.exists():
+        print('[Dropdowns.make_folderdict] Not found', path)
+        return folderdict
     for x in path.iterdir():
+        print(x)
         if x.is_file():
             filename = x.name.split(".")[0]
             meta = {}
