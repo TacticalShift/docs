@@ -16,10 +16,12 @@
         document.addEventListener("DOMContentLoaded", function () {
             let url = new URL(window.location.href)
             if (url.protocol !== "file:") return
-            
             let localCssPath = "src/style.css" 
-            let urlParts = url.pathname.split("/")
-            if (urlParts[urlParts.length - 2] != "docs") localCssPath = "../src/style.css"
+			let urlPath = url.pathname.split("/")
+            let rootPosition = urlPath.indexOf("docs")
+			for (let i = rootPosition + 1; i < urlPath.length - 1; ++i) {
+				localCssPath = "../" + localCssPath
+			}
             document.getElementById("main-css").href = localCssPath
         })
     </script>
