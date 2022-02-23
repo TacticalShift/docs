@@ -86,7 +86,10 @@ const ARTICLES =
             "SRV"
         ],
         "url": "/docs/SRV/howtoserver.html",
-        "keywords": []
+        "keywords": [
+            "srv",
+            "сервер"
+        ]
     }
 ]
 
@@ -95,5 +98,7 @@ const KEYWORDS  =
     "keyword1": 3,
     "keyword2": 3,
     "keyword3": 3,
-    "keyword4": 1
+    "keyword4": 1,
+    "srv": 1,
+    "сервер": 1
 }

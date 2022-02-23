@@ -50,13 +50,12 @@ def make_keywords(navbardict: dict):
 
 
 def keywords_maker(navbardict: dict = None):
-    if navbardict != None:
-        output_article, output_keys = make_keywords(
-            navbardict if navbardict else dropdowns.make_navbardict())
+    output_article, output_keys = make_keywords(
+        navbardict if navbardict else dropdowns.make_navbardict())
     article_str = ARTCILE_TEMPLATE.format(articles=json.dumps(
         output_article, indent=4, ensure_ascii=False))
     keyword_str = KEYWORDS_TEMPLATE.format(
-        keywords=json.dumps(output_keys, indent=4))
+        keywords=json.dumps(output_keys, indent=4, ensure_ascii=False))
     with open("../src/keywords.js", "w", encoding="utf-8", errors="xmlcharrefreplace") as output_file:
         output_file.write(article_str)
         output_file.write(keyword_str)
