@@ -140,8 +140,8 @@ class DocsMaker:
 
         VERBOSE and print('[DocsMaker.make_page]    Composing HTML')
         body = templatehtml.HTML_BODY.format(navbar=dropdown,
-                                            article=article_text, toc=md.toc,
-                                            title=title)
+                                             article=article_text, toc=md.toc,
+                                             title=title)
         head = templatehtml.HTML_HEAD.format(title=title)
         page = templatehtml.HTML_PAGE.format(head=head, body=body)
         LOG and print('[DocsMaker.make_page]    HTML Composed')
@@ -160,15 +160,18 @@ class DocsMaker:
         with open("."+inputpath, "r", encoding="utf-8") as input_file:
             input_text = input_file.read()
             input_file.close()
-        VERBOSE and print('[DocsMaker.make_htmlfile]    File read successfully!')
+        VERBOSE and print(
+            '[DocsMaker.make_htmlfile]    File read successfully!')
 
         html_page = self.make_page(input_text, title, dropdown)
 
-        VERBOSE and print('[DocsMaker.make_htmlfile]    Writing HTML to %s' % filename)
+        VERBOSE and print(
+            '[DocsMaker.make_htmlfile]    Writing HTML to %s' % filename)
         with open(filename, "w", encoding="utf-8", errors="xmlcharrefreplace") as output_file:
             output_file.write(html_page)
             output_file.close()
-        LOG and print('[DocsMaker.make_htmlfile] File %s created successfully!' % filename)
+        LOG and print(
+            '[DocsMaker.make_htmlfile] File %s created successfully!' % filename)
 
     def make_searh_page(self, filename: str, dropdown: str):
         LOG = True and self.LOG_LEVEL > 0
@@ -179,12 +182,14 @@ class DocsMaker:
         body = templatehtml.HTML_BODY_SEARCH_PAGE.format(navbar=dropdown)
         head = templatehtml.HTML_HEAD_SEARCH_PAGE
         html_page = templatehtml.HTML_PAGE.format(head=head, body=body)
-        VERBOSE and print('[DocsMaker.make_searh_page]    HTML formatted, writing to file')
+        VERBOSE and print(
+            '[DocsMaker.make_searh_page]    HTML formatted, writing to file')
         with open(filename, "w", encoding="utf-8") as output_file:
             output_file.write(html_page)
             output_file.close()
 
-        LOG and print('[DocsMaker.make_searh_page] File %s created successfully!' % filename)
+        LOG and print(
+            '[DocsMaker.make_searh_page] File %s created successfully!' % filename)
 
 
 if __name__ == "__main__":
@@ -193,8 +198,8 @@ if __name__ == "__main__":
 
     try:
         dropdown_dict = dropdowns.make_navbardict()
-        dropdown = dropdowns.make_navbar()
-        keywordsmaker.keywords_maker()
+        dropdown = dropdowns.make_navbar(dropdown_dict)
+        keywordsmaker.keywords_maker(dropdown_dict)
     except Exception as e:
         traceback.print_exception(e)
         print('[ERROR] Error occured during data preparation!')
@@ -217,13 +222,14 @@ if __name__ == "__main__":
                 )
                 if 'Subfolder' in meta:
                     for subfilename, submeta in meta['Subfolder']:
-                        pathfolder = Path("../" + folder+"/" + meta['Subpages'])
+                        pathfolder = Path(
+                            "../" + folder+"/" + meta['Subpages'])
                         pathfolder.mkdir(exist_ok=True)
                         output_path = "/".join([folder,
                                                 meta['Subpages'], subfilename])
                         dm.make_htmlfile(
                             "/".join([rootdir, folder, filename,
-                                    subfilename+".md"]),
+                                      subfilename+".md"]),
                             "../"+output_path+".html",
                             dropdown,
                             submeta['Title']

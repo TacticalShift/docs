@@ -85,52 +85,29 @@ def read_title(filepath: str):
     return title
 
 
-def make_subfolderdict(pathstr: str):
-    path = Path(pathstr)
-    subfolderdict = {}
-    for x in path.iterdir():
-        if x.is_file():
-            filename = x.name.split(".")[0]
-            meta = {}
-            meta = read_meta(x)
-            meta['Keywords'] = read_keywords(x)
-            if not 'Title' in meta:
-                meta['Title'] = read_title(x)
-            if not 'Position' in meta:
-                meta['Position'] = 1000
-            subfolderdict[filename] = meta
-    return subfolderdict
-
-
-def make_folderdict(pathstr: str):
+def make_folderlist(pathstr: str):
     path = Path(pathstr)
     folderdict = {}
 
-    print('[Dropdowns.make_folderdict] Checking for', path)
+    print('[Dropdowns.make_folderlist] Checking for', path)
     if not path.exists():
-        print('[Dropdowns.make_folderdict] Not found', path)
+        print('[Dropdowns.make_folderlist] Not found', path)
         return folderdict
     for x in path.iterdir():
-        print(x)
+        print('[Dropdowns.make_folderlist] ', x)
         if x.is_file():
             filename = x.name.split(".")[0]
             meta = {}
             meta = read_meta(x)
             meta['Keywords'] = read_keywords(x)
-            if not 'Title' in meta:
-                meta['Title'] = read_title(x)
-            if not 'Position' in meta:
-                meta['Position'] = 1000
+            meta.setdefault('Title', read_title(x))
+            meta.setdefault('Position', 1000)
             folderdict[filename] = meta
             if 'Subpages' in meta:
+                print(
+                    '[Dropdowns.make_folderlist] Found subfolder', meta['Subpages'], 'in meta')
                 subpath = "/".join([path.name, meta['Subpages']])
-                subdict = make_subfolderdict(subpath)
-                sublist = subdict.items()
-                sublist = sorted(
-                    sublist,
-                    key=lambda x: int(x[1]['Position']),
-                    reverse=False
-                )
+                sublist = make_folderlist(subpath)
                 folderdict[filename]['Subfolder'] = sublist
 
     folderlist = folderdict.items()
@@ -159,8 +136,7 @@ def make_dropdowns(navbar_dict: dict):
     dropdowns = []
     for key, value in navbar_dict.items():
         elements = []
-        for item in value:
-            filename, meta = item
+        for filename, meta in value:
             element = ""
             if 'Subpages' in meta:
                 subpages = make_subpages(
@@ -199,12 +175,12 @@ def make_navbardict():
     navbar_dict = {}
     for section in config["order"]:
         folder = config[section]['src']
-        navbar_dict[section] = make_folderdict(folder)
+        navbar_dict[section] = make_folderlist(folder)
     return navbar_dict
 
 
-def make_navbar():
-    dropdowns = make_dropdowns(make_navbardict())
+def make_navbar(navbardict: dict = None):
+    dropdowns = make_dropdowns(navbardict if navbardict else make_navbardict())
     navbar = templatehtml.HTML_NAVBAR_SECTION.format(
         dropdowns="".join(dropdowns))
     return navbar
