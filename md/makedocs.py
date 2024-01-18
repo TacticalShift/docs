@@ -212,7 +212,7 @@ if __name__ == "__main__":
     try:
         dropdown_dict = dropdowns.make_navbardict()
         dropdown = dropdowns.make_navbar()
-        keywordsmaker.keywords_maker()
+        keywordsmaker.keywords_maker(dropdown_dict)
     except Exception:
         print(traceback.format_exc())
         print('[ERROR] Error occured during data preparation!')
@@ -248,7 +248,7 @@ if __name__ == "__main__":
                             submeta['Title']
                         )
 
-        dm.make_htmlfile("/index.md", "../index.html", dropdown, "tsDocs")
+        dm.make_htmlfile("/index.md", "../index.html", dropdown, "Documentation")
         dm.make_searh_page("../search.html", dropdown)
     except Exception:
         print(traceback.format_exc())

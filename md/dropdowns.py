@@ -17,7 +17,7 @@ SECTION_CONFIGURATION = {
     "_docs": {
         "title": "Документация",
         "src": "Docs",
-        "tooltip": "Documantation"
+        "tooltip": "Documentation"
     },
     "_tco": {
         "title": "TCO",

@@ -50,7 +50,7 @@ HTML_HEAD_SEARCH_PAGE = '''
 HTML_HEADER = '''
     <div id="header">
         <div id="header-title">
-            <span><a href="https://tacticalshift.ru" style="text-decoration: none; color: inherit;">tS</a></span> <tt id='header-sans'><a href= "/" style="text-decoration: none; color: inherit;" >Docs</a></tt>
+            <span><a href="https://tacticalshift.ru" style="text-decoration: none; color: inherit;">tS</a></span> <tt id='header-sans'><a href= "/docs/" style="text-decoration: none; color: inherit;" >Docs</a></tt>
         </div>
         {navbar}
     </div>
