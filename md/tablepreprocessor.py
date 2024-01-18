@@ -10,10 +10,10 @@ class TablesPreprocessor():
     STYLE_ROW_PREFIX = "row."
 
     # HTML templates
-    HTML_TABLE = '<table{attrs}>{rows}</table>'
-    HTML_TABLE_ROW = '<tr{attrs}>{cells}</tr>'
-    HTML_TABLE_CELL = '<td{attrs}>{cell}</td>'
-    HTML_TABLE_HEADER_CELL = '<th{attrs}>{cell}</th>'
+    HTML_TABLE = '<table{attrs}>\n{rows}</table>'
+    HTML_TABLE_ROW = '\t<tr{attrs}>\n{cells}\t</tr>\n'
+    HTML_TABLE_CELL = '\t\t<td{attrs}>{cell}</td>\n'
+    HTML_TABLE_HEADER_CELL = '<th{attrs}>{cell}</th>\n'
 
     HTML_ATTR_ID = 'id="%s"'
     HTML_ATTR_CLASS = 'class="%s"'
@@ -111,7 +111,7 @@ class TablesPreprocessor():
             line = line.strip()
             VERBOSE and print('[Preprocess table] Read line %s: %s' % (i, line))
 
-            if line.startswith('```'):
+            if line.strip().startswith('```'):
                 nested_in_codeblock = not nested_in_codeblock
             if nested_in_codeblock:
                 continue

@@ -13,8 +13,8 @@ body {
 */
 
 @font-face {
-    font-family: "tSFont";
-    src: url(tS_EL.otf);
+	font-family: "tSFont";
+	src: url(tS_EL.otf);
 }
 
 #header {
@@ -59,13 +59,20 @@ body {
 	text-decoration: none;
 }
 
-.dropdown, .dropdown-2l {
+
+.dropdown,
+.dropdown-2l {
 	float: left;
-	overflow: hidden;
+}
+
+
+.dropdown-2l {
+	position: relative;
+	top: 100%;
 }
 
 .dropdown .dropbtn {
-	font-size: 16px;  
+	font-size: 16px;
 	border: none;
 	outline: none;
 	color: white;
@@ -75,7 +82,8 @@ body {
 	margin: 0;
 }
 
-.navbar a:hover, .dropdown:hover .dropbtn {
+.navbar a:hover,
+.dropdown:hover .dropbtn {
 	background-color: #c52334;
 }
 
@@ -84,11 +92,13 @@ body {
 	position: absolute;
 	background-color: #f9f9f9;
 	min-width: 160px;
-	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 	z-index: 1;
 }
 
-.dropdown-content a, .dropdown-content span, .dropdown-content .dropdown-2l {
+.dropdown-content a,
+.dropdown-content span,
+.dropdown-content .dropdown-2l {
 	float: none;
 	color: black;
 	padding: 12px 16px;
@@ -98,7 +108,7 @@ body {
 }
 
 .dropdown-content .dropdown-2l {
-	padding: 0px!important;
+	padding: 0px !important;
 }
 
 .dropdown-content .dropdown-2l a {
@@ -106,7 +116,9 @@ body {
 }
 
 
-.dropdown-content a:hover, .dropdown-content .dropdown-2l:hover, .dropdown-2l-content a:hover {
+.dropdown-content a:hover,
+.dropdown-content .dropdown-2l:hover,
+.dropdown-2l-content a:hover {
 	background-color: #ddd;
 }
 
@@ -117,25 +129,25 @@ body {
 .dropdown-2l-content {
 	display: none;
 	position: absolute;
-	left:100%;
-	top:30%;
+	left: 100%;
+	top: 0%;
 	background-color: #f9f9f9;
 	min-width: 260px;
-	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 	z-index: 1;
 }
 
 .dropdown-2l-content a:hover {
-  background-color: #ddd;
+	background-color: #ddd;
 }
 
 .dropdown-2l:hover .dropdown-2l-content {
-  display: block;
+	display: block;
 }
 
 arrow {
-	position:absolute;
-	right:5%;
+	position: absolute;
+	right: 5%;
 }
 
 /*	Search bar
@@ -179,7 +191,7 @@ arrow {
 	min-width: 250px;
 	position: absolute;
 	background-color: #f9f9f9;
-	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 	z-index: 1;
 	line-height: 24px;
 }
@@ -190,7 +202,7 @@ arrow {
 	cursor: pointer;
 }
 
-#search-autocomplete div:hover  {
+#search-autocomplete div:hover {
 	background-color: #999;
 }
 
@@ -224,13 +236,13 @@ arrow {
 }
 
 .keyword-included {
-	background-color:rgb(225, 225, 225);
+	background-color: rgb(225, 225, 225);
 	border: 1px solid rgb(171, 171, 171);
 	border-radius: 22px;
 }
 
 .keyword-excluded {
-	background-color:rgba(240, 148, 148, 0.178);
+	background-color: rgba(240, 148, 148, 0.178);
 	border: 1px solid rgba(92, 0, 0, 0.205);
 	border-radius: 22px;
 }
@@ -251,11 +263,12 @@ arrow {
 }
 
 .toc {
-	width: 200px;
+	width: 250px;
 	vertical-align: top;
 	display: inline-block;
 	border-right: 1px solid black;
 	padding-right: 10px;
+	margin-right: 10px;
 	word-break: break-word;
 }
 
@@ -264,39 +277,41 @@ arrow {
 	width: 75%;
 	display: inline-block;
 	margin-left: 10px;
+	box-shadow: 0 0 0.5em #999;
+	padding: 1.5em 2em 2em;
 }
 
 /* Docs
 */
 
 h2 {
-	font-size: 24px!important;
+	font-size: 24px !important;
 	text-align: center;
-    color: #f9f9f9!important;
-	
+	color: #f9f9f9 !important;
+
 	background-color: #343a40;
-    padding: 5px;
-	margin-bottom: 25px!important;
-	margin-top: 25px!important;
+	padding: 0.5em;
+	margin-bottom: 25px !important;
+	margin-top: 25px !important;
 }
 
 h3 {
-	font-size: 20px!important;
-    color: #f9f9f9!important;
+	font-size: 20px !important;
+	color: #f9f9f9 !important;
 	background-color: #343a40;
-    padding: 5px;
-	margin-bottom: 25px!important;
-	margin-top: 25px!important;
+	padding: 0.5em;
+	margin-bottom: 25px !important;
+	margin-top: 25px !important;
 }
 
 h5 {
-	font-size: 15px!important;
-	font-weight: bold!important;
+	font-size: 15px !important;
+	font-weight: bold !important;
 }
 
 a {
 	color: #8e0000;
-	
+
 }
 
 a:hover {
@@ -311,8 +326,8 @@ pre {
 
 mark {
 	background-color: #b6b6b6;
-    border: 2px solid #b6b6b6;
-    border-radius: 5px;
+	border: 2px solid #b6b6b6;
+	border-radius: 5px;
 }
 
 highlight {
@@ -325,40 +340,105 @@ warn {
 }
 
 kbd {
-    background-color: #fefefe;
-    border-left: 3px solid #cfcfcf;
-    border-top: 3px solid #cfcfcf;
-    border-right: 3px solid #666;
-    border-bottom: 3px solid #666;
+	background-color: #fefefe;
+	border-left: 3px solid #cfcfcf;
+	border-top: 3px solid #cfcfcf;
+	border-right: 3px solid #666;
+	border-bottom: 3px solid #666;
 	border-radius: 0px;
 	padding: 1px 3px 1px 3px;
-    margin-left: 2px;
-    margin-right: 2px;
-    vertical-align: top;
-    text-align: center;
-	font-size: 13px!important;
-    font-family: sans-serif!important;
-    white-space: nowrap;
+	margin-left: 2px;
+	margin-right: 2px;
+	vertical-align: top;
+	text-align: center;
+	font-size: 13px !important;
+	font-family: sans-serif !important;
+	white-space: nowrap;
 }
 
 table {
-	border-collapse:collapse;
+	border-collapse: collapse;
+	margin-left: 1em;
+	padding: 0.3em 0.5em;
+}
+
+table tr {
+	padding: inherit;
+}
+
+table td {
+	border: 1px solid #ccc;
+	padding: inherit;
 }
 
 /* Table classes 
 */
-.zebra-table tr:nth-child(even) {
-	background-color: #dadada;
+
+/* Zebra table styling */
+.zebra-table-ts,
+.zebra-table {
+	border-collapse: collapse;
+	border: 1px solid #ccc;
 }
 
-.zebra-table tr:nth-child(odd) {
-	background-color: #999;
+.zebra-table-ts td,
+.zebra-table td {
+	border: 1px solid #ccc;
+	text-align: center;
+	padding: inherit;
 }
 
-.col1-center tr td:nth-child(1), .col2-center tr td:nth-child(2), .col3-center tr td:nth-child(3), .col4-center tr td:nth-child(4), .col5-center tr td:nth-child(5), .col6-center tr td:nth-child(6) {
-   text-align: center;
+.zebra-table-ts tr,
+.zebra-table tr {
+	padding: inherit;
 }
 
-.col1-right tr td:nth-child(1), .col2-right tr td:nth-child(2), .col3-right tr td:nth-child(3), .col4-right tr td:nth-child(4), .col5-right tr td:nth-child(5), .col6-right tr td:nth-child(6) {
-   text-align: right;
+.zebra-table-ts tr:nth-child(even) td,
+.zebra-table tr:nth-child(even) td {
+	background-color: #efefef;
+}
+
+.zebra-table-ts tr:nth-child(odd) td,
+.zebra-table tr:nth-child(odd) td {
+	background-color: #d9d9d9;
+}
+
+/* Zebra table ts styling */
+
+/* First cell (top-left) with a different color */
+.zebra-table-ts tr:first-child td:first-child {
+	background-color: #c52334;
+	color: white;
+	border: 1px solid #ccc;
+}
+
+/* Styling for the first column (excluding the very first cell) */
+.zebra-table-ts tr:not(:first-child) td:first-child {
+	background-color: #343538;
+	color: white;
+}
+
+/* Styling for the first row (excluding the first cell) */
+.zebra-table-ts tr:first-child td:not(:first-child) {
+	background-color: #343538;
+	color: white;
+}
+
+
+.col1-center tr td:nth-child(1),
+.col2-center tr td:nth-child(2),
+.col3-center tr td:nth-child(3),
+.col4-center tr td:nth-child(4),
+.col5-center tr td:nth-child(5),
+.col6-center tr td:nth-child(6) {
+	text-align: center;
+}
+
+.col1-right tr td:nth-child(1),
+.col2-right tr td:nth-child(2),
+.col3-right tr td:nth-child(3),
+.col4-right tr td:nth-child(4),
+.col5-right tr td:nth-child(5),
+.col6-right tr td:nth-child(6) {
+	text-align: right;
 }

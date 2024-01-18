@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+    <meta charset="utf-8"/>
+    <title>tS Docs - Препроцессор таблиц</title>
+
+    <link rel="icon" href="/docs/src/img/ts_icon.png">
+    <link id="main-css" rel="stylesheet" href="/docs/src/style.css">
+
+    <script src="/docs/src/keywords.js"></script>
+    <script src="/docs/src/ruleEnum.js"></script>
+    <script src="/docs/src/autocompleter.js"></script>
+    <script src="/docs/src/searchWidget.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let url = new URL(window.location.href)
+            if (url.protocol !== "file:") return
+            let localCssPath = "src/style.css" 
+			let urlPath = url.pathname.split("/")
+            let rootPosition = urlPath.indexOf("docs")
+			for (let i = rootPosition + 1; i < urlPath.length - 1; ++i) {
+				localCssPath = "../" + localCssPath
+			}
+            document.getElementById("main-css").href = localCssPath
+        })
+    </script>
+
+    </head>
+    <body>
+        
+    <div id="header">
+        <div id="header-title">
+            <span><a href="https://tacticalshift.ru" style="text-decoration: none; color: inherit;">tS</a></span> <tt id='header-sans'>Docs</tt>
+        </div>
+        
+    <div class="navbar">
+        
+    <div class="dropdown">
+        <button class="dropbtn" title="Documantation">Документация</button>
+        <div class="dropdown-content">
+          <a href="/docs/Docs/TablePreprocessor.html">Препроцессор таблиц</a><a href="/docs/Docs/tsDocs.html">tS Docs</a>
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <button class="dropbtn" title="Standard Operation Procedures">SOPs</button>
+        <div class="dropdown-content">
+          <a href="/docs/SOP/AI_Platoon_leadership.html">Командование ботовзводом</a><a href="/docs/SOP/documentation_sop_aircrew.html">AI_Crew</a><a href="/docs/SOP/documentation_communications.html">Правила коммуникации</a>
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <button class="dropbtn" title="Training Center Office">TCO</button>
+        <div class="dropdown-content">
+          
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <button class="dropbtn" title="Mission Making Office">MMO</button>
+        <div class="dropdown-content">
+          
+    <div class="dropdown-2l">
+        <span>Other<arrow>⇨</arrow></span>
+        <div class="dropdown-2l-content">
+            <a href="/docs/MMO/Other/other1.html">Other</a>
+        </div>
+    </div>
+
+    <div class="dropdown-2l">
+        <a href="/docs/MMO/tsFramework.html">tsFramework<arrow>⇨</arrow></a>
+        <div class="dropdown-2l-content">
+            <a href="/docs/MMO/tsFramework/tsframework1.html">Framewok</a><a href="/docs/MMO/tsFramework/tsFramework2.html">Framewok2</a>
+        </div>
+    </div>
+
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <button class="dropbtn" title="Server magic">SRV</button>
+        <div class="dropdown-content">
+          <a href="/docs/SRV/howtoserver.html">How to server</a>
+        </div>
+    </div>
+
+
+        <div id="search-bar">
+            <input id="search-field" placeholder="Поиск по ключевым словам..."></input>
+            <button id="search-button"><img src="/docs/src/img/search.png"></button>
+        </div>
+    </div>
+
+    </div>
+    <div id="wrapper">
+        <div class="title"><h1>Препроцессор таблиц</h1></div>
+            <div class="toc">
+<ul>
+<li><a href="#_1">Формат таблицы</a><ul>
+<li><a href="#_2">Таблица с заголовком</a></li>
+<li><a href="#_3">Таблица без заголовка</a></li>
+<li><a href="#_4">Таблица с объединенными ячейками</a></li>
+</ul>
+</li>
+<li><a href="#_5">Стили</a><ul>
+<li><a href="#_6">Текст</a></li>
+<li><a href="#_7">Ячейка</a></li>
+<li><a href="#_8">Ряд</a></li>
+<li><a href="#_9">Таблица</a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+        <div class="article">
+        <h2 id="_1">Формат таблицы</h2>
+<p>Формат основан на таблицах в markdown:</p>
+<h4 id="_2">Таблица с заголовком</h4>
+<pre><code class="language-md">| Header cell 1 | Header cell 2|
+| --- | --- |
+| Cell 1-1 | Cell 1-2 |
+</code></pre>
+<p>Для того чтобы определить вышележащие строки как заголовов таблицы - добавьте в таблицу ряд ячеек состоящих только из <code>-</code>, но не менее 2 символов в ячейке.</p>
+<h4 id="_3">Таблица без заголовка</h4>
+<pre><code class="language-md">| Cell 1-1 | Cell 1-2 |
+| Cell 2-1 | Cell 2-2 |
+</code></pre>
+<h4 id="_4">Таблица с объединенными ячейками</h4>
+<pre><code class="language-md">| Merged header ||
+| --- ||
+| Cell 1-1 | Cell 1-2 |
+</code></pre>
+<p>Чтобы объединить следующую(ие) ячейки с желаемой, нужно оставить следующую ячейку пустой (даже без пробела). Тогда при конверсии все пустые ячейки будут объединены с ближайшей заполненной ячейкой слева.
+Важно, чтобы таблица всегда была прямоугольной (т.е. кол-во ячеек, включая объединяемые, в каждом ряду было одинаковым).</p>
+<h2 id="_5">Стили</h2>
+<h3 id="_6">Текст</h3>
+<p>Стиль текста задается обычными средствами markdown.</p>
+<h3 id="_7">Ячейка</h3>
+<p>Стиль ячейки (элемент <code>&lt;td&gt;&lt;/td&gt;</code>) задается следующим тегом:</p>
+<pre><code class="language-md">{: attribute:value; class:cell-cls :}
+</code></pre>
+<p>, где</p>
+<ul>
+<li><code>attribute</code> - любой CSS-атрибут (например, background-color), а также <code>id</code> или <code>class</code> для применения к html-элементу ячейки выбранного класса или id</li>
+<li><code>value</code> - значение этого атрибута</li>
+</ul>
+<p>Несколько аттрибутов разделяются точкой с запятой <code>;</code>.</p>
+<p>Например,</p>
+<pre><code class="language-md">| Header |
+| --- |
+| {: background-color:#ffaaff; text-align:center :} Centerered colored cell |
+</code></pre>
+<h3 id="_8">Ряд</h3>
+<p>Стиль для ячеек всего ряда (элемент <code>&lt;tr&gt;&lt;/tr&gt;</code>) можно задать тем же образом, что и для ячейки, но добавив префикс <code>row</code>:</p>
+<pre><code class="language-md">{: row.attribute:value :}
+</code></pre>
+<p>Например,</p>
+<pre><code class="language-md">| {: row.class:my-class :}Header ||
+| --- ||
+|{: row.background-color:#ffaaff; row.text-align:center :}Centerered colored cell | Also colored and centered |
+</code></pre>
+<h3 id="_9">Таблица</h3>
+<p>Для применения стиля к таблице целиком (элемент <code>&lt;table&gt;&lt;/table&gt;</code>) используйте префикс <code>table</code>:</p>
+<pre><code class="language-md">{: table.attribute:value :}
+</code></pre>
+<p>Например,</p>
+<pre><code class="language-md">| {: table.id:my-table-id; table.text-align:center :}Centered Header ||
+| --- ||
+| Centerered cell | Also centered cell |
+</code></pre>
+        </div>
+    </div>
+
+    </body>
+</html>

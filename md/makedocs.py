@@ -18,6 +18,8 @@ import dropdowns
 
 
 class ColorInlineProcessor(InlineProcessor):
+    def getCompiledRegExp(self):
+        return re.compile(self.pattern)
     def handleMatch(self, m, data):
         attrib = {"style": "color:" + m.group(2)}
         el = etree.Element('span', attrib)
@@ -29,7 +31,8 @@ class KeyboardInlineProcessor(InlineProcessor):
     def __init__(self, pattern, tag):
         InlineProcessor.__init__(self, pattern)
         self.tag = tag
-
+    def getCompiledRegExp(self):
+        return re.compile(self.pattern)
     def handleMatch(self, m, data):  # pragma: no cover
         el = etree.Element(self.tag)
         el.text = m.group(1)
@@ -83,12 +86,21 @@ class TitleFinderExtension(Extension):
 
 
 class NoRenderPreprocessor(Preprocessor):
+    def __init__(self, md=None):
+        super().__init__(md)
+        self.inside_code_block = False
     def run(self, lines):
         new_lines = []
 
         for line in lines:
-            n = re.search("NORENDER", line)
-            if not n:
+            if line.strip().startswith("```"):
+                # Toggle the inside_code_block flag when encountering code block markers
+                self.inside_code_block = not self.inside_code_block
+            if not self.inside_code_block:
+                n = re.search("NORENDER", line)
+                if not n:
+                    new_lines.append(line)
+            else:
                 new_lines.append(line)
         return new_lines
 

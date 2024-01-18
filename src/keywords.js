@@ -2,6 +2,14 @@
 const ARTICLES = 
     [
     {
+        "title": "Препроцессор таблиц",
+        "section": [
+            "Docs"
+        ],
+        "url": "/docs/Docs/TablePreprocessor.html",
+        "keywords": []
+    },
+    {
         "title": "tS Docs",
         "section": [
             "Docs"
@@ -78,6 +86,15 @@ const ARTICLES =
             "tsFramework"
         ],
         "url": "/docs/MMO/tsFramework/tsframework1.html",
+        "keywords": []
+    },
+    {
+        "title": "Framewok2",
+        "section": [
+            "MMO",
+            "tsFramework"
+        ],
+        "url": "/docs/MMO/tsFramework/tsFramework2.html",
         "keywords": []
     },
     {
