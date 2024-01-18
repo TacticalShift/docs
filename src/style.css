@@ -91,7 +91,7 @@ body {
 	display: none;
 	position: absolute;
 	background-color: #f9f9f9;
-	min-width: 160px;
+	width: 15em;
 	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 	z-index: 1;
 }
@@ -261,6 +261,8 @@ arrow {
 .title h1 {
 	margin-left: 15px;
 	text-align: left;
+	color: #c52334;
+	text-shadow: 0px 0px 10px #b3213080;
 }
 
 .toc {
@@ -382,9 +384,15 @@ table tr {
 	padding: inherit;
 }
 
+table th {
+	padding: 0.3em 0.5em;
+	border: 1px solid #ccc;
+}
+
 table td {
 	border: 1px solid #ccc;
-	padding: inherit;
+	padding: 0.3em 0.5em;
+	text-align: center;
 }
 
 /* Table classes 
@@ -395,13 +403,14 @@ table td {
 .zebra-table {
 	border-collapse: collapse;
 	border: 1px solid #ccc;
+	width: 50%;
 }
 
 .zebra-table-ts td,
 .zebra-table td {
 	border: 1px solid #ccc;
 	text-align: center;
-	padding: inherit;
+	padding: 0.8em 1.5em 0.8em 1.5em;
 }
 
 .zebra-table-ts tr,
@@ -440,6 +449,18 @@ table td {
 	color: white;
 }
 
+
+.comm-table {
+	border-collapse: collapse;
+	border: none;
+	box-shadow: 0 0 0.2em #999;
+}
+
+.comm-table td {
+	background-color: #d9d9d9;
+	border-collapse: collapse;
+	text-align: left;
+}
 
 .col1-center tr td:nth-child(1),
 .col2-center tr td:nth-child(2),

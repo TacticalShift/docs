@@ -3,16 +3,28 @@
     <head>
         
     <meta charset="utf-8"/>
-    <title>tS Docs - Поиск</title>
+    <title>tS Docs - Документация на документацию</title>
 
     <link rel="icon" href="/docs/src/img/ts_icon.png">
-    <link rel="stylesheet" href="/docs/src/style.css">
+    <link id="main-css" rel="stylesheet" href="/docs/src/style.css">
 
     <script src="/docs/src/keywords.js"></script>
     <script src="/docs/src/ruleEnum.js"></script>
     <script src="/docs/src/autocompleter.js"></script>
     <script src="/docs/src/searchWidget.js"></script>
-    <script src="/docs/src/search.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let url = new URL(window.location.href)
+            if (url.protocol !== "file:") return
+            let localCssPath = "src/style.css" 
+			let urlPath = url.pathname.split("/")
+            let rootPosition = urlPath.indexOf("docs")
+			for (let i = rootPosition + 1; i < urlPath.length - 1; ++i) {
+				localCssPath = "../" + localCssPath
+			}
+            document.getElementById("main-css").href = localCssPath
+        })
+    </script>
 
     </head>
     <body>
@@ -84,9 +96,14 @@
     </div>
 
     <div id="wrapper">
-        <div class="title"><h1>Результат поиска: <small></small></h1></div>
-        <div class="toc"></div>
-        <div class="article"></div>
+        <div class="title"><h1>Документация на документацию</h1></div>
+            <div class="toc">
+<ul></ul>
+</div>
+
+        <div class="article">
+        
+        </div>
     </div>
 
     </body>

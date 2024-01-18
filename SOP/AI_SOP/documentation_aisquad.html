@@ -3,16 +3,28 @@
     <head>
         
     <meta charset="utf-8"/>
-    <title>tS Docs - Поиск</title>
+    <title>tS Docs - Отряд с AI-подчиненными</title>
 
     <link rel="icon" href="/docs/src/img/ts_icon.png">
-    <link rel="stylesheet" href="/docs/src/style.css">
+    <link id="main-css" rel="stylesheet" href="/docs/src/style.css">
 
     <script src="/docs/src/keywords.js"></script>
     <script src="/docs/src/ruleEnum.js"></script>
     <script src="/docs/src/autocompleter.js"></script>
     <script src="/docs/src/searchWidget.js"></script>
-    <script src="/docs/src/search.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let url = new URL(window.location.href)
+            if (url.protocol !== "file:") return
+            let localCssPath = "src/style.css" 
+			let urlPath = url.pathname.split("/")
+            let rootPosition = urlPath.indexOf("docs")
+			for (let i = rootPosition + 1; i < urlPath.length - 1; ++i) {
+				localCssPath = "../" + localCssPath
+			}
+            document.getElementById("main-css").href = localCssPath
+        })
+    </script>
 
     </head>
     <body>
@@ -84,9 +96,38 @@
     </div>
 
     <div id="wrapper">
-        <div class="title"><h1>Результат поиска: <small></small></h1></div>
-        <div class="toc"></div>
-        <div class="article"></div>
+        <div class="title"><h1>Отряд с AI-подчиненными</h1></div>
+            <div class="toc">
+<ul>
+<li><a href="#_1">Модификация игры</a></li>
+<li><a href="#_2">Взаимодействие с другими отрядами</a></li>
+<li><a href="#_3">Взаимодействие с приданной техникой</a></li>
+<li><a href="#_4">Подготовка</a></li>
+<li><a href="#_5">Общие методы управления</a></li>
+<li><a href="#_6">Правила менеджмента отряда</a></li>
+</ul>
+</div>
+
+        <div class="article">
+        <p><img src="../../src/_media/ai_squads_trans.png" alt="Carl" /></p>
+<h3 id="_1">Модификация игры</h3>
+<p>Используем dzn_GoTacs (Ссылка)</p>
+<h3 id="_2">Взаимодействие с другими отрядами</h3>
+<ol>
+<li>Отряд взаимодействует с другими отрядами по той же схеме, как и обычный отряд.</li>
+<li>Командир отделения должен участвовать в коммуникации на PL Net, давать отчеты, запрашивать поддержку и т.п.</li>
+<li>Отделение занимает отдельный канал КВ.</li>
+</ol>
+<h3 id="_3">Взаимодействие с приданной техникой</h3>
+<p>С приданной техникой коммуникация должна происходить по КВ отделения.</p>
+<h3 id="_4">Подготовка</h3>
+<p>В настройках следует забиндить действия Commanding - Select Red/Blue/Green/Yellow fireteam на удобные кнопки (например на F1-F4) - выбор фаертим станет гораздо удобнее.</p>
+<h3 id="_5">Общие методы управления</h3>
+<ul>
+<li>Доступные юниты всегда следует разделять на фаертимы, при это желательно делать разделение через одного (т.е. 1 юнит - Красная, 2 юнит - Синяя, 3 - Красная, 4 - Синяя; тогда юниты каждой фаертимы будут занимать позиции рядом друг с другом в строю). Для разделения можно использовать меню GoTacs Settings или стандартные средства (выбор юнита - 0 - 9)</li>
+</ul>
+<h3 id="_6">Правила менеджмента отряда</h3>
+        </div>
     </div>
 
     </body>

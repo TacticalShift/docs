@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+    <meta charset="utf-8"/>
+    <title>tS Docs - Медицинская эвакуация</title>
+
+    <link rel="icon" href="/docs/src/img/ts_icon.png">
+    <link id="main-css" rel="stylesheet" href="/docs/src/style.css">
+
+    <script src="/docs/src/keywords.js"></script>
+    <script src="/docs/src/ruleEnum.js"></script>
+    <script src="/docs/src/autocompleter.js"></script>
+    <script src="/docs/src/searchWidget.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let url = new URL(window.location.href)
+            if (url.protocol !== "file:") return
+            let localCssPath = "src/style.css" 
+			let urlPath = url.pathname.split("/")
+            let rootPosition = urlPath.indexOf("docs")
+			for (let i = rootPosition + 1; i < urlPath.length - 1; ++i) {
+				localCssPath = "../" + localCssPath
+			}
+            document.getElementById("main-css").href = localCssPath
+        })
+    </script>
+
+    </head>
+    <body>
+        
+    
+    <div id="header">
+        <div id="header-title">
+            <span><a href="https://tacticalshift.ru" style="text-decoration: none; color: inherit;">tS</a></span> <tt id='header-sans'><a href= "/docs/" style="text-decoration: none; color: inherit;" >Docs</a></tt>
+        </div>
+        
+    <div class="navbar">
+        
+    <div class="dropdown">
+        <button class="dropbtn" title="Documentation">Документация</button>
+        <div class="dropdown-content">
+          <a href="/docs/Docs/documentation_communications.html">Правила коммуникации</a><a href="/docs/Docs/documentation_graphics.html">Графические меры контроля</a><a href="/docs/Docs/documentation_roles.html">Роли и обязанности</a><a href="/docs/Docs/documentation_doctrine.html">Доктрины</a><a href="/docs/Docs/documentation_formations.html">Formations</a><a href="/docs/Docs/documentation_event_day.html">Event day</a>
+    <div class="dropdown-2l">
+        <span>Документация на документацию<arrow>⇨</arrow></span>
+        <div class="dropdown-2l-content">
+            <a href="/docs/Docs/documentation_for_documentation/TablePreprocessor.html">Препроцессор таблиц</a><a href="/docs/Docs/documentation_for_documentation/tsDocs.html">tS Docs</a>
+        </div>
+    </div>
+
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <button class="dropbtn" title="Standard Operation Procedures">SOPs</button>
+        <div class="dropdown-content">
+          <a href="/docs/SOP/documentation_sop_artillery.html">Использование артиллерии</a><a href="/docs/SOP/documentation_sop_cas.html">Поддержка с воздуха / Close Air Support (CAS)</a><a href="/docs/SOP/documentation_sop_medevac.html">Медицинская эвакуация</a><a href="/docs/SOP/documentation_sop_reserves_n_redeploy.html">Резервы</a>
+    <div class="dropdown-2l">
+        <span>Управление ИИ<arrow>⇨</arrow></span>
+        <div class="dropdown-2l-content">
+            <a href="/docs/SOP/AI_SOP/documentation_sop_aircrew.html">AI_Crew</a><a href="/docs/SOP/AI_SOP/AI_Platoon_leadership.html">Командование ботовзводом</a><a href="/docs/SOP/AI_SOP/documentation_aisquad.html">Отряд с AI-подчиненными</a>
+        </div>
+    </div>
+<a href="/docs/SOP/gso_gso_guidelines.html">GSO SOP</a>
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <button class="dropbtn" title="Training Center Office">TCO</button>
+        <div class="dropdown-content">
+          
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <button class="dropbtn" title="Mission Making Office">MMO</button>
+        <div class="dropdown-content">
+          <a href="/docs/MMO/mission_making_missions_editor_requirements.html">Требования к оформлению миссии</a><a href="/docs/MMO/mission_making_missions_editor_framework.html">None</a><a href="/docs/MMO/mission_making_missions_editor_concept.html">Концепт и структура миссии</a><a href="/docs/MMO/mission_making_missions_editor_production.html">None</a><a href="/docs/MMO/mission_making_missions_editor_misc.html">None</a><a href="/docs/MMO/mission_making_missions_editor_teamwork.html">None</a>
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <button class="dropbtn" title="Server magic">SRV</button>
+        <div class="dropdown-content">
+          <a href="/docs/SRV/howtoserver.html">How to server</a>
+        </div>
+    </div>
+
+
+        <div id="search-bar">
+            <input id="search-field" placeholder="Поиск по ключевым словам..."></input>
+            <button id="search-button"><img src="/docs/src/img/search.png"></button>
+        </div>
+    </div>
+
+    </div>
+
+    <div id="wrapper">
+        <div class="title"><h1>Медицинская эвакуация</h1></div>
+            <div class="toc">
+<ul>
+<li><a href="#_1">Акронимы и понятия</a></li>
+</ul>
+</div>
+
+        <div class="article">
+        <p>Возможности для эвакуации в общем случае не ограничены ничем кроме Брифинга миссии и фракцией союзников. Чаще всего транспорт для эвакуации нужно будет добавлять уже по ходу миссии, при этом стоит учитывать указанную в запросе <strong>“Безопасность в зоне эвакуации”</strong>:</p>
+<p><table class=".comm-table">
+	<tr>
+		<td style="text-align:left;"><strong>N</strong> - нет противника            - любой транспорт;<br> <strong>P</strong> - вероятность противника    - медицинский транспорт или бронированный транспорт;<br> <strong>E</strong> - противник в зоне подбора  - вооруженный транспорт;<br> <strong>X</strong> - необходимо прикрытие      - вооруженный конвой;</td>
+	</tr>
+</table></p>
+<p>Также стоит учитывать опасность непосредственно для GSO - если ожидается враг (и в Зевсе видна вероятность встречи с противником), то следует использовать ботов в качестве водителей, и брать их под remote control.</p>
+<h2 id="_1">Акронимы и понятия</h2>
+<ul>
+<li><strong>SUP Net</strong> - Support Network, частота ДВ для операций поддержки (ДВ 51)</li>
+<li><strong>ETA</strong>- Estimated time of arrival (и ти эй), примерное время прибытия/подлета;</li>
+<li><strong>CCP</strong> - Casualties collection point, пункт сбора раненых и медицинской помощи;</li>
+<li><strong>MEP</strong> - Medical evacuation point, пункт сбора раненых для последующей эвакуации;</li>
+</ul>
+<p><table class="zebra-table-ts">
+	<tr>
+		<td style="">Кто</td>
+		<td>Действие</td>
+		<td>Формат</td>
+	</tr>
+	<tr>
+		<td>PL</td>
+		<td>Во время планирования или по ходу действия отмечает MEP’ы</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>PL</td>
+		<td>Отправляет раненых на ближайший MEP, назначает старшего по эвакуации, делает запрос на медэвакуацию в SUP Net<br><br>Важно сообщить старшему по эвакуации о частоте КВ.</td>
+		<td><strong>EVAC REQ:</strong><br><strong>(1) Координаты/CCP</strong><br><strong>(2) Частота, позывной руководящего эвакуацией:</strong><br>КВ 6, Никнейм<br><strong>(3) Приоритет/число раненых:</strong><br>A - срочный (большая кровопотеря)<br>B - приоритетный (без ног, множество ранений)<br>C - обычный<br>D - не срочный<br><strong>(4) Тяжелораненые кол-во (без сознания) - L#</strong><br><strong>(5) Безопасность в зоне эвакуации:</strong><br>N - нет противника,<br>P - вероятность противника,<br>E - противник в зоне подбора,<br>X - необходимо прикрытие<br><strong>(6) Метод обозначения зоны подбора:</strong><br>A - панели,<br>B - пиротехнический сигнал,<br>C - дымовой сигнал,<br>D - нет,<br>E - другое<br><br><strong>1'5, это 1'6, нужна медэвакуация, MEP-1, КВ 7 Хуюзил, Альфа один Чарли два, Лима один, Папа, Дельта</strong></td>
+	</tr>
+	<tr>
+		<td>GSO</td>
+		<td>Принимает запрос и сообщает приблизительное ETA.<br><br>ETA выбираем в зависимости от обстоятельств и необходимости спаунить, доехать-долететь + таймаут</td>
+		<td><strong>1'6, это 1'5, медэвакуация на MEP-1, ETA 5 минут. Конец.</strong></td>
+	</tr>
+	<tr>
+		<td>GSO</td>
+		<td>При приближении к обозначенному MEP выходит на связь по КВ с ответственным за эвакуацию и уточняет ЕТА.Используя вертолет - выходите на связь за 1+ минуту до подхода, чтобы успели сработать дымы/фаеры на земле.</td>
+		<td><strong>Хуюзил, это 1'5,прибываю на MEP-1 через 1 минуту. Прием.</strong></td>
+	</tr>
+	<tr>
+		<td>Старший по эвакуации</td>
+		<td>Подтверждает или отменяет эвакуацию в случае непосредственной опасности.При необходимости - отмечает позицию и сообщает о деталях маркировки</td>
+		<td><strong>1'5, это Хуюзил, помечаем себя, синий дым. Конец.</strong><br><strong>или</strong><br><strong>1'5, это Хуюзил, отмена-отмена-отмена, противник в зоне эвакуации. Конец.</strong></td>
+	</tr>
+	<tr>
+		<td>GSO и находящиеся на MEP</td>
+		<td>Раненые грузятся в транспорт, грузят бессознательных и двигаются на CCP.Если в зоне MEP/на пути к CCP нету вражеской активности и при наличии большого числа раненых - лечим всех на месте</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>GSO</td>
+		<td>Сообщает о подборе раненых в PL Net, если все не влезли, то уточняет кол-во оставшихся на MEP</td>
+		<td><strong>1'6, это 1'5, подобрал всех на MEP-1. Конец.</strong><br><strong>или</strong><br><strong>1'6, это 1'5, подобрал тяжелораненых, на MEP-1 осталось двое. Конец.</strong></td>
+	</tr>
+	<tr>
+		<td>GSO</td>
+		<td>Сообщает о доставке вылеченных назад на MEP в SUP Net</td>
+		<td><strong>1'6, это 1'5, вернулись на MEP-1. Конец.</strong></td>
+	</tr>
+	<tr>
+		<td>PL</td>
+		<td>Сообщает старшему по эвакуации о том куда двигаться вернувшимся. C MEP старший по эвакуации двигает всех доставленных на перегруппировку с их отрядами</td>
+		<td><strong>Хуюзил, это 1'6, двигайтесь на CP-5. Прием.</strong></td>
+	</tr>
+</table></p>
+        </div>
+    </div>
+
+    </body>
+</html>

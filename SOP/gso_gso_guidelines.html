@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+    <meta charset="utf-8"/>
+    <title>tS Docs - GSO SOP</title>
+
+    <link rel="icon" href="/docs/src/img/ts_icon.png">
+    <link id="main-css" rel="stylesheet" href="/docs/src/style.css">
+
+    <script src="/docs/src/keywords.js"></script>
+    <script src="/docs/src/ruleEnum.js"></script>
+    <script src="/docs/src/autocompleter.js"></script>
+    <script src="/docs/src/searchWidget.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let url = new URL(window.location.href)
+            if (url.protocol !== "file:") return
+            let localCssPath = "src/style.css" 
+			let urlPath = url.pathname.split("/")
+            let rootPosition = urlPath.indexOf("docs")
+			for (let i = rootPosition + 1; i < urlPath.length - 1; ++i) {
+				localCssPath = "../" + localCssPath
+			}
+            document.getElementById("main-css").href = localCssPath
+        })
+    </script>
+
+    </head>
+    <body>
+        
+    
+    <div id="header">
+        <div id="header-title">
+            <span><a href="https://tacticalshift.ru" style="text-decoration: none; color: inherit;">tS</a></span> <tt id='header-sans'><a href= "/docs/" style="text-decoration: none; color: inherit;" >Docs</a></tt>
+        </div>
+        
+    <div class="navbar">
+        
+    <div class="dropdown">
+        <button class="dropbtn" title="Documentation">Документация</button>
+        <div class="dropdown-content">
+          <a href="/docs/Docs/documentation_communications.html">Правила коммуникации</a><a href="/docs/Docs/documentation_graphics.html">Графические меры контроля</a><a href="/docs/Docs/documentation_roles.html">Роли и обязанности</a><a href="/docs/Docs/documentation_doctrine.html">Доктрины</a><a href="/docs/Docs/documentation_formations.html">Formations</a><a href="/docs/Docs/documentation_event_day.html">Event day</a>
+    <div class="dropdown-2l">
+        <span>Документация на документацию<arrow>⇨</arrow></span>
+        <div class="dropdown-2l-content">
+            <a href="/docs/Docs/documentation_for_documentation/TablePreprocessor.html">Препроцессор таблиц</a><a href="/docs/Docs/documentation_for_documentation/tsDocs.html">tS Docs</a>
+        </div>
+    </div>
+
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <button class="dropbtn" title="Standard Operation Procedures">SOPs</button>
+        <div class="dropdown-content">
+          <a href="/docs/SOP/documentation_sop_artillery.html">Использование артиллерии</a><a href="/docs/SOP/documentation_sop_cas.html">Поддержка с воздуха / Close Air Support (CAS)</a><a href="/docs/SOP/documentation_sop_medevac.html">Медицинская эвакуация</a><a href="/docs/SOP/documentation_sop_reserves_n_redeploy.html">Резервы</a>
+    <div class="dropdown-2l">
+        <span>Управление ИИ<arrow>⇨</arrow></span>
+        <div class="dropdown-2l-content">
+            <a href="/docs/SOP/AI_SOP/documentation_sop_aircrew.html">AI_Crew</a><a href="/docs/SOP/AI_SOP/AI_Platoon_leadership.html">Командование ботовзводом</a><a href="/docs/SOP/AI_SOP/documentation_aisquad.html">Отряд с AI-подчиненными</a>
+        </div>
+    </div>
+<a href="/docs/SOP/gso_gso_guidelines.html">GSO SOP</a>
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <button class="dropbtn" title="Training Center Office">TCO</button>
+        <div class="dropdown-content">
+          
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <button class="dropbtn" title="Mission Making Office">MMO</button>
+        <div class="dropdown-content">
+          <a href="/docs/MMO/mission_making_missions_editor_requirements.html">Требования к оформлению миссии</a><a href="/docs/MMO/mission_making_missions_editor_framework.html">None</a><a href="/docs/MMO/mission_making_missions_editor_concept.html">Концепт и структура миссии</a><a href="/docs/MMO/mission_making_missions_editor_production.html">None</a><a href="/docs/MMO/mission_making_missions_editor_misc.html">None</a><a href="/docs/MMO/mission_making_missions_editor_teamwork.html">None</a>
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <button class="dropbtn" title="Server magic">SRV</button>
+        <div class="dropdown-content">
+          <a href="/docs/SRV/howtoserver.html">How to server</a>
+        </div>
+    </div>
+
+
+        <div id="search-bar">
+            <input id="search-field" placeholder="Поиск по ключевым словам..."></input>
+            <button id="search-button"><img src="/docs/src/img/search.png"></button>
+        </div>
+    </div>
+
+    </div>
+
+    <div id="wrapper">
+        <div class="title"><h1>GSO SOP</h1></div>
+            <div class="toc">
+<ul>
+<li><a href="#_1">Акронимы</a></li>
+<li><a href="#_2">Область применения</a></li>
+<li><a href="#_3">Техническая поддержка пользователей</a><ul>
+<li><a href="#_4">Реквизиты сервера</a></li>
+<li><a href="#_5">Не пускает на сервер</a></li>
+</ul>
+</li>
+<li><a href="#_6">Организация игровых событий</a><ul>
+<li><a href="#_7">Настройки миссии</a></li>
+<li><a href="#gso">Игровая роль для GSO</a></li>
+<li><a href="#_8">Слоттинг игроков</a></li>
+<li><a href="#_9">Дебрифинг</a></li>
+</ul>
+</li>
+<li><a href="#_10">Поддержка игровых сценариев</a></li>
+</ul>
+</div>
+
+        <div class="article">
+        <p>Rev 0.2</p>
+<h3 id="_1">Акронимы</h3>
+<ul>
+<li><strong>GSO</strong> - Game Server Officer, игровой администратор/ведущий;</li>
+<li><strong>SOP</strong> - стандартные операционные процедуры;</li>
+<li><strong>TS</strong> - TeamSpeak;</li>
+<li><strong>TFAR</strong> - Task Force Arrowhead Radio, мод для игры;</li>
+<li><strong>GM</strong> - Game Master или Zeus или Curator, специальная роль в игре.</li>
+</ul>
+<h3 id="_2">Область применения</h3>
+<ul>
+<li>Техническая поддержка пользователей</li>
+<li>Организация игровых событий</li>
+<li>Поддержка игровых сценариев</li>
+</ul>
+<h2 id="_3">Техническая поддержка пользователей</h2>
+<ul>
+<li>Выбрасывать из канала участников у которых залипла кнопка и они не могут совладать с ней</li>
+<li>За 30 минут до игры должен находиться в TS для решения проблем игроков:</li>
+</ul>
+<h3 id="_4">Реквизиты сервера</h3>
+<p>Server name: srv.tacticalshift.ru
+Port: 2302 (Primary)
+Password: tsrv
+Admin: #login <password></p>
+<h3 id="_5">Не пускает на сервер</h3>
+<ul>
+<li>Сверить кол-во модов в ланчере - должно быть 36</li>
+<li>Рекомендовать выгрузить все моды и повторно импортировать мод-лист ( <a href="http://tacticalshift.ru/ts_mods.html">http://tacticalshift.ru/ts_mods.html</a> )</li>
+<li>Переустановить плагин Task Force Radio: Launcher → Mods → Task Force Radio → (expand) → … → Arma 3!Workshop\@task_force_radio\teamspeak → запустить не-compat файл</li>
+</ul>
+<h2 id="_6">Организация игровых событий</h2>
+<ul>
+<li>Не позднее чем за 15 минут до начала события - подготовить список миссий (уточнить у ММО, выбрать из пула)</li>
+<li>До начала события - запустить сервер (если требуется), зайти и залогиниться как админ, выбрать и настроить разогревочную миссию.</li>
+<li>Первую игровую миссию запускать в 19:00</li>
+<li>Следить за временем во время Слоттинга, Планирования, Дебрифинга, при истечении времени - предупреждать участников и переходить к следующей фазе:</li>
+<li>на Слоттинге - делать force-slot игроков и переходить к Планированию</li>
+<li>на Планировании - переходить к ответам на вопросы и запуску миссии</li>
+<li>на Дебрифинге - подгонять тех, кто еще не выступил (но давать всем возможность высказаться!)</li>
+<li>Следить за соблюдением правил ре-слотинга</li>
+</ul>
+<h3 id="_7">Настройки миссии</h3>
+<ul>
+<li>При первом прохождении - согласно рекомендациям от создателя миссии (если не присутствует – то оставлять настройки по-умолчанию);</li>
+<li>При последующих прохождениях - согласно запросу Platoon Leader или единому порыву игроков</li>
+</ul>
+<h3 id="gso">Игровая роль для GSO</h3>
+<p>GSO занимает ТОЛЬКО специальную роль и не принимает активное участие в бою:</p>
+<ul>
+<li>Platoon Sergeant,</li>
+<li>Зам. Командира взвода,</li>
+<li>Game Server Officer,</li>
+<li>(если нет) малозначительную роль в отдельном отряде</li>
+</ul>
+<h3 id="_8">Слоттинг игроков</h3>
+<ul>
+<li>Platoon Leader занимает отдельную роль (единственное исключение - в миссии будет использован только одно отделение и PL выступает в роли SL единственного отряда; если кол-во отделений становится больше 1 - PL отдает роль SL)</li>
+<li>Роли PL/SL/TL занимают только игроки с соответствующей квалификацией (Platoon Leadership/ Squad Leadership/ Fireteam Leadership)</li>
+<li>Роли Командир экипажа/Наводчик-оператор техники занимают только игроки с квалификацией Armored Crew</li>
+<li>Роль Механик-Водитель допускается не занимать, а использовать бота-водителя (см. AI-водитель для техники)</li>
+<li>Новые игроки не должны занимать более половины слотов в командах, при этом старшими в двойках должны быть более опытные игроки</li>
+</ul>
+<h3 id="_9">Дебрифинг</h3>
+<p>Объявлять того, кто должен говорить, соблюдая порядок:</p>
+<ul>
+<li>Platoon Leader</li>
+<li>Squad Leader отряда 1</li>
+<li>Squad Leader отряда 2 и т.п.</li>
+<li>Прочие участники, в порядке указанном в тимспике</li>
+<li>Соблюдать правила, согласно дебрифинг (например, только PL и SL рассказывают как прошла вся миссия)</li>
+<li>Узнавать у PL/SL/TL - кого из игроков они бы похвалили за их действия</li>
+</ul>
+<h2 id="_10">Поддержка игровых сценариев</h2>
+<ul>
+<li><strong>GSO</strong> использует отдельную <strong>частоту ДВ 51</strong> (SUP Net) для коммуникации с PL и для обеспечения любого вида поддержки</li>
+<li><strong>Устранять ошибки возникшие по ходу игры:</strong></li>
+<li>Выдавать правильные наборы снаряжения при их отсутствии</li>
+<li>Выдавать нужный набор снаряжения при изменении структуры отрядов со стороны PL</li>
+<li>Обеспечивать игроков транспортом в случае недоступности техники из-за багов</li>
+<li>Спаунить противников, если они не заспаунились</li>
+<li>Поддерживать ход сценария, если что-то сломалось в логике миссии</li>
+<li>Завершать миссию с правильной концовкой по выполнению условий</li>
+<li>Завершать миссию по требованию PL (отступление)</li>
+<li><strong>Контролировать ход игры:</strong></li>
+<li>Следовать указаниям из Брифинг - Заметки для GSO</li>
+<li>Использовать существующих юнитов для реакции на действия игроков (контратака, отступление)</li>
+<li>В зависимости от хода игры - доспаунивать юниты/технику согласно Спаун дополнительных юнитов (например, по сценарию у противника есть резервы вне AO и игроки медлят с выполнением своих задач - следовательно GSO может доспаунить подкрепления, которые за сорок минут штурма очухались и решили поехать к умирающим ботам на помощь)</li>
+<li><strong>Обеспечивать поддержку операции, если есть доступные ассеты или они предполагаются:</strong><ul>
+<li>Артиллерийские миссии</li>
+<li>Сбор и лечение раненых</li>
+<li>Подвоз боеприпасов</li>
+<li>Эвакуация из AO</li>
+</ul>
+</li>
+<li><strong>Обеспечение поддержки игрокам согласно СОПам</strong></li>
+</ul>
+        </div>
+    </div>
+
+    </body>
+</html>

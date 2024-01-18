@@ -47,7 +47,8 @@ def read_meta(filepath: str):
     meta = {}
     while line:
         if i:
-            for item in i.group(1).split(','):
+            
+            for item in i.group(1).strip().split(','):
                 key, value = item.split('=')
                 meta[key.strip()] = value.strip()
             break
