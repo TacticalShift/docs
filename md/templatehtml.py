@@ -47,14 +47,17 @@ HTML_HEAD_SEARCH_PAGE = '''
     <script src="/docs/src/searchWidget.js"></script>
     <script src="/docs/src/search.js"></script>
 '''
-
-HTML_BODY = '''
+HTML_HEADER = '''
     <div id="header">
         <div id="header-title">
-            <span><a href="https://tacticalshift.ru" style="text-decoration: none; color: inherit;">tS</a></span> <tt id='header-sans'>Docs</tt>
+            <span><a href="https://tacticalshift.ru" style="text-decoration: none; color: inherit;">tS</a></span> <tt id='header-sans'><a href= "/" style="text-decoration: none; color: inherit;" >Docs</a></tt>
         </div>
         {navbar}
     </div>
+'''
+
+HTML_BODY = '''
+    {header}
     <div id="wrapper">
         <div class="title"><h1>{title}</h1></div>
             {toc}
@@ -65,12 +68,7 @@ HTML_BODY = '''
 '''
 
 HTML_BODY_SEARCH_PAGE = '''
-    <div id="header">
-        <div id="header-title">
-            <span><a href="https://tacticalshift.ru" style="text-decoration: none; color: inherit;">tS</a></span> <tt id='header-sans'>Docs</tt>
-        </div>
-        {navbar}
-    </div>
+    {header}
     <div id="wrapper">
         <div class="title"><h1>Результат поиска: <small></small></h1></div>
         <div class="toc"></div>

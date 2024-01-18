@@ -137,6 +137,7 @@ def make_dropdowns(navbar_dict: dict):
     for key, value in navbar_dict.items():
         elements = []
         for filename, meta in value:
+            
             element = ""
             if 'Subpages' in meta:
                 subpages = make_subpages(
@@ -153,6 +154,8 @@ def make_dropdowns(navbar_dict: dict):
                         title=meta['Title'],
                         subpages="".join(subpages)
                     )
+            elif 'Hide' in meta and int(meta['Hide']) == 1:
+                continue
             else:
                 filepath = "/".join(["docs", config[key]['src'], filename])
                 element = templatehtml.HTML_DROPDOWN_ELEMENT.format(url="/"+filepath + ".html",

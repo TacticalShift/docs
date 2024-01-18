@@ -151,7 +151,8 @@ class DocsMaker:
         page = md.toc
 
         VERBOSE and print('[DocsMaker.make_page]    Composing HTML')
-        body = templatehtml.HTML_BODY.format(navbar=dropdown,
+        header = templatehtml.HTML_HEADER.format(navbar=dropdown)
+        body = templatehtml.HTML_BODY.format(header=header,
                                              article=article_text, toc=md.toc,
                                              title=title)
         head = templatehtml.HTML_HEAD.format(title=title)
@@ -190,8 +191,8 @@ class DocsMaker:
         VERBOSE = LOG and self.LOG_LEVEL > 1
 
         LOG and print('[DocsMaker.make_searh_page] Invoked for', filename)
-
-        body = templatehtml.HTML_BODY_SEARCH_PAGE.format(navbar=dropdown)
+        header = templatehtml.HTML_HEADER.format(navbar=dropdown)
+        body = templatehtml.HTML_BODY_SEARCH_PAGE.format(header=header)
         head = templatehtml.HTML_HEAD_SEARCH_PAGE
         html_page = templatehtml.HTML_PAGE.format(head=head, body=body)
         VERBOSE and print(
