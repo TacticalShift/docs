@@ -282,4 +282,4 @@
 
 ## Пример использования
 
-<img src="../src/_media/ts_map_example.png" alt="ts_map_example.png" width="900"/>
+<img src="/docs/src/_media/ts_map_example.png" alt="ts_map_example.png" width="900"/>

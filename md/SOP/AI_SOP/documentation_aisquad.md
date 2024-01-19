@@ -1,6 +1,6 @@
 # Отряд с AI-подчиненными
 
-<img src="../../src/_media/ai_squads_trans.png" alt="Carl" />
+<img src="/docs/src/_media/ai_squads_trans.png" alt="Carl" />
 
 ### Модификация игры
 
