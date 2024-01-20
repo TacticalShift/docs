@@ -24,6 +24,7 @@ const SearchWidget = {
     proposalsMenu: {
         shown: false,
         focused: false,
+		focusedByClick: false,
         focusedId: -1
     },
 
@@ -40,14 +41,21 @@ const SearchWidget = {
         this.searchButton = document.getElementById(this.constants.SEARCH_BUTTON)
         this.searchInput = document.getElementById(this.constants.SEARCH_FIELD)
 
-        this.searchButton.addEventListener('click', (e) => {
-            SearchWidget.onButtonClick()
+        document.addEventListener("click", (e) => {
+			if (SearchWidget.proposalsMenu.focusedByClick) {
+				SearchWidget.proposalsMenu.focusedByClick = false
+				return
+			}
+            SearchWidget.hideProposals()
         })
         this.searchInput.addEventListener('keyup', (e) => {
             SearchWidget.onKeyUp(e)
         })
-        document.addEventListener("click", (e) => {
-            SearchWidget.hideProposals()
+		this.searchInput.addEventListener('focus', (e) => {
+            SearchWidget.onInputClick(e)
+        })
+        this.searchButton.addEventListener('click', (e) => {
+            SearchWidget.onButtonClick()
         })
 
         this.log(this.LOG.INFO, '[SearchWidget] Initialized!')
@@ -58,6 +66,11 @@ const SearchWidget = {
         let url = this.constants.URL.replace("{query}", encodeURI(query))
         window.open(url, "_self")
     },
+	onInputClick: function(e) {		
+		e.preventDefault()
+		this.proposalsMenu.focusedByClick = true
+		this.onQueryChange()
+	},
     onKeyUp: function (e) {
         let key = e.keyCode
         this.log(this.LOG.VERBOSE, `[SearchWidget.onKeyUp] Key code ${key}`)
@@ -69,7 +82,7 @@ const SearchWidget = {
             } else {
                 this.searchButton.click()
             }
-
+			
         } else if (key === this.constants.KEYS.KEY_DOWN) {
             if (!this.proposalsMenu.shown) return
             this.focusOnProposal(++this.proposalsMenu.focusedId)
@@ -84,10 +97,10 @@ const SearchWidget = {
             this.hideProposals()
 
         } else {
-            this.onQueryChange()
+            this.onQueryChange(true)
         }
     },
-    onQueryChange: function () {
+    onQueryChange: function (changeByKey = false) {
         let query = this.getSearchQuery()
         let autocomplete = Autocompleter.autocomplete(query)
 
@@ -101,6 +114,7 @@ const SearchWidget = {
 
         // Show autocompletion...
         this.log(this.LOG.VERBOSE, '[SearchWidget.onQueryChange] Showing proposals')
+		if (changeByKey) this.hideProposals()
         this.showProposals(autocomplete.word, autocomplete.proposals)
     },
     getSearchQuery: function () {
@@ -108,7 +122,7 @@ const SearchWidget = {
     },
 
     showProposals: function (word, proposals) {
-        this.hideProposals()
+        // this.hideProposals()
 
         let dropdown = document.createElement("div")
         dropdown.setAttribute("id", this.constants.AUTO_ID)
@@ -123,9 +137,9 @@ const SearchWidget = {
             item.innerHTML += proposedPart
 
             dropdown.appendChild(item)
+			
             item.addEventListener("click", (e) => {
-                let el = e.path[0]
-                SearchWidget.selectProposal(el)
+                SearchWidget.selectProposal(e.target)
             })
         })
 
@@ -133,6 +147,7 @@ const SearchWidget = {
     },
     hideProposals: function () {
         this.proposalsMenu.focused = false
+		this.proposalsMenu.focusedByClick = false
         this.proposalsMenu.focusedId = -1
         this.proposalsMenu.shown = false
 
@@ -170,10 +185,16 @@ const SearchWidget = {
         }
         items.selected.setAttribute("class", this.constants.AUTO_ITEM_FOCUSED_CLASS)
     },
-    selectProposal: function (item) {
+    selectProposal: function (item) {		
         if (item == null) {
             item = this.getProposal(this.proposalsMenu.focusedId).selected
-        }
+        } else {
+			// When clicking on text itself - text node is passed in function
+			// so we selecting parent
+			if (!(item instanceof HTMLDivElement)) {
+				item = item.parentElement
+			}
+		}
         let fullword = item.getAttribute("value")
         let currentValue = this.searchInput.value
         currentValue = currentValue.substring(0, currentValue.length - this.lastWord.length)

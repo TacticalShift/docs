@@ -3,6 +3,8 @@ body {
 	font-family: sans-serif;
 	background-color: #ececec;
 	overflow: auto;
+	
+	font-family: "Inter";
 }
 
 .clickable {
@@ -17,6 +19,11 @@ body {
 	src: url(tS_EL.otf);
 }
 
+@font-face {
+	font-family: "Inter";
+	src: url(Inter-Light.otf);
+}
+
 #header {
 	margin: 0px;
 	padding: 0px;
@@ -25,7 +32,7 @@ body {
 }
 
 #header-sans {
-	font-family: sans-serif;
+	font-family: 'tSFont';
 	font-weight: 100;
 	font-size: 21px;
 	line-height: 45px;
@@ -315,11 +322,11 @@ h2 {
 
 h3 {
 	font-size: 20px !important;
-	color: #f9f9f9 !important;
-	background-color: #343a40;
+	color: #343a40 !important;
 	padding: 0.5em;
 	margin-bottom: 25px !important;
 	margin-top: 25px !important;
+	border-bottom: 3px solid #343a40;
 }
 
 h5 {

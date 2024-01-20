@@ -100,7 +100,7 @@ HTML_DROPDOWN_ELEMENT = '''<a href="{url}">{title}</a>'''
 
 HTML_DROPDOWN_EXTENDED = '''
     <div class="dropdown-2l">
-        <a href="{url}">{title}<arrow>⇨</arrow></a>
+        <a href="{url}">{title}<arrow>▸</arrow></a>
         <div class="dropdown-2l-content">
             {subpages}
         </div>
