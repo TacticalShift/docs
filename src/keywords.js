@@ -2,26 +2,6 @@
 const ARTICLES = 
     [
     {
-        "title": "Правила коммуникации",
-        "section": [
-            "Docs"
-        ],
-        "url": "/docs/Docs/documentation_communications.html",
-        "keywords": [
-            "keyword1",
-            "keyword2",
-            "keyword3"
-        ]
-    },
-    {
-        "title": "Графические меры контроля",
-        "section": [
-            "Docs"
-        ],
-        "url": "/docs/Docs/documentation_graphics.html",
-        "keywords": []
-    },
-    {
         "title": "Роли и обязанности",
         "section": [
             "Docs"
@@ -35,14 +15,6 @@ const ARTICLES =
             "Docs"
         ],
         "url": "/docs/Docs/documentation_doctrine.html",
-        "keywords": []
-    },
-    {
-        "title": "Formations",
-        "section": [
-            "Docs"
-        ],
-        "url": "/docs/Docs/documentation_formations.html",
         "keywords": []
     },
     {
@@ -80,11 +52,27 @@ const ARTICLES =
         "keywords": []
     },
     {
-        "title": "Использование артиллерии",
+        "title": "Правила коммуникации",
         "section": [
             "SOP"
         ],
-        "url": "/docs/SOP/documentation_sop_artillery.html",
+        "url": "/docs/SOP/documentation_sop_communications.html",
+        "keywords": [
+            "RTO",
+            "РТО",
+            "рация",
+            "переговоры",
+            "соп",
+            "sop"
+        ]
+    },
+    {
+        "title": "Использование артиллерии",
+        "section": [
+            "SOP",
+            "Communications"
+        ],
+        "url": "/docs/SOP/Communications/documentation_sop_artillery.html",
         "keywords": [
             "арта",
             "артудар",
@@ -92,6 +80,36 @@ const ARTICLES =
             "sop",
             "artillery"
         ]
+    },
+    {
+        "title": "Медицинская эвакуация",
+        "section": [
+            "SOP",
+            "Communications"
+        ],
+        "url": "/docs/SOP/Communications/documentation_sop_medevac.html",
+        "keywords": [
+            "Medevac",
+            "эвакуация",
+            "соп",
+            "sop"
+        ]
+    },
+    {
+        "title": "Графические меры контроля",
+        "section": [
+            "SOP"
+        ],
+        "url": "/docs/SOP/documantation_sop_graphics.html",
+        "keywords": []
+    },
+    {
+        "title": "Formations",
+        "section": [
+            "SOP"
+        ],
+        "url": "/docs/SOP/documantation_sop_formations.html",
+        "keywords": []
     },
     {
         "title": "Поддержка с воздуха / Close Air Support (CAS)",
@@ -106,19 +124,6 @@ const ARTICLES =
             "sop",
             "9-liner",
             "6-liner"
-        ]
-    },
-    {
-        "title": "Медицинская эвакуация",
-        "section": [
-            "SOP"
-        ],
-        "url": "/docs/SOP/documentation_sop_medevac.html",
-        "keywords": [
-            "Medevac",
-            "эвакуация",
-            "соп",
-            "sop"
         ]
     },
     {
@@ -245,22 +250,26 @@ const ARTICLES =
 
 const KEYWORDS  =
 {
-    "keyword1": 2,
-    "keyword2": 2,
-    "keyword3": 2,
+    "RTO": 1,
+    "РТО": 1,
+    "рация": 1,
+    "переговоры": 1,
+    "соп": 5,
+    "sop": 5,
     "арта": 1,
     "артудар": 1,
-    "соп": 4,
-    "sop": 4,
     "artillery": 1,
+    "Medevac": 1,
+    "эвакуация": 1,
     "CAS": 1,
     "авиаподдержка": 1,
     "9-liner": 1,
     "6-liner": 1,
-    "Medevac": 1,
-    "эвакуация": 1,
     "redeploy": 1,
     "редеплой": 1,
+    "keyword1": 1,
+    "keyword2": 1,
+    "keyword3": 1,
     "keyword4": 1,
     "srv": 1,
     "сервер": 1

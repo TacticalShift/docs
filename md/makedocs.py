@@ -241,7 +241,7 @@ if __name__ == "__main__":
                         output_path = "/".join([folder,
                                                 meta['Subpages'], subfilename])
                         dm.make_htmlfile(
-                            "/".join([rootdir, folder, filename,
+                            "/".join([rootdir, folder, meta['Subpages'],
                                       subfilename+".md"]),
                             "../"+output_path+".html",
                             dropdown,
