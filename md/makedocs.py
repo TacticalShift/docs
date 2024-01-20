@@ -8,6 +8,7 @@ import sys
 import traceback
 import re
 from pathlib import Path
+import shutil
 import xml.etree.ElementTree as etree
 
 from tablepreprocessor import TablesPreprocessor as dznTablesPreproc
@@ -222,11 +223,13 @@ if __name__ == "__main__":
     try:
         dm = DocsMaker(log_level=2)
         for section, item in dropdown_dict.items():
+            folder = config[section]['src']
+            pathfolder = Path("../"+folder)
+            if pathfolder.exists():
+                shutil.rmtree(pathfolder)
+                pathfolder.mkdir()
             for filename, meta in item:
-                folder = config[section]['src']
                 output_path = "/".join([folder, filename])
-                pathfolder = Path("../"+folder)
-                pathfolder.mkdir(exist_ok=True)
                 dm.make_htmlfile(
                     "/".join([rootdir, folder, filename+".md"]),
                     "../"+output_path+".html",
