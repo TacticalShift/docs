@@ -274,6 +274,7 @@ arrow {
 
 .toc {
 	width: 250px;
+	position: fixed;
 	vertical-align: top;
 	display: inline-block;
 	/* border-right: 1px solid black; */
@@ -301,7 +302,7 @@ arrow {
 .article {
 	width: 75%;
 	display: inline-block;
-	margin-left: 10px;
+	margin-left: 300px;
 	box-shadow: 0 0 0.2em #999;
 	padding: 1.5em 2em 2em;
 }

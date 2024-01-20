@@ -2,7 +2,7 @@
 
 # Роли и обязанности
 
-<img src="/docs/src/_media/Carl.png" alt="Carl" />
+<img src="/docs/src/media/Carl.png" alt="Carl" />
 
 ## В сообществе
 
