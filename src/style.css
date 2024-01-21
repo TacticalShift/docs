@@ -272,6 +272,27 @@ arrow {
 	text-shadow: 0px 0px 10px #b3213080;
 }
 
+.title ul {
+	list-style-type: none;
+	margin-left: 15px;
+	padding: 0;
+	overflow: hidden;
+	#background-color: #333333;
+}
+
+.title li {
+	float: left;
+}
+
+.title li a {
+	text-decoration: none;
+	text-decoration-line: none;
+	text-shadow: 0px 0px 10px rgba(142, 0, 0, 0.30);
+	display: block;
+	text-align: center;
+	padding-right: 10px;
+}
+
 .toc {
 	width: 250px;
 	position: fixed;

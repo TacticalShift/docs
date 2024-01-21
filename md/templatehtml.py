@@ -10,6 +10,11 @@ HTML_PAGE = '''<!DOCTYPE html>
 
 HTML_HEAD = '''
     <meta charset="utf-8"/>
+    
+    <meta property="title" content="tS Docs - {title}">
+    <meta property="og:title" content="tS Docs - {title}">
+    <meta property="og:site_name" content="tS Docs">
+    
     <title>tS Docs - {title}</title>
 
     <link rel="icon" href="/docs/src/img/ts_icon.png">
@@ -24,11 +29,11 @@ HTML_HEAD = '''
             let url = new URL(window.location.href)
             if (url.protocol !== "file:") return
             let localCssPath = "src/style.css" 
-			let urlPath = url.pathname.split("/")
+            let urlPath = url.pathname.split("/")
             let rootPosition = urlPath.indexOf("docs")
-			for (let i = rootPosition + 1; i < urlPath.length - 1; ++i) {{
-				localCssPath = "../" + localCssPath
-			}}
+            for (let i = rootPosition + 1; i < urlPath.length - 1; ++i) {{
+                localCssPath = "../" + localCssPath
+            }}
             document.getElementById("main-css").href = localCssPath
         }})
     </script>
@@ -56,13 +61,17 @@ HTML_HEADER = '''
     </div>
 '''
 
+# Page body
 HTML_BODY = '''
     {header}
     <div id="wrapper">
-        <div class="title"><h1>{title}</h1></div>
-            {toc}
+        <div class="title">
+            <h1>{title}</h1>
+            {keywords}
+        </div>
+        {toc}
         <div class="article">
-        {article}
+            {article}
         </div>
     </div>
 '''
@@ -114,6 +123,15 @@ HTML_DROPDOWN_EXTENDED_INACTIVE = '''
             {subpages}
         </div>
     </div>
+'''
+
+# List of keywords as hashtags at article title
+HTML_KEYWORD_LIST = '''<ul>{keywords}</ul>'''
+# Keyword hashtag clickable - redirects to search page with keyword as query param
+HTML_KEYWORD_ELEMENT = '''
+    <li>
+        <a href="/docs/search.html?search={keyword}" target="_blank">#{keyword}</a>
+    </li>
 '''
 
 
