@@ -307,26 +307,31 @@ arrow {
 
 }
 
-
 .toc a {
 	text-decoration-line: none;
 	text-shadow: 0px 0px 10px rgba(142, 0, 0, 0.30);
 }
 
+.article {
+	width: 75%;
+	display: inline-block;
+	margin-left: 270px;
+	box-shadow: 0 0 0.2em #999;
+	padding: 1.5em 2em 2em;
+}
+
+/* Remove TOC and extend article on smaller screens */ 
 @media only screen and (max-width: 1400px) {
 	.toc {
 		display: none;
 	}
+	
+	.article {
+		width: 90%;
+		margin-left: 10px;
+	}
 }
 
-
-.article {
-	width: 75%;
-	display: inline-block;
-	margin-left: 300px;
-	box-shadow: 0 0 0.2em #999;
-	padding: 1.5em 2em 2em;
-}
 
 /* Docs
 */
