@@ -1,4 +1,4 @@
-@Keywords(redeploy, редеплой, соп, sop) NORENDER
+@Keywords(redeploy, sop) NORENDER
 
 # Резервы
 

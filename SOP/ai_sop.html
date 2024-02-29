@@ -3,6 +3,11 @@
     <head>
         
     <meta charset="utf-8"/>
+    
+    <meta property="title" content="tS Docs - Управление ИИ">
+    <meta property="og:title" content="tS Docs - Управление ИИ">
+    <meta property="og:site_name" content="tS Docs">
+    
     <title>tS Docs - Управление ИИ</title>
 
     <link rel="icon" href="/docs/src/img/ts_icon.png">
@@ -17,11 +22,11 @@
             let url = new URL(window.location.href)
             if (url.protocol !== "file:") return
             let localCssPath = "src/style.css" 
-			let urlPath = url.pathname.split("/")
+            let urlPath = url.pathname.split("/")
             let rootPosition = urlPath.indexOf("docs")
-			for (let i = rootPosition + 1; i < urlPath.length - 1; ++i) {
-				localCssPath = "../" + localCssPath
-			}
+            for (let i = rootPosition + 1; i < urlPath.length - 1; ++i) {
+                localCssPath = "../" + localCssPath
+            }
             document.getElementById("main-css").href = localCssPath
         })
     </script>
@@ -75,7 +80,7 @@
     <div class="dropdown">
         <button class="dropbtn" title="Training Center Office">TCO</button>
         <div class="dropdown-content">
-          
+          <a href="/docs/TCO/documentation_tco_grenadier.html">Обучение на специалиста (гренадира) и старшего второй двойки</a><a href="/docs/TCO/documentation_tco_rifleman.html">Обучение на райфлмена (КМБ)</a><a href="/docs/TCO/documentation_tco_rto.html">Radio Telephone Operator</a>
         </div>
     </div>
 
@@ -103,13 +108,16 @@
     </div>
 
     <div id="wrapper">
-        <div class="title"><h1>Управление ИИ</h1></div>
-            <div class="toc">
+        <div class="title">
+            <h1>Управление ИИ</h1>
+            <ul></ul>
+        </div>
+        <div class="toc">
 <ul></ul>
 </div>
 
         <div class="article">
-        
+            
         </div>
     </div>
 

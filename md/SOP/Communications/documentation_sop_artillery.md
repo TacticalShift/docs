@@ -1,4 +1,4 @@
-@Keywords(арта, артудар, соп, sop, artillery) NORENDER
+@Keywords(artillery, rto, sop) NORENDER
 
 # Использование артиллерии
 

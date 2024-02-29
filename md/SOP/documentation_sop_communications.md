@@ -1,5 +1,5 @@
 @Meta(Position=1, Subpages = Communications, Title =Правила коммуникации, Hide=0) NORENDER
-@Keywords(RTO, РТО, рация, переговоры, соп, sop) NORENDER
+@Keywords(rto, sop) NORENDER
 
 # Правила коммуникации
 

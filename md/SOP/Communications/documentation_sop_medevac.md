@@ -1,4 +1,4 @@
-@Keywords(Medevac, эвакуация, соп, sop) NORENDER
+@Keywords(medevac, rto, sop) NORENDER
 
 # Медицинская эвакуация
 

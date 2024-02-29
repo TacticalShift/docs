@@ -60,3 +60,4 @@ def keywords_maker(navbardict: dict = None):
         output_file.write(article_str)
         output_file.write(keyword_str)
         output_file.close()
+    return output_article

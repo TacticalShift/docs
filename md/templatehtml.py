@@ -133,5 +133,6 @@ HTML_KEYWORD_ELEMENT = '''
         <a href="/docs/search.html?search={keyword}" target="_blank">#{keyword}</a>
     </li>
 '''
+HTML_KEYWORD_LINK = '''<a href="/docs/search.html?search={hashtag}" target="_blank">#{hashtag}</a>'''
 
 

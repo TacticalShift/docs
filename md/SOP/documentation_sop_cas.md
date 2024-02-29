@@ -1,4 +1,4 @@
-@Keywords(CAS, авиаподдержка, соп, sop, 9-liner, 6-liner) NORENDER
+@Keywords(cas, sop) NORENDER
 
 # Поддержка с воздуха / Close Air Support (CAS)
 

@@ -1,10 +1,11 @@
 # Добро пожаловать на tsDocs
 
-## Новичкам
+## Ключевые слова
 
-Полезные ссылки:
-
-- [Первая](<https://tacticalshift.ru/docs/SOP/AI_Platoon_leadership.html>)
-- [Вторая](<https://tacticalshift.ru/docs/SOP/documentation_communications.html>)
-
-Также пользуйтесь поиском по ключевым словам.
+- \#ai - ботоводство
+- \#artillery - арт поддержка
+- \#medevac - медицинская эвакуация
+- \#rto - радиопереговоры
+- \#sop - все стандартные операционные процедуры
+- \#srv - сервероводство
+- \#tco - методички для тренировок

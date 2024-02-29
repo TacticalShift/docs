@@ -59,6 +59,22 @@ class TagsExtension(Extension):
             ColorInlineProcessor(COLOR_PATTERN, md), 'coloring', 179)
 
 
+class HashtagPreprocessor(Preprocessor):
+    def run(self, lines):
+        new_lines = []
+        for line in lines:
+            line = re.sub(r'\\#(\w+)', r'<a href="/docs/search.html?search=\1" target="_blank">#\1</a>', line)
+            new_lines.append(line)
+        return new_lines
+
+class HashtagExtension(Extension):
+    def extendMarkdown(self, md):
+        md.registerExtension(self)
+        md.title = "PlaceHolder"
+        md.articletitle = "Placeholder"
+        md.preprocessors.register(HashtagPreprocessor(md), 'hashtag', 179)
+
+
 class TitleFinderPreprocessor(Preprocessor):
     def run(self, lines):
         new_lines = []
@@ -130,7 +146,7 @@ class DocsMaker:
     def __init__(self, log_level):
         self.LOG_LEVEL = log_level  # 0 - None, 1 - Enable, 2 - Verbose
 
-    def make_page(self, input_text, title: str, dropdown: str):
+    def make_page(self, input_text, title: str, dropdown: str, keywords: list = ['Base', 'Cringe']):
         LOG = True and self.LOG_LEVEL > 0
         VERBOSE = LOG and self.LOG_LEVEL > 1
 
@@ -144,6 +160,7 @@ class DocsMaker:
                     marker=None,
                     toc_depth="2-6"),
                 TablePreprocessorExtension(),
+                HashtagExtension(),
                 NoRenderExtension()
             ]
         )
@@ -152,8 +169,14 @@ class DocsMaker:
         page = md.toc
 
         VERBOSE and print('[DocsMaker.make_page]    Composing HTML')
+        keywords_elements = []
+        for i, keyword  in enumerate(keywords):
+            keywords_elements.append(templatehtml.HTML_KEYWORD_ELEMENT.format(keyword = keyword))
+        keyword_list = templatehtml.HTML_KEYWORD_LIST.format(keywords = ''.join(keywords_elements))
+
+        
         header = templatehtml.HTML_HEADER.format(navbar=dropdown)
-        body = templatehtml.HTML_BODY.format(header=header,
+        body = templatehtml.HTML_BODY.format(header=header, keywords = keyword_list,
                                              article=article_text, toc=md.toc,
                                              title=title)
         head = templatehtml.HTML_HEAD.format(title=title)
@@ -165,7 +188,7 @@ class DocsMaker:
 
         return page
 
-    def make_htmlfile(self, inputpath: str, filename: str, dropdown: str, title: str):
+    def make_htmlfile(self, inputpath: str, filename: str, dropdown: str, title: str, keywords: list):
         LOG = True and self.LOG_LEVEL > 0
         VERBOSE = LOG and self.LOG_LEVEL > 1
 
@@ -177,7 +200,7 @@ class DocsMaker:
         VERBOSE and print(
             '[DocsMaker.make_htmlfile]    File read successfully!')
 
-        html_page = self.make_page(input_text, title, dropdown)
+        html_page = self.make_page(input_text, title, dropdown, keywords)
 
         VERBOSE and print(
             '[DocsMaker.make_htmlfile]    Writing HTML to %s' % filename)
@@ -187,23 +210,23 @@ class DocsMaker:
         LOG and print(
             '[DocsMaker.make_htmlfile] File %s created successfully!' % filename)
 
-    def make_searh_page(self, filename: str, dropdown: str):
+    def make_search_page(self, filename: str, dropdown: str):
         LOG = True and self.LOG_LEVEL > 0
         VERBOSE = LOG and self.LOG_LEVEL > 1
 
-        LOG and print('[DocsMaker.make_searh_page] Invoked for', filename)
+        LOG and print('[DocsMaker.make_search_page] Invoked for', filename)
         header = templatehtml.HTML_HEADER.format(navbar=dropdown)
         body = templatehtml.HTML_BODY_SEARCH_PAGE.format(header=header)
         head = templatehtml.HTML_HEAD_SEARCH_PAGE
         html_page = templatehtml.HTML_PAGE.format(head=head, body=body)
         VERBOSE and print(
-            '[DocsMaker.make_searh_page]    HTML formatted, writing to file')
+            '[DocsMaker.make_search_page]    HTML formatted, writing to file')
         with open(filename, "w", encoding="utf-8") as output_file:
             output_file.write(html_page)
             output_file.close()
 
         LOG and print(
-            '[DocsMaker.make_searh_page] File %s created successfully!' % filename)
+            '[DocsMaker.make_search_page] File %s created successfully!' % filename)
 
 
 if __name__ == "__main__":
@@ -213,7 +236,7 @@ if __name__ == "__main__":
     try:
         dropdown_dict = dropdowns.make_navbardict()
         dropdown = dropdowns.make_navbar()
-        keywordsmaker.keywords_maker(dropdown_dict)
+        keywords_articles = keywordsmaker.keywords_maker(dropdown_dict)
     except Exception:
         print(traceback.format_exc())
         print('[ERROR] Error occured during data preparation!')
@@ -230,11 +253,13 @@ if __name__ == "__main__":
                 pathfolder.mkdir()
             for filename, meta in item:
                 output_path = "/".join([folder, filename])
+                keywords = next((item['keywords'] for item in keywords_articles if item["title"] == meta['Title'] and item["keywords"]), [])
                 dm.make_htmlfile(
                     "/".join([rootdir, folder, filename+".md"]),
                     "../"+output_path+".html",
                     dropdown,
-                    meta['Title']
+                    meta['Title'],
+                    keywords
                 )
                 if 'Subfolder' in meta:
                     for subfilename, submeta in meta['Subfolder']:
@@ -243,16 +268,18 @@ if __name__ == "__main__":
                         pathfolder.mkdir(exist_ok=True)
                         output_path = "/".join([folder,
                                                 meta['Subpages'], subfilename])
+                        keywords = next((item['keywords'] for item in keywords_articles if item["title"] == submeta['Title'] and item["keywords"]), [''])
                         dm.make_htmlfile(
                             "/".join([rootdir, folder, meta['Subpages'],
                                       subfilename+".md"]),
                             "../"+output_path+".html",
                             dropdown,
-                            submeta['Title']
+                            submeta['Title'],
+                            keywords
                         )
 
-        dm.make_htmlfile("/index.md", "../index.html", dropdown, "Documentation")
-        dm.make_searh_page("../search.html", dropdown)
+        dm.make_htmlfile("/index.md", "../index.html", dropdown, "Documentation", ['Whatever'])
+        dm.make_search_page("../search.html", dropdown)
     except Exception:
         print(traceback.format_exc())
         print('[ERROR] Error occured on converting pages!')

@@ -3,6 +3,11 @@
     <head>
         
     <meta charset="utf-8"/>
+    
+    <meta property="title" content="tS Docs - AI_Crew">
+    <meta property="og:title" content="tS Docs - AI_Crew">
+    <meta property="og:site_name" content="tS Docs">
+    
     <title>tS Docs - AI_Crew</title>
 
     <link rel="icon" href="/docs/src/img/ts_icon.png">
@@ -17,11 +22,11 @@
             let url = new URL(window.location.href)
             if (url.protocol !== "file:") return
             let localCssPath = "src/style.css" 
-			let urlPath = url.pathname.split("/")
+            let urlPath = url.pathname.split("/")
             let rootPosition = urlPath.indexOf("docs")
-			for (let i = rootPosition + 1; i < urlPath.length - 1; ++i) {
-				localCssPath = "../" + localCssPath
-			}
+            for (let i = rootPosition + 1; i < urlPath.length - 1; ++i) {
+                localCssPath = "../" + localCssPath
+            }
             document.getElementById("main-css").href = localCssPath
         })
     </script>
@@ -75,7 +80,7 @@
     <div class="dropdown">
         <button class="dropbtn" title="Training Center Office">TCO</button>
         <div class="dropdown-content">
-          
+          <a href="/docs/TCO/documentation_tco_grenadier.html">Обучение на специалиста (гренадира) и старшего второй двойки</a><a href="/docs/TCO/documentation_tco_rifleman.html">Обучение на райфлмена (КМБ)</a><a href="/docs/TCO/documentation_tco_rto.html">Radio Telephone Operator</a>
         </div>
     </div>
 
@@ -103,15 +108,22 @@
     </div>
 
     <div id="wrapper">
-        <div class="title"><h1>AI_Crew</h1></div>
-            <div class="toc">
+        <div class="title">
+            <h1>AI_Crew</h1>
+            <ul>
+    <li>
+        <a href="/docs/search.html?search=" target="_blank">#</a>
+    </li>
+</ul>
+        </div>
+        <div class="toc">
 <ul>
 <li><a href="#troubleshooting">Troubleshooting</a></li>
 </ul>
 </div>
 
         <div class="article">
-        <p>Водителями <span style="color:red">бронетехники</span> <span style="color:#c52334">могут</span> <warn>выступать</warn> AI-юниты (боты). Однако для корректного взаимодействия экипажа с ботом следует строго придерживаться следующих правил:<span style='color:#ff0000'>text</span></p>
+            <p>Водителями <span style="color:red">бронетехники</span> <span style="color:#c52334">могут</span> <warn>выступать</warn> AI-юниты (боты). Однако для корректного взаимодействия экипажа с ботом следует строго придерживаться следующих правил:<span style='color:#ff0000'>text</span></p>
 <ol>
 <li>Освободить технику</li>
 <li>Запросить <warn>GSO</warn> или самому создать юнита той же стороны, что и игроки (при возможности – повесить на него соответствующий кит)</li>

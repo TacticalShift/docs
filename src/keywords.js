@@ -58,11 +58,7 @@ const ARTICLES =
         ],
         "url": "/docs/SOP/documentation_sop_communications.html",
         "keywords": [
-            "RTO",
-            "РТО",
-            "рация",
-            "переговоры",
-            "соп",
+            "rto",
             "sop"
         ]
     },
@@ -74,11 +70,9 @@ const ARTICLES =
         ],
         "url": "/docs/SOP/Communications/documentation_sop_artillery.html",
         "keywords": [
-            "арта",
-            "артудар",
-            "соп",
-            "sop",
-            "artillery"
+            "artillery",
+            "rto",
+            "sop"
         ]
     },
     {
@@ -89,9 +83,8 @@ const ARTICLES =
         ],
         "url": "/docs/SOP/Communications/documentation_sop_medevac.html",
         "keywords": [
-            "Medevac",
-            "эвакуация",
-            "соп",
+            "medevac",
+            "rto",
             "sop"
         ]
     },
@@ -118,12 +111,8 @@ const ARTICLES =
         ],
         "url": "/docs/SOP/documentation_sop_cas.html",
         "keywords": [
-            "CAS",
-            "авиаподдержка",
-            "соп",
-            "sop",
-            "9-liner",
-            "6-liner"
+            "cas",
+            "sop"
         ]
     },
     {
@@ -134,8 +123,6 @@ const ARTICLES =
         "url": "/docs/SOP/documentation_sop_reserves_n_redeploy.html",
         "keywords": [
             "redeploy",
-            "редеплой",
-            "соп",
             "sop"
         ]
     },
@@ -164,10 +151,8 @@ const ARTICLES =
         ],
         "url": "/docs/SOP/AI_SOP/AI_Platoon_leadership.html",
         "keywords": [
-            "keyword1",
-            "keyword2",
-            "keyword3",
-            "keyword4"
+            "ai",
+            "sop"
         ]
     },
     {
@@ -186,6 +171,38 @@ const ARTICLES =
         ],
         "url": "/docs/SOP/gso_gso_guidelines.html",
         "keywords": []
+    },
+    {
+        "title": "Обучение на специалиста (гренадира) и старшего второй двойки",
+        "section": [
+            "TCO"
+        ],
+        "url": "/docs/TCO/documentation_tco_grenadier.html",
+        "keywords": [
+            "tco"
+        ]
+    },
+    {
+        "title": "Обучение на райфлмена (КМБ)",
+        "section": [
+            "TCO"
+        ],
+        "url": "/docs/TCO/documentation_tco_rifleman.html",
+        "keywords": [
+            "tco"
+        ]
+    },
+    {
+        "title": "Radio Telephone Operator",
+        "section": [
+            "TCO"
+        ],
+        "url": "/docs/TCO/documentation_tco_rto.html",
+        "keywords": [
+            "rto",
+            "tco",
+            "sop"
+        ]
     },
     {
         "title": "Требования к оформлению миссии",
@@ -242,35 +259,20 @@ const ARTICLES =
         ],
         "url": "/docs/SRV/howtoserver.html",
         "keywords": [
-            "srv",
-            "сервер"
+            "srv"
         ]
     }
 ]
 
 const KEYWORDS  =
 {
-    "RTO": 1,
-    "РТО": 1,
-    "рация": 1,
-    "переговоры": 1,
-    "соп": 5,
-    "sop": 5,
-    "арта": 1,
-    "артудар": 1,
+    "rto": 4,
+    "sop": 7,
     "artillery": 1,
-    "Medevac": 1,
-    "эвакуация": 1,
-    "CAS": 1,
-    "авиаподдержка": 1,
-    "9-liner": 1,
-    "6-liner": 1,
+    "medevac": 1,
+    "cas": 1,
     "redeploy": 1,
-    "редеплой": 1,
-    "keyword1": 1,
-    "keyword2": 1,
-    "keyword3": 1,
-    "keyword4": 1,
-    "srv": 1,
-    "сервер": 1
+    "ai": 1,
+    "tco": 3,
+    "srv": 1
 }
