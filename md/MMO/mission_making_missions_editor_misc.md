@@ -93,9 +93,9 @@
 
 6. Нажмите Publish repository:
 
-    <img src="/docs/src/media/Publishrepository1.png" alt="Publish repository 1" />
+    <img src="/docs/src/media/PubslishRepository1.png" alt="Publish repository 1" />
 
-    <img src="/docs/src/media/Publishrepository2.png" alt="Publish repository 2" />
+    <img src="/docs/src/media/PubslishRepository2.png" alt="Publish repository 2" />
 
 ## Обновление репозитория
 
