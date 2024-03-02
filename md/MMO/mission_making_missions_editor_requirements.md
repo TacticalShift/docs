@@ -1,4 +1,5 @@
 @Meta(Position=1 ) NORENDER
+@Keywords(mmo) NORENDER
 
 # Требования к оформлению миссии
 

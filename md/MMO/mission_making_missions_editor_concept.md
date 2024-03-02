@@ -1,4 +1,5 @@
 @Meta(Position=3 ) NORENDER
+@Keywords(mmo) NORENDER
 
 # Концепт и структура миссии
 
