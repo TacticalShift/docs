@@ -210,7 +210,9 @@ const ARTICLES =
             "MMO"
         ],
         "url": "/docs/MMO/mission_making_missions_editor_requirements.html",
-        "keywords": []
+        "keywords": [
+            "mmo"
+        ]
     },
     {
         "title": "Tactical Shift Framework",
@@ -228,7 +230,9 @@ const ARTICLES =
             "MMO"
         ],
         "url": "/docs/MMO/mission_making_missions_editor_concept.html",
-        "keywords": []
+        "keywords": [
+            "mmo"
+        ]
     },
     {
         "title": "None",
@@ -236,7 +240,9 @@ const ARTICLES =
             "MMO"
         ],
         "url": "/docs/MMO/mission_making_missions_editor_production.html",
-        "keywords": []
+        "keywords": [
+            "mmo"
+        ]
     },
     {
         "title": "MMO-Misc",
@@ -254,7 +260,9 @@ const ARTICLES =
             "MMO"
         ],
         "url": "/docs/MMO/mission_making_missions_editor_teamwork.html",
-        "keywords": []
+        "keywords": [
+            "mmo"
+        ]
     },
     {
         "title": "How to server",
@@ -278,6 +286,6 @@ const KEYWORDS  =
     "redeploy": 1,
     "ai": 1,
     "tco": 3,
-    "mmo": 2,
+    "mmo": 6,
     "srv": 1
 }
