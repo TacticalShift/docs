@@ -213,12 +213,14 @@ const ARTICLES =
         "keywords": []
     },
     {
-        "title": "None",
+        "title": "Tactical Shift Framework",
         "section": [
             "MMO"
         ],
         "url": "/docs/MMO/mission_making_missions_editor_framework.html",
-        "keywords": []
+        "keywords": [
+            "mmo"
+        ]
     },
     {
         "title": "Концепт и структура миссии",
@@ -237,12 +239,14 @@ const ARTICLES =
         "keywords": []
     },
     {
-        "title": "None",
+        "title": "MMO-Misc",
         "section": [
             "MMO"
         ],
         "url": "/docs/MMO/mission_making_missions_editor_misc.html",
-        "keywords": []
+        "keywords": [
+            "mmo"
+        ]
     },
     {
         "title": "None",
@@ -274,5 +278,6 @@ const KEYWORDS  =
     "redeploy": 1,
     "ai": 1,
     "tco": 3,
+    "mmo": 2,
     "srv": 1
 }

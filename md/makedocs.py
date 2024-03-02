@@ -155,6 +155,7 @@ class DocsMaker:
             extensions=[
                 TitleFinderExtension(),
                 'fenced_code',
+                'abbr',
                 TagsExtension(),
                 TocExtension(
                     marker=None,
@@ -268,7 +269,7 @@ if __name__ == "__main__":
                         pathfolder.mkdir(exist_ok=True)
                         output_path = "/".join([folder,
                                                 meta['Subpages'], subfilename])
-                        keywords = next((item['keywords'] for item in keywords_articles if item["title"] == submeta['Title'] and item["keywords"]), [''])
+                        keywords = next((item['keywords'] for item in keywords_articles if item["title"] == submeta['Title'] and item["keywords"]), [])
                         dm.make_htmlfile(
                             "/".join([rootdir, folder, meta['Subpages'],
                                       subfilename+".md"]),

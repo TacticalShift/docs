@@ -4,11 +4,11 @@
         
     <meta charset="utf-8"/>
     
-    <meta property="title" content="tS Docs - None">
-    <meta property="og:title" content="tS Docs - None">
+    <meta property="title" content="tS Docs - MMO-Misc">
+    <meta property="og:title" content="tS Docs - MMO-Misc">
     <meta property="og:site_name" content="tS Docs">
     
-    <title>tS Docs - None</title>
+    <title>tS Docs - MMO-Misc</title>
 
     <link rel="icon" href="/docs/src/img/ts_icon.png">
     <link id="main-css" rel="stylesheet" href="/docs/src/style.css">
@@ -87,7 +87,7 @@
     <div class="dropdown">
         <button class="dropbtn" title="Mission Making Office">MMO</button>
         <div class="dropdown-content">
-          <a href="/docs/MMO/mission_making_missions_editor_requirements.html">Требования к оформлению миссии</a><a href="/docs/MMO/mission_making_missions_editor_framework.html">None</a><a href="/docs/MMO/mission_making_missions_editor_concept.html">Концепт и структура миссии</a><a href="/docs/MMO/mission_making_missions_editor_production.html">None</a><a href="/docs/MMO/mission_making_missions_editor_misc.html">None</a><a href="/docs/MMO/mission_making_missions_editor_teamwork.html">None</a>
+          <a href="/docs/MMO/mission_making_missions_editor_requirements.html">Требования к оформлению миссии</a><a href="/docs/MMO/mission_making_missions_editor_framework.html">Tactical Shift Framework</a><a href="/docs/MMO/mission_making_missions_editor_concept.html">Концепт и структура миссии</a><a href="/docs/MMO/mission_making_missions_editor_production.html">None</a><a href="/docs/MMO/mission_making_missions_editor_misc.html">MMO-Misc</a><a href="/docs/MMO/mission_making_missions_editor_teamwork.html">None</a>
         </div>
     </div>
 
@@ -109,15 +109,137 @@
 
     <div id="wrapper">
         <div class="title">
-            <h1>None</h1>
-            <ul></ul>
+            <h1>MMO-Misc</h1>
+            <ul>
+    <li>
+        <a href="/docs/search.html?search=mmo" target="_blank">#mmo</a>
+    </li>
+</ul>
         </div>
         <div class="toc">
-<ul></ul>
+<ul>
+<li><a href="#_1">Правила создания и поддержки миссий</a><ul>
+<li><a href="#_2">Создание новой миссии</a></li>
+<li><a href="#_3">Обновление миссии</a></li>
+<li><a href="#_4">Ревью миссии</a></li>
+</ul>
+</li>
+<li><a href="#_5">Создание репозитория миссии</a></li>
+<li><a href="#_6">Обновление репозитория</a></li>
+</ul>
 </div>
 
         <div class="article">
-            
+            <h2 id="_1">Правила создания и поддержки миссий</h2>
+<h3 id="_2">Создание новой миссии</h3>
+<ol>
+<li>Закончив редактирование миссии - заливаем ее на GitHub отдельным репозиторием</li>
+<li>Создаем карточку-ссылку на свой репозиторий <a href="https://github.com/orgs/rempopo/projects/3">в проекте Missions</a>, в колонке In <strong>Progress / In Review</strong></li>
+<li>Просим в ММО-чатке сделать ревью
+Исправляем выявленные ошибки и проблемы</li>
+<li>Просим в ММО-чатке сделать повторное ревью</li>
+<li>После получения 2х одобрений (approve):<ul>
+<li>переносим карточку в колонку <strong>Done</strong></li>
+<li>очищаем локальную версию миссию в /mpmissions (запуском tSF_FileSweeper.bat и удалением прочих неигровых файлов), выключаем режим редактирования в dzn_gear</li>
+<li>в редакторе Arma 3 делаем экспорт миссии</li>
+<li>заливаем миссию на сервер</li>
+</ul>
+</li>
+</ol>
+<h3 id="_3">Обновление миссии</h3>
+<ol>
+<li>Обновить миссию локально:<ul>
+<li>Сделайте копию папки с миссией, заодно переименовав ее в соответсвии с правилами оформления миссий</li>
+<li>Установите свежие компоненты через tSF_Installer, установите флаг MAKE_BACKUP=1, чтобы сохранить старые файлы с настройками</li>
+<li>Обновите объекты, снаряжение, настройки; исправьте все ранее замеченные проблемы; обновите брифинг и краткое описание миссии в соответствии с текущим сценарием миссии</li>
+<li>Протестируйте миссию</li>
+</ul>
+</li>
+<li>Обновите файл readme.md (changelog, версию и т.п.)</li>
+<li>Обновите репозиторий</li>
+<li><a href="https://github.com/orgs/rempopo/projects/3">В проекте Missions</a> переносим карточку миссии в колонку <strong>In Progress / In Review</strong></li>
+<li>Следуем по шагам 3-6 из п.<a href="#cоздание-новой-миссии">Создание новой миссии</a></li>
+</ol>
+<h3 id="_4">Ревью миссии</h3>
+<ol>
+<li>Выкачайте миссию</li>
+<li>Детально изучите и опробуйте миссию (например, попробовать пройти с бессмертием):<ul>
+<li>Изучите брифинг и убедитесь, что из него понятно что и как делать в миссии (+ орфография и пунктуация)</li>
+<li>Проверьте работоспособность миссии, выдачу китов, работу ассетов (патроны в машинах, размещение CCP, FARP, артиллерия и воздушная поддержка)</li>
+<li>Проверьте миссию на соответствие правилам и руководствам</li>
+<li>Убедитесь, что спаунятся боты и подкрепления</li>
+<li>Оцените происходящее (реалистичность, соответствие описываемой эпохе) и доступные ассеты (хватает ли их для выполнения миссии взрывчатки/ПТ средств, есть ли освещение для ночной версии), соответствие снаряжения и техники объявленной эпохе (современные вертолеты с тепловизором не должны попадать в 1960ый)</li>
+</ul>
+</li>
+<li>Создайте Issue в репозитории (отдельный на каждую проблему или один общий, перечислив проблемы пронумерованным списком)</li>
+<li>Обсудите выявленные проблемы (возможно это вы неправильно поняли, а может у создателя недостаточно знаний в области и вы сможете ему помочь)</li>
+<li>После того как все проблемы будут исправлены - желательно еще раз опробовать миссию с позиции игрока и GSO (просто запустите и проверьте, что ничего не отваливается и не лагает, и вообще ее можно пройти)</li>
+<li>Если вопросов и предложений больше не осталось - отредактируйте файл readme.md и впишите ваш ник и статус ревью; если суммарно два ревью дали положительную оценку – измените статус на APPROVED</li>
+</ol>
+<pre><code class="language-html">| Reviewer | Result |
+| ------------ | ------------- |
+| Nickname1 | APPROVE |
+| Nickname2  | APPROVE  |
+</code></pre>
+<p><em>Обрадуйте создателя миссии, сообщив о вашем решении</em></p>
+<h2 id="_5">Создание репозитория миссии</h2>
+<ol>
+<li>
+<p>Создайте и сохраните миссию в редакторе Arma 3</p>
+</li>
+<li>
+<p>Перейдите в папку миссии (в редакторе Scenario - Open Scenario Folder) и обновите файл readme.md заменив содержимое на следующее (укажите собственные параметры):</p>
+<p>```</p>
+<pre><code># {Имя миссии}              (e.g. CO20-CIA-Radarworks.takistan)
+Краткое описание миссии     (e.g. CIA raid to destroy AA radar)
+
+&lt;img src='{Image URL}' /&gt;   (опционально - overview картинка из репозитории миссии, доступна по правому клику - Копировать URL картинки)
+
+### Version: {Версия}       (e.g. 1A)
+
+### Changelog: {Перечень изменений/отличий от предыдущей версии}
+- Framework updated to latest on 17.03.2018
+- Added Platoon Sergeant
+...
+
+    # NOT APPROVED
+    | Reviewer | Result |
+    | ------------ | ------------- |
+    | - | - |
+    | - | - |
+</code></pre>
+<p>```</p>
+</li>
+<li>
+<p>Скопируйте <strong>путь до папки с миссией</strong> или сделайте копию миссии в удобной для вас папке и скопируйте путь до нее.
+Например, путь: C:\Users\MyUser\Documents\Arma 3 - Other Profiles\MyUser\mpmissions\CO99-Test-Mission.Stratis</p>
+</li>
+<li>
+<p>Откройте GitHub Desktop</p>
+</li>
+<li>
+<p>File → New Repository:</p>
+<p><img src="/docs/src/media/NewRepository.png" alt="NewRepository" /></p>
+</li>
+<li>
+<p>Нажмите Publish repository:</p>
+<p><img src="/docs/src/media/Publishrepository1.png" alt="Publish repository 1" /></p>
+<p><img src="/docs/src/media/Publishrepository2.png" alt="Publish repository 2" /></p>
+</li>
+</ol>
+<h2 id="_6">Обновление репозитория</h2>
+<ol>
+<li>
+<p>В репозитории вашей миссии на GitHub в создайте новую ветвь с названием соответствующему <strong>прошлой</strong> версии миссии (т.е. при обновлении миссии версии 1B до 1C - создайте ветку <code>1B</code>, таким образом прошлые рабочие версии вашей миссии останутся доступны для истории):</p>
+<p><img src="/docs/src/media/UpdateRepo1.png" alt="Update repository 1" /></p>
+<p>После этого продолжаем работу в ветке master</p>
+</li>
+<li>
+<p>Обновите репозиторий:</p>
+<p><img src="/docs/src/media/UpdateRepo2.png" alt="Update repository 2" /></p>
+<p><img src="/docs/src/media/UpdateRepo3.png" alt="Update repository 3" /></p>
+</li>
+</ol>
         </div>
     </div>
 
