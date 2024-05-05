@@ -378,6 +378,7 @@ pre {
 	background-color: #e7dddd;
 	padding: 10px;
 	border-radius: 10px;
+	text-wrap: pretty;
 }
 
 mark {

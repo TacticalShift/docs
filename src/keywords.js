@@ -235,7 +235,7 @@ const ARTICLES =
         ]
     },
     {
-        "title": "None",
+        "title": "Сборка миссии",
         "section": [
             "MMO"
         ],
@@ -250,16 +250,6 @@ const ARTICLES =
             "MMO"
         ],
         "url": "/docs/MMO/mission_making_missions_editor_misc.html",
-        "keywords": [
-            "mmo"
-        ]
-    },
-    {
-        "title": "None",
-        "section": [
-            "MMO"
-        ],
-        "url": "/docs/MMO/mission_making_missions_editor_teamwork.html",
         "keywords": [
             "mmo"
         ]
@@ -286,6 +276,6 @@ const KEYWORDS  =
     "redeploy": 1,
     "ai": 1,
     "tco": 3,
-    "mmo": 6,
+    "mmo": 5,
     "srv": 1
 }
