@@ -36,18 +36,21 @@
     - [tS Framework (включает dzn_brv)](https://github.com/10Dozen/dzn_tSFramework)
 2. Распакуйте архивы в отдельные папки, а затем скопируйте содержимое каждого архива в папку с вашей миссии (в порядке скачивания). Подтвердите замену всех файлов.
 
-## Из чего состоит tSFramework
-
-Ссылка: [GitHub](https://github.com/10Dozen/dzn_tSFramework)
-tSFramework это набор sqf-скриптов и html-утилит для создания миссий в Arma 3.
 
 ## Работа с tSFramework
+
+### Из чего состоит tSFramework
+
+Ссылка: [GitHub](https://github.com/10Dozen/dzn_tSFramework)
+
+tSFramework это набор sqf-скриптов и html-утилит для создания миссий в Arma 3.
+
 
 ### Включение модулей
 В файле ^dzn_tSFramework/Settings.yaml^ можно задать какие из модулей будут включены в миссии. Впоследующем неактивные модули будут удалены утилитой `tSFileSweeper.bat`, что позволит уменьшить итоговый размер файла миссии.
 
 
-## Работа с Settings.yaml
+### Работа с Settings.yaml
 Некоторые модули используют специфичный формат данных для собственной настройки. Изучите [инструкцию](https://github.com/10Dozen/dzn_commonFunctions/wiki/Settings-File-Markup-Language-(SFML)) перед тем как начать работать с этими файлами!
 
 

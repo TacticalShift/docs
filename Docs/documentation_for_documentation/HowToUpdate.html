@@ -3,16 +3,33 @@
     <head>
         
     <meta charset="utf-8"/>
-    <title>tS Docs - Поиск</title>
+    
+    <meta property="title" content="tS Docs - Как обновить документы?">
+    <meta property="og:title" content="tS Docs - Как обновить документы?">
+    <meta property="og:site_name" content="tS Docs">
+    
+    <title>tS Docs - Как обновить документы?</title>
 
     <link rel="icon" href="/docs/src/img/ts_icon.png">
-    <link rel="stylesheet" href="/docs/src/style.css">
+    <link id="main-css" rel="stylesheet" href="/docs/src/style.css">
 
     <script src="/docs/src/keywords.js"></script>
     <script src="/docs/src/ruleEnum.js"></script>
     <script src="/docs/src/autocompleter.js"></script>
     <script src="/docs/src/searchWidget.js"></script>
-    <script src="/docs/src/search.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let url = new URL(window.location.href)
+            if (url.protocol !== "file:") return
+            let localCssPath = "src/style.css" 
+            let urlPath = url.pathname.split("/")
+            let rootPosition = urlPath.indexOf("docs")
+            for (let i = rootPosition + 1; i < urlPath.length - 1; ++i) {
+                localCssPath = "../" + localCssPath
+            }
+            document.getElementById("main-css").href = localCssPath
+        })
+    </script>
 
     </head>
     <body>
@@ -91,9 +108,44 @@
     </div>
 
     <div id="wrapper">
-        <div class="title"><h1>Результат поиска: <small></small></h1></div>
-        <div class="toc"></div>
-        <div class="article"></div>
+        <div class="title">
+            <h1>Как обновить документы?</h1>
+            <ul></ul>
+        </div>
+        <div class="toc">
+<ul>
+<li><a href="#_1">Пререквизиты</a></li>
+<li><a href="#_2">Где находятся статьи?</a></li>
+<li><a href="#_3">Как открыть статью?</a></li>
+<li><a href="#_4">Отредактировал, что дальше?</a></li>
+<li><a href="#_5">Скрипт ругается...</a></li>
+</ul>
+</div>
+
+        <div class="article">
+            <h3 id="_1">Пререквизиты</h3>
+<ul>
+<li>Установите Python 3+ (<a href="https://www.python.org/downloads/">официальный сайт</a>)</li>
+<li>
+<p>Установите пакет <mark>markdown</mark>. Откройте командную строку <kbd>Win + R</kbd> -&gt; <mark>cmd</mark> -&gt; OK, введите команду и нажмите Enter:</p>
+<pre><code>pip install markdown
+</code></pre>
+</li>
+<li>
+<p>Скачайте репозиторий docs (воспользуйтейсь <a href="https://desktop.github.com/">GitHub Desktop</a>)</p>
+</li>
+</ul>
+<h3 id="_2">Где находятся статьи?</h3>
+<p>"Сырые" статьи лежат в директории <mark>md</mark>, а внутри нее в суб-директориях соответствующих расположению статьи в навигационном меню на сайте.</p>
+<h3 id="_3">Как открыть статью?</h3>
+<p>Любым текстовым редактором - например, <a href="https://notepad-plus-plus.org/downloads/">Notepad++</a> или <a href="https://code.visualstudio.com/">VS Code</a>. К этим редакторам существуют плагины, позволяющие просматривать страницу в уже "оформленом" виде прямо во время редактирования.</p>
+<p>Сам язык разметки Markdown хорошо описан <a href="https://gist.github.com/Jekins/2bf2d0638163f1294637">здесь</a>, а наше расширение - в статьях этого раздела.</p>
+<h3 id="_4">Отредактировал, что дальше?</h3>
+<p>Выполните скрипт <mark>md/Build.bat</mark> - он сформирует из файлов .md полноценные .html страницы. </p>
+<p>Когда скрипт закончит и пожелает вам хорошего дня (это важно!) - вам останется залить изменения на удаленный репозиторий, создав коммит и сделав Push в GitHub Desktop.</p>
+<h3 id="_5">Скрипт ругается...</h3>
+<p>Иногда скрипт не может работать с папками непосредственно в локальной копии репозитория. Попробуйте скопировать содержимое вашей папки <mark>docs</mark> в другое место, выполнить скрипт, а затем скопировать все назад в ваш локальный репозиторий.</p>
+        </div>
     </div>
 
     </body>

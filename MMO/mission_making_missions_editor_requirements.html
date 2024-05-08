@@ -49,7 +49,7 @@
     <div class="dropdown-2l">
         <span>Документация на документацию<arrow>⇨</arrow></span>
         <div class="dropdown-2l-content">
-            <a href="/docs/Docs/documentation_for_documentation/TablePreprocessor.html">Препроцессор таблиц</a><a href="/docs/Docs/documentation_for_documentation/tsDocs.html">tS Docs</a>
+            <a href="/docs/Docs/documentation_for_documentation/HowToUpdate.html">Как обновить документы?</a><a href="/docs/Docs/documentation_for_documentation/TablePreprocessor.html">Препроцессор таблиц</a><a href="/docs/Docs/documentation_for_documentation/tsDocs.html">tS Docs</a>
         </div>
     </div>
 
@@ -121,8 +121,9 @@
 <li><a href="#1">1. Тип миссии</a></li>
 <li><a href="#2">2. Имя файла миссии</a></li>
 <li><a href="#3">3. Имя миссии</a></li>
-<li><a href="#4">4. Брифинг</a></li>
-<li><a href="#5">5. Файл миссии не должен быть бинаризирован</a></li>
+<li><a href="#4">4. Картинка для миссии</a></li>
+<li><a href="#5">5. Брифинг</a></li>
+<li><a href="#6">6. Файл миссии не должен быть бинаризирован</a></li>
 </ul>
 </div>
 
@@ -158,7 +159,7 @@
 </ul>
 <p>Примеры правильных названий: <em>CO19-Operation-Pregnant-Kitties-1A, CO22-Black-Mirror-3A, CO15-Taira-Russi-1F</em></p>
 <h2 id="3">3. Имя миссии</h2>
-<p>Имя миссии должно быть выполнено в формате:</p>
+<p>Имя миссии (задается в редакторе/tSF 3DEN Tool - Configure Scenario) должно быть выполнено в формате:</p>
 <p><mark>(mode)(players) (missionName) ( (version) )</mark></p>
 <p>, где:</p>
 <ul>
@@ -168,7 +169,14 @@
 <li>(version) – версия в формате <mark>1B, 2A, 3E</mark>, при этом обновление миссии обозначается как <mark>1+литера</mark> (1A, 1B, 1C), а полная переделка миссии обозначается как (<mark>цифра версии</mark>)A (2A, 3A, 4A)</li>
 </ul>
 <p>Примеры правильных названий: <em>CO19 Operation Pregnant Kitties (1A), CO22 Black Mirror (3A), CO15 Taira Russi (1F)</em></p>
-<h2 id="4">4. Брифинг</h2>
+<h2 id="4">4. Картинка для миссии</h2>
+<p>Каждая миссия должна быть снабжена картинкой-обложкой, оформленной в едином стиле с другими миссиям:</p>
+<ul>
+<li>файл картинки должен иметь название <mark>overview.jpg</mark></li>
+<li>в верхнем углу - лого Tactical Shift</li>
+<li>снизу - название миссии</li>
+</ul>
+<h2 id="5">5. Брифинг</h2>
 <p>Брифинг должен быть выполнен в стандартном формате:
 <table class=" zebra-table">
 	<tr>
@@ -226,7 +234,7 @@
 		<td>Информация которую увидит только ГСО. Указать какой тактики будет придерживаться враг, какие резервы он имеет и прочие советы по курированию миссии.</td>
 	</tr>
 </table></p>
-<h2 id="5">5. Файл миссии не должен быть бинаризирован</h2>
+<h2 id="6">6. Файл миссии не должен быть бинаризирован</h2>
 <p>При сохранении миссии убедитесь, что не установлен флаг 'Binarize scenario file'. Иначе в последующем вашу миссию будет невозможно отредактировать ни в текстовом редакторе (например, после того как один из использованных модов сломался), ни в редакторе игры.</p>
         </div>
     </div>

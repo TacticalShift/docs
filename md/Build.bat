@@ -1,0 +1,3 @@
+py makedocs.py
+
+@pause
