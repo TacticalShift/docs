@@ -43,6 +43,15 @@ const ARTICLES =
         "keywords": []
     },
     {
+        "title": "Как добавить картинки?",
+        "section": [
+            "Docs",
+            "documentation_for_documentation"
+        ],
+        "url": "/docs/Docs/documentation_for_documentation/HowtoPics.html",
+        "keywords": []
+    },
+    {
         "title": "Препроцессор таблиц",
         "section": [
             "Docs",

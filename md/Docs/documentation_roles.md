@@ -2,7 +2,7 @@
 
 # Роли и обязанности
 
-<img src="/docs/src/media/Carl.png" alt="Carl" />
+![Carl](/docs/src/media/Carl.png)
 
 ## В сообществе
 

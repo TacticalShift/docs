@@ -1,4 +1,4 @@
-@Meta(Hide=0) NORENDER
+@Meta(Position=1, Hide=0) NORENDER
 
 # Как обновить документы?
 

@@ -379,6 +379,7 @@ pre {
 	padding: 10px;
 	border-radius: 10px;
 	text-wrap: pretty;
+	overflow-wrap: break-word;
 }
 
 mark {
