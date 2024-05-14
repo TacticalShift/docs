@@ -360,22 +360,27 @@ h3 {
 	border-bottom: 3px solid #343a40;
 }
 
-h5 {
-	font-size: 15px !important;
+h4 {
+	font-size: 18px !important;
 	font-weight: bold !important;
 }
 
-a {
-	color: #8e0000;
+h5 {
+	font-size: 16px !important;
+	font-weight: bold !important;
+	text-decoration: underline;
+}
 
+a {
+	color: #e92929;
 }
 
 a:hover {
-	color: #c52334;
+	color: #950505;
 }
 
 pre {
-	background-color: #e7dddd;
+	background-color: #ff000021;
 	padding: 10px;
 	border-radius: 10px;
 	text-wrap: pretty;
@@ -383,14 +388,28 @@ pre {
 }
 
 mark {
-	background-color: #b6b6b6;
-	border: 2px solid #b6b6b6;
+	background-color: #d7d7d7;
+	padding: 1px 5px 1px 5px;
 	border-radius: 5px;
 }
 
 highlight {
 	font-style: italic;
 	background-color: #c6ea2273;
+}
+
+code {
+	background-color: #ff000021;
+	border-radius: 5px;
+	padding: 3px;
+	font-size: 14px;
+}
+
+pre > code {
+	background-color: unset;
+	border-radius: unset;
+	padding: unset;
+	font-size: unset;
 }
 
 warn {

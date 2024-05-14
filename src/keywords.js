@@ -263,7 +263,7 @@ const ARTICLES =
         ]
     },
     {
-        "title": "MMO-Misc",
+        "title": "Ревью и поддержка миссии",
         "section": [
             "MMO"
         ],

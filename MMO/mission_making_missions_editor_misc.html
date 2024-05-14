@@ -4,11 +4,11 @@
         
     <meta charset="utf-8"/>
     
-    <meta property="title" content="tS Docs - MMO-Misc">
-    <meta property="og:title" content="tS Docs - MMO-Misc">
+    <meta property="title" content="tS Docs - Ревью и поддержка миссии">
+    <meta property="og:title" content="tS Docs - Ревью и поддержка миссии">
     <meta property="og:site_name" content="tS Docs">
     
-    <title>tS Docs - MMO-Misc</title>
+    <title>tS Docs - Ревью и поддержка миссии</title>
 
     <link rel="icon" href="/docs/src/img/ts_icon.png">
     <link id="main-css" rel="stylesheet" href="/docs/src/style.css">
@@ -87,7 +87,7 @@
     <div class="dropdown">
         <button class="dropbtn" title="Mission Making Office">MMO</button>
         <div class="dropdown-content">
-          <a href="/docs/MMO/mission_making_missions_editor_requirements.html">Требования к оформлению миссии</a><a href="/docs/MMO/mission_making_missions_editor_framework.html">Tactical Shift Framework</a><a href="/docs/MMO/mission_making_missions_editor_concept.html">Концепт и структура миссии</a><a href="/docs/MMO/mission_making_missions_editor_production.html">Сборка миссии</a><a href="/docs/MMO/mission_making_missions_editor_misc.html">MMO-Misc</a>
+          <a href="/docs/MMO/mission_making_missions_editor_requirements.html">Требования к оформлению миссии</a><a href="/docs/MMO/mission_making_missions_editor_framework.html">Tactical Shift Framework</a><a href="/docs/MMO/mission_making_missions_editor_concept.html">Концепт и структура миссии</a><a href="/docs/MMO/mission_making_missions_editor_production.html">Сборка миссии</a><a href="/docs/MMO/mission_making_missions_editor_misc.html">Ревью и поддержка миссии</a>
         </div>
     </div>
 
@@ -109,7 +109,7 @@
 
     <div id="wrapper">
         <div class="title">
-            <h1>MMO-Misc</h1>
+            <h1>Ревью и поддержка миссии</h1>
             <ul>
     <li>
         <a href="/docs/search.html?search=mmo" target="_blank">#mmo</a>
@@ -119,9 +119,12 @@
         <div class="toc">
 <ul>
 <li><a href="#_1">Правила создания и поддержки миссий</a><ul>
-<li><a href="#_2">Создание новой миссии</a></li>
-<li><a href="#_3">Обновление миссии</a></li>
-<li><a href="#_4">Порядок действий рецензента (ревьювера)</a></li>
+<li><a href="#_2">Порядок действий создателя миссии</a><ul>
+<li><a href="#_3">Создание новой миссии</a></li>
+<li><a href="#_4">Обновление миссии</a></li>
+</ul>
+</li>
+<li><a href="#_5">Порядок действий рецензента (ревьювера)</a></li>
 </ul>
 </li>
 </ul>
@@ -129,25 +132,26 @@
 
         <div class="article">
             <h2 id="_1">Правила создания и поддержки миссий</h2>
-<h3 id="_2">Создание новой миссии</h3>
+<h3 id="_2">Порядок действий создателя миссии</h3>
+<h4 id="_3">Создание новой миссии</h4>
 <p><a href="https://www.youtube.com/watch?v=GuwwU50Z_7k">Видео-туториал</a></p>
 <ol>
 <li>Завершает разработку сценария и проверят, что:<ul>
 <li>При старте и ходе миссии не возникают скриптовые ошибки.</li>
-<li>Не возникает ошибок от фреймворка (на карте в <code>Diagnostics</code> - <code>! ОШИБКИ !</code> нет ошибок).</li>
-<li>В прочих топиках <code>Diagnostics</code> нет ошибок (все зоны dynai помечены зеленым, все наборы снаряжения в GAT найдены).</li>
-<li>Убедиться, что все роли командиров и наводчиков имеют: бинокль/дальномер, ДВ радио, инструменты карты, фонарик для карты, в миссиях без раций - свисток.</li>
-<li>Убедиться, что все роли командиров авторизированы на использование Артиллерии или Воздушного транспорта (модуль <code>Authorization</code>)</li>
-<li>Брифинг отображается корректно</li>
-<li>На слоттинге есть читаемое краткое описание миссии</li>
-<li>На слоттинге отряды идут по порядку нумерации</li>
+<li>Не возникает ошибок от фреймворка (на карте в <mark>Diagnostics - <warn> ОШИБКИ </warn></mark> нет ошибок).</li>
+<li>В прочих топиках <mark>Diagnostics</mark> нет ошибок: все зоны dynai помечены зеленым, все наборы снаряжения в GAT найдены.</li>
+<li>Все роли командиров и наводчиков имеют: бинокль/дальномер, ДВ радио, инструменты карты, фонарик для карты, в миссиях без раций - свисток.</li>
+<li>Все роли командиров авторизированы на использование Артиллерии или Воздушного транспорта (модуль <mark>Authorization</mark>).</li>
+<li>Брифинг отображается корректно.</li>
+<li>На слоттинге есть читаемое краткое описание миссии, в параметрах миссии есть описание важных слотов.</li>
+<li>На слоттинге отряды идут по порядку нумерации: пехотные отделения - 1'1, 1'2, отделения поддержки - 1'3, 1'4, экипажи, штаб - 1'6 или 1'0.</li>
 </ul>
 </li>
 <li>Заархвируйте папку вашей миссии и загрузите в репозиторий <a href="https://github.com/TacticalShift/mmo">TacticalShift/MMO</a> (это действие доступно только члену организации на GitHub, попросите в Дискорде чтобы вас добавили!)</li>
 <li>Создайте <a href="https://github.com/TacticalShift/mmo/issues/new?assignees=&amp;labels=требуется+ревью&amp;projects=&amp;template=ревью.md&amp;title=COXX_YourMissionName">новый тикет</a> указав:<ul>
-<li>Заголовок = имя вашей миссии (например, CO14 My Mission (1A))</li>
+<li>Заголовок = имя вашей миссии (например, <mark>CO14 My Mission (1A)</mark>)</li>
 <li>Текст = Краткое описание миссии, ссылка на загруженный файл миссии</li>
-<li>Лейбл = "требуется ревью"</li>
+<li>Лейбл = <code>требуется ревью</code></li>
 </ul>
 </li>
 <li>Скопируйте ссылку на тикет и напишите сообщение в канале <code>#mmo-gso-chat</code> в Discord, попросите проверить вашу миссию.</li>
@@ -167,7 +171,8 @@
 </ul>
 </li>
 </ol>
-<h3 id="_3">Обновление миссии</h3>
+<h4 id="_4">Обновление миссии</h4>
+<p>Правила для обновления миссии, которая уже была загружена в <em>serverpack</em>. Обновление миссии в рамках ревью смотри в п.5 предыдущего раздела.</p>
 <ol>
 <li>Сделайте копию папки с миссией, заодно переименовав ее в соответсвии с правилами оформления миссий (например, с <mark>CO14_MyMission_1A.chernarus</mark> в <mark>CO14_MyMission_1B.chernarus</mark>).</li>
 <li>Обновите брифинг и краткое описание миссии (как минимум, укажите новую версию (1B))</li>
@@ -175,15 +180,15 @@
 <li>Протестируйте миссию. Убедитесь, что не возникают скриптовые ошибки или ошибки от фреймворка.</li>
 <li>Заархвируйте папку вашей миссии и загрузите в репозиторий <a href="https://github.com/TacticalShift/mmo">TacticalShift/MMO</a></li>
 <li>Создайте <a href="https://github.com/TacticalShift/mmo/issues/new?assignees=&amp;labels=требуется+ревью&amp;projects=&amp;template=ревью.md&amp;title=COXX_YourMissionName">новый тикет</a> указав:<ul>
-<li>Заголовок = имя вашей миссии (например, CO14 My Mission (1B))</li>
+<li>Заголовок = имя вашей миссии (например, <mark>CO14 My Mission (1A)</mark>)</li>
 <li>Текст = Краткое описание миссии, ссылка на загруженный файл миссии</li>
-<li>Лейбл = "требуется ревью"</li>
+<li>Лейбл = <code>требуется ревью</code></li>
 </ul>
 </li>
 <li>Скопируйте ссылку на тикет и напишите сообщение в канале <code>#mmo-gso-chat</code> в Discord, попросите проверить вашу миссию.</li>
 <li>Сделайте исправления после ревью, а после одобрения от рецензентов - загрузите</li>
 </ol>
-<h3 id="_4">Порядок действий рецензента (ревьювера)</h3>
+<h3 id="_5">Порядок действий рецензента (ревьювера)</h3>
 <ol>
 <li>Скачать архив с миссией и проверить ее:<ul>
 <li>Изучите брифинг и убедитесь, что из него понятно что и как делать в миссии (+ орфография и пунктуация)</li>
@@ -199,7 +204,9 @@
 <li>добавить тикету лейбл <code>к исправлению</code></li>
 </ul>
 </li>
-<li>После того, как все замечания исправлены - перепроверить обновленную миссию. Если вновь появились замечания, то внести их. Если замечаний больше нет и вы единственный рецензент, то снять лейбл <code>к исправлению</code> и добавить лейбл <code>одобрено</code></li>
+<li>После того, как все замечания исправлены - перепроверить обновленную миссию. Если вновь появились замечания, то внести их. </li>
+<li>Единственный рецензент должен снять лейбл <code>к исправлению</code> и добавить лейбл <code>одобрено</code></li>
+<li>При групповом ревью каждый должен оставить комментарий <code>Замечаний нет</code>, а последний - снять лейбл <code>к исправлению</code> и добавить лейбл <code>одобрено</code></li>
 <li><em>Обрадуйте создателя миссии, сообщив о вашем решении</em></li>
 </ol>
         </div>
