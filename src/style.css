@@ -261,27 +261,25 @@ arrow {
 }
 
 .title {
-	margin-left: 0%;
-	width: 75%;
+	margin-left: 0.75rem;
 }
 
 .title h1 {
-	margin-left: 15px;
 	text-align: left;
 	color: #c52334;
-	text-shadow: 0px 0px 10px #b3213080;
+	text-shadow: 1px 1px 1px #392d2dd6; /*0px 0px 10px #b3213080; */
+	margin-bottom: 0px;
+	margin-top: 1.75rem;
 }
 
 .title ul {
 	list-style-type: none;
-	margin-left: 15px;
-	padding: 0;
-	overflow: hidden;
-	#background-color: #333333;
+	padding: 0px;
+	display: block;
 }
 
 .title li {
-	float: left;
+	display: inline-block;
 }
 
 .title li a {
@@ -289,46 +287,67 @@ arrow {
 	text-decoration-line: none;
 	text-shadow: 0px 0px 10px rgba(142, 0, 0, 0.30);
 	display: block;
-	text-align: center;
 	padding-right: 10px;
 }
 
 .toc {
-	width: 250px;
-	position: fixed;
+	position: absolute;
+	width: 17em;
 	vertical-align: top;
 	display: inline-block;
-	/* border-right: 1px solid black; */
 	padding-right: 10px;
 	margin-right: 1px;
 	word-break: break-word;
 	background-color: #e7e7e7;
 	box-shadow: 0 0 0.2em #999;
+	max-height: 90%;
+	overflow-y: overlay;
+}
 
+.toc_fixed {
+	position: fixed;
+	top: 1em;
+	max-height: 98%;
 }
 
 .toc a {
 	text-decoration-line: none;
-	text-shadow: 0px 0px 10px rgba(142, 0, 0, 0.30);
+	filter: brightness(0.7);
 }
 
 .article {
-	width: 75%;
-	display: inline-block;
-	margin-left: 270px;
+	display: block;
+	margin: 0em 1em 4em 18em;
 	box-shadow: 0 0 0.2em #999;
 	padding: 1.5em 2em 2em;
+	width: -webkit-fill-available;
+	width: -moz-available;
 }
 
 /* Remove TOC and extend article on smaller screens */ 
 @media only screen and (max-width: 1400px) {
 	.toc {
-		display: none;
+		display: block;
+		position: unset;
+		width: unset;
+		margin: 0px 1em 1em 1em;
+		padding: 2px;
 	}
 	
 	.article {
-		width: 90%;
-		margin-left: 10px;
+		margin: 0em 1em 4em 1em;
+		position: unset;
+	}
+	
+	.toc_fixed {
+		position: unset;
+		top: unset;
+	}
+}
+
+@media only screen and (max-width: 1000px) {	
+	.title li {
+		display: list-item;
 	}
 }
 

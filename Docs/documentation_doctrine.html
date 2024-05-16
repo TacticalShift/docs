@@ -11,23 +11,48 @@
     <title>tS Docs - Доктрины</title>
 
     <link rel="icon" href="/docs/src/img/ts_icon.png">
-    <link id="main-css" rel="stylesheet" href="/docs/src/style.css">
+    <link rel="stylesheet" href="/docs/src/style.css">
 
     <script src="/docs/src/keywords.js"></script>
     <script src="/docs/src/ruleEnum.js"></script>
     <script src="/docs/src/autocompleter.js"></script>
     <script src="/docs/src/searchWidget.js"></script>
+    <script src="/docs/src/animateToc.js"></script>
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            let url = new URL(window.location.href)
+        document.addEventListener("DOMContentLoaded", function () {			
+            const url = new URL(window.location.href)
             if (url.protocol !== "file:") return
-            let localCssPath = "src/style.css" 
-            let urlPath = url.pathname.split("/")
-            let rootPosition = urlPath.indexOf("docs")
-            for (let i = rootPosition + 1; i < urlPath.length - 1; ++i) {
-                localCssPath = "../" + localCssPath
-            }
-            document.getElementById("main-css").href = localCssPath
+			
+            const urlPath = url.pathname.split("/")
+            const rootPosition = urlPath.indexOf("docs")
+			
+			let pathOffset = ""
+			let pathToSrc = "src/"
+			if ((rootPosition + 1) != (urlPath.length - 1)) {
+				const pathOffsetList = []
+				for (let i = rootPosition + 1; i < urlPath.length - 1; ++i) {
+					pathOffsetList.push("..")
+				}
+				pathOffset = pathOffsetList.join("/") 
+				pathToSrc = "/src/"
+			}
+
+			// Fixes paths for CSS and icons
+			const links = document.getElementsByTagName("link")
+			for (let el of links) {
+				el.href = pathOffset + pathToSrc + el.href.split("src/")[1]
+			}
+			
+			// Re-adds scripts by local path
+			const scripts = document.getElementsByTagName("script")
+			const localScripts = []
+			for (let el of scripts) {
+				if (el.src == "") continue;
+				const script = document.createElement("script")
+				script.src = pathOffset + pathToSrc + el.src.split("src/")[1]
+				localScripts.push(script)
+			}
+			localScripts.forEach((e)=>document.head.appendChild(e))
         })
     </script>
 
