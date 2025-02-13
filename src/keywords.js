@@ -75,6 +75,15 @@ const ARTICLES =
             "SOP"
         ],
         "url": "/docs/SOP/documentation_sop_communications.html",
+        "keywords": []
+    },
+    {
+        "title": "Базовые правила коммуникации",
+        "section": [
+            "SOP",
+            "Communications"
+        ],
+        "url": "/docs/SOP/Communications/basics.html",
         "keywords": [
             "rto",
             "sop"
