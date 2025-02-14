@@ -232,6 +232,18 @@ const ARTICLES =
         ]
     },
     {
+        "title": "Контроль в кризисных ситуациях",
+        "section": [
+            "TCO"
+        ],
+        "url": "/docs/TCO/tco_crisis_management.html",
+        "keywords": [
+            "rto",
+            "tco",
+            "sop"
+        ]
+    },
+    {
         "title": "Требования к оформлению миссии",
         "section": [
             "MMO"
@@ -295,14 +307,14 @@ const ARTICLES =
 
 const KEYWORDS  =
 {
-    "rto": 4,
-    "sop": 7,
+    "rto": 5,
+    "sop": 8,
     "artillery": 1,
     "medevac": 1,
     "cas": 1,
     "redeploy": 1,
     "ai": 1,
-    "tco": 3,
+    "tco": 4,
     "mmo": 5,
     "srv": 1
 }
