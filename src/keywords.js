@@ -2,7 +2,7 @@
 const ARTICLES = 
     [
     {
-        "title": "Event day",
+        "title": "Игровой день",
         "section": [
             "Guide"
         ],
@@ -167,7 +167,7 @@ const ARTICLES =
         "keywords": []
     },
     {
-        "title": "Formations",
+        "title": "Формации",
         "section": [
             "SOP"
         ],
@@ -335,16 +335,6 @@ const ARTICLES =
         "keywords": [
             "mmo"
         ]
-    },
-    {
-        "title": "How to server",
-        "section": [
-            "SRV"
-        ],
-        "url": "/docs/SRV/howtoserver.html",
-        "keywords": [
-            "srv"
-        ]
     }
 ]
 
@@ -359,6 +349,5 @@ const KEYWORDS  =
     "redeploy": 1,
     "ai": 1,
     "tco": 4,
-    "mmo": 5,
-    "srv": 1
+    "mmo": 5
 }

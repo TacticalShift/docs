@@ -1,4 +1,4 @@
-@Meta(Hide=0, Position=100) NORENDER
+@Meta(Position=100) NORENDER
 @Keywords(rto, tco, sop) NORENDER
 
 # Контроль в кризисных ситуациях

@@ -5,13 +5,13 @@ import codecs
 
 SECTION_CONFIGURATION = {
     # Порядок следования секций в navbar'е
-    "order": ["_guide", "_sop", "_tco", "_mmo", "_srv"],
+    "order": ["_guide", "_sop", "_tco", "_mmo"],
 
     # Описание секции
     "_sop": {
         "title": "SOPs",  # Отображаемое название секции в navbar'e
         # Текст для всплывающего текста при наведении (опционально), html-свойство title
-        "tooltip": "Standard Operation Procedures",
+        "tooltip": "Standard Operation Procedures - правила и методические указания по различным аспектам игры в команде.",
         "src": "SOP"  # Имя папки первого уровня где хранятся страницы
     },
     "_guide": {
@@ -21,19 +21,19 @@ SECTION_CONFIGURATION = {
     },
     "_tco": {
         "title": "TCO",
-        "tooltip": "Training Center Office",
+        "tooltip": "Training Center Office - материалы по самоподготовке и обучению",
         "src": "TCO"
     },
     "_mmo": {
         "title": "MMO",
-        "tooltip": "Mission Making Office",
+        "tooltip": "Mission Making Office - для тех, кто хочет или уже создает миссии",
         "src": "MMO"
     },
-    "_srv": {
-        "title": "SRV",
-        "tooltip": "Server magic",
-        "src": "SRV"
-    }
+    #"_srv": {
+    #    "title": "SRV",
+    #    "tooltip": "Server magic",
+    #    "src": "SRV"
+    #}
 }
 
 # @Meta(key1=value1, key2=value2, key3=value3)
