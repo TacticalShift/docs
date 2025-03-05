@@ -5,7 +5,7 @@ import codecs
 
 SECTION_CONFIGURATION = {
     # Порядок следования секций в navbar'е
-    "order": ["_docs", "_sop", "_tco", "_mmo", "_srv"],
+    "order": ["_guide", "_sop", "_tco", "_mmo", "_srv"],
 
     # Описание секции
     "_sop": {
@@ -14,10 +14,10 @@ SECTION_CONFIGURATION = {
         "tooltip": "Standard Operation Procedures",
         "src": "SOP"  # Имя папки первого уровня где хранятся страницы
     },
-    "_docs": {
-        "title": "Документация",
-        "src": "Docs",
-        "tooltip": "Documentation"
+    "_guide": {
+        "title": "Руководство",
+        "tooltip": "Руководства по различным аспектам игры в нашем сообществе. Полезно для каждого игрока!",
+        "src": "Guide"
     },
     "_tco": {
         "title": "TCO",

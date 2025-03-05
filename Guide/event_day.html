@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+    <meta charset="utf-8"/>
+    
+    <meta property="title" content="tS Docs - Event day">
+    <meta property="og:title" content="tS Docs - Event day">
+    <meta property="og:site_name" content="tS Docs">
+    
+    <title>tS Docs - Event day</title>
+
+    <link rel="icon" href="/docs/src/img/ts_icon.png">
+    <link rel="stylesheet" href="/docs/src/style.css">
+
+    <script src="/docs/src/keywords.js"></script>
+    <script src="/docs/src/ruleEnum.js"></script>
+    <script src="/docs/src/autocompleter.js"></script>
+    <script src="/docs/src/searchWidget.js"></script>
+    <script src="/docs/src/animateToc.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {			
+            const url = new URL(window.location.href)
+            if (url.protocol !== "file:") return
+			
+            const urlPath = url.pathname.split("/")
+            const rootPosition = urlPath.indexOf("docs")
+			
+			let pathOffset = ""
+			let pathToSrc = "src/"
+			if ((rootPosition + 1) != (urlPath.length - 1)) {
+				const pathOffsetList = []
+				for (let i = rootPosition + 1; i < urlPath.length - 1; ++i) {
+					pathOffsetList.push("..")
+				}
+				pathOffset = pathOffsetList.join("/") 
+				pathToSrc = "/src/"
+			}
+
+			// Fixes paths for CSS and icons
+			const links = document.getElementsByTagName("link")
+			for (let el of links) {
+				el.href = pathOffset + pathToSrc + el.href.split("src/")[1]
+			}
+			
+			// Re-adds scripts by local path
+			const scripts = document.getElementsByTagName("script")
+			const localScripts = []
+			for (let el of scripts) {
+				if (el.src == "") continue;
+				const script = document.createElement("script")
+				script.src = pathOffset + pathToSrc + el.src.split("src/")[1]
+				localScripts.push(script)
+			}
+			localScripts.forEach((e)=>document.head.appendChild(e))
+        })
+    </script>
+
+    </head>
+    <body>
+        
+    
+    <div id="header">
+        <div id="header-title">
+            <span><a href="https://tacticalshift.ru" style="text-decoration: none; color: inherit;">tS</a></span> <tt id='header-sans'><a href= "/docs/" style="text-decoration: none; color: inherit;" >Docs</a></tt>
+        </div>
+        
+    <div class="navbar">
+        
+    <div class="dropdown">
+        <button class="dropbtn" title="Руководства по различным аспектам игры в нашем сообществе. Полезно для каждого игрока!">Руководство</button>
+        <div class="dropdown-content">
+          <a href="/docs/Guide/event_day.html">Event day</a><a href="/docs/Guide/doctrine.html">Доктрины</a><a href="/docs/Guide/roles.html">Роли и обязанности</a><a href="/docs/Guide/planning.html">Планирование</a><a href="/docs/Guide/orbat.html">ORBAT</a><a href="/docs/Guide/ccp_and_farp.html">CCP и FARP</a>
+    <div class="dropdown-2l">
+        <span>Документация на документацию<arrow>⇨</arrow></span>
+        <div class="dropdown-2l-content">
+            <a href="/docs/Guide/documentation_for_documentation/syntax.html">Синтаксис</a><a href="/docs/Guide/documentation_for_documentation/HowtoPics.html">Как добавить картинки?</a><a href="/docs/Guide/documentation_for_documentation/HowToUpdate.html">Как обновить документы?</a><a href="/docs/Guide/documentation_for_documentation/TablePreprocessor.html">Препроцессор таблиц</a><a href="/docs/Guide/documentation_for_documentation/tsDocs.html">tS Docs</a>
+        </div>
+    </div>
+
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <button class="dropbtn" title="Standard Operation Procedures">SOPs</button>
+        <div class="dropdown-content">
+          
+    <div class="dropdown-2l">
+        <span>Правила коммуникации<arrow>⇨</arrow></span>
+        <div class="dropdown-2l-content">
+            <a href="/docs/SOP/Communications/artillery.html">Использование артиллерии</a><a href="/docs/SOP/Communications/basics.html">Базовые правила коммуникации</a><a href="/docs/SOP/Communications/medevac.html">Медицинская эвакуация</a>
+        </div>
+    </div>
+<a href="/docs/SOP/graphics.html">Графические меры контроля</a><a href="/docs/SOP/formations.html">Formations</a><a href="/docs/SOP/cas.html">Поддержка с воздуха / Close Air Support (CAS)</a><a href="/docs/SOP/reserves_n_redeploy.html">Резервы</a>
+    <div class="dropdown-2l">
+        <span>Управление ИИ<arrow>⇨</arrow></span>
+        <div class="dropdown-2l-content">
+            <a href="/docs/SOP/AI_SOP/ai_crew.html">AI_Crew</a><a href="/docs/SOP/AI_SOP/ai_platoon_leadership.html">Командование ботовзводом</a><a href="/docs/SOP/AI_SOP/ai_squad.html">Отряд с AI-подчиненными</a>
+        </div>
+    </div>
+<a href="/docs/SOP/gso_gso_guidelines.html">GSO SOP</a>
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <button class="dropbtn" title="Training Center Office">TCO</button>
+        <div class="dropdown-content">
+          <a href="/docs/TCO/documentation_tco_rifleman.html">Обучение на райфлмена (КМБ)</a><a href="/docs/TCO/documentation_tco_grenadier.html">Обучение на специалиста (гренадира) и старшего второй двойки</a><a href="/docs/TCO/documentation_tco_rto.html">Radio Telephone Operator</a><a href="/docs/TCO/crisis_management.html">Контроль в кризисных ситуациях</a>
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <button class="dropbtn" title="Mission Making Office">MMO</button>
+        <div class="dropdown-content">
+          <a href="/docs/MMO/editor_requirements.html">Требования к оформлению миссии</a><a href="/docs/MMO/editor_framework.html">Tactical Shift Framework</a><a href="/docs/MMO/editor_concept.html">Концепт и структура миссии</a><a href="/docs/MMO/editor_production.html">Сборка миссии</a><a href="/docs/MMO/editor_misc.html">Ревью и поддержка миссии</a>
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <button class="dropbtn" title="Server magic">SRV</button>
+        <div class="dropdown-content">
+          <a href="/docs/SRV/howtoserver.html">How to server</a>
+        </div>
+    </div>
+
+
+        <div id="search-bar">
+            <input id="search-field" placeholder="Поиск по ключевым словам..."></input>
+            <button id="search-button"><img src="/docs/src/img/search.png"></button>
+        </div>
+    </div>
+
+    </div>
+
+    <div id="wrapper">
+        <div class="title">
+            <h1>Event day</h1>
+            <ul>
+    <li>
+        <a href="/docs/search.html?search=guide" target="_blank">#guide</a>
+    </li>
+</ul>
+        </div>
+        <div class="toc">
+<ul>
+<li><a href="#_1">Формат игрового дня</a></li>
+<li><a href="#_2">Игровой день</a><ul>
+<li><a href="#teamspeak">TeamSpeak</a></li>
+<li><a href="#_3">Слоттинг</a></li>
+<li><a href="#_4">Брифинг и планирование</a></li>
+<li><a href="#_5">Запуск</a></li>
+<li><a href="#-">- Я опоздал к началу</a></li>
+<li><a href="#-_1">Ре-слоттинг</a></li>
+<li><a href="#_6">Дебрифинг</a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+        <div class="article">
+            <h2 id="_1">Формат игрового дня</h2>
+<p><table class=" zebra-table-ts">
+	<tr>
+		<td style=""><strong>День</strong></td>
+		<td><strong>Начало</strong></td>
+		<td><strong>Событие</strong></td>
+	</tr>
+	<tr>
+		<td>Суббота</td>
+		<td>19:00</td>
+		<td>играем новые миссии</td>
+	</tr>
+	<tr>
+		<td>Воскресение</td>
+		<td>19:00</td>
+		<td>играем ранее игравшиеся миссии</td>
+	</tr>
+</table></p>
+<p>Игровой день состоит из 2 миссий и дебрифинга после каждой из них.</p>
+<p><table class=" zebra-table-ts">
+	<tr>
+		<td style=""><strong>Время начала</strong></td>
+		<td><strong>Длит.</strong></td>
+		<td><strong>Событие</strong></td>
+	</tr>
+	<tr>
+		<td>18:30 - 19:00</td>
+		<td>30 мин</td>
+		<td>В канале в TeamSpeak собираются игроки, решаются технические вопросы</td>
+	</tr>
+	<tr>
+		<td>19:00 - 19:10</td>
+		<td>10 мин</td>
+		<td>Все играющие переходят в канал Arma 3, заходят на игровой сервер. Слоттинг миссии 1</td>
+	</tr>
+	<tr>
+		<td>19:10 - 19:25</td>
+		<td>15 мин</td>
+		<td>Планирование миссии 1</td>
+	</tr>
+	<tr>
+		<td>19:25 - 19:30</td>
+		<td>5 мин</td>
+		<td>Ответы на вопросы по плану миссии</td>
+	</tr>
+	<tr>
+		<td>...</td>
+		<td>10 мин</td>
+		<td>Дебрифинг миссии 1</td>
+	</tr>
+</table></p>
+<h2 id="_2">Игровой день</h2>
+<h3 id="teamspeak">TeamSpeak</h3>
+<p>В назначенное время (18:30 ВС или 19:30 ВТ) все принимающие участие в игре должны подключится к TeamSpeak, включить плагин TFAR (если он был выключен) и зайти в канал <strong>Arma 3</strong>. При наличии технических проблем - стоит сразу подключится к каналу <strong>Technical Support</strong> и покнуть (poke) кого-нибудь из GSO (Game Server Officer, синий беджик), указав свою проблему.</p>
+<h3 id="_3">Слоттинг</h3>
+<ul>
+<li>Первым должен быть занят слот Командира взвода (Platoon Leader) или Командира отделения (Squad Leader, если игроков меньше чем 2 отделения)</li>
+<li>PL/SL далее объявляет о том, какие слоты должны быть заняты оставшимися игроками</li>
+<li>Игроки занимают слоты командиров среди указанных</li>
+<li>Остальные слоты занимаются в свободном порядке</li>
+</ul>
+<p>В любом случае, если PL/SL решит произвести перестановки - игроки должны без возражений сменить свои слоты.</p>
+<h3 id="_4">Брифинг и планирование</h3>
+<p>После запуска миссии все игроки попадают на экран брифинга. PL/SL начинает планирование миссии, а остальные игроки должны ждать когда PL/SL закончит планирование (мы стараемся отводить на планирование не более 15 минут, за это время можно прочитать брифинг и/или заняться своими делами). Игроки могут общаться в игровом чате, но запрещено рисовать маркеры или без разрешения PL/SL использовать общение голосом.</p>
+<p>Как только план готов, PL/SL объясняет его остальным игрокам. Командиры отделений и фаертим могут задать уточняющие вопросы. Если вопросов не остается, миссия начинается.</p>
+<h3 id="_5">Запуск</h3>
+<p>Если вы свернули игру на время брифинга, то вернитесь в игру используя сочетания клавиш Alt + TAB.</p>
+<h3 id="-">- Я опоздал к началу</h3>
+<p>Shame on you! Тем не менее, не все потеряно.</p>
+<ul>
+<li>Зайди в Team Speak</li>
+<li>Если необходима помощь, то покни (poke) игрока с группой GSO (синяя) и напиши, что ты опоздал и тебе нужна помощь с техническими вопросами. По мере возможностей тебе помогут сейчас или после завершения текущей миссии.</li>
+<li>Подключайся к серверу. Если миссия еще не запущена, то спроси какой слот выбрать. Если миссия уже в процессе, то выбирай слот в последнем отряде с игроками (предпочтительно брать слот с особой экипировкой - пулемет, гранатомет, ГП).</li>
+<li>Вставай на слот, запускай миссию. Проверь меню действий - действие JIP Teleport переместит тебя к твоему командиру отделения. Если такого действия нет, то жди телепорта к своему подразделению оставаясь на месте (можешь уведомить GSO когда прогрузишься в игру)</li>
+</ul>
+<h3 id="-_1">Ре-слоттинг</h3>
+<p>Ре-слоттинг <strong>не допускается</strong>:</p>
+<ul>
+<li>Смерть в ходе перестрелки (в т.ч. от дружественного огня, багов, лагов, неба и Аллаhа)</li>
+<li>Смерть во время аварии случившейся в ходе контакта с противником (неудачный маневр при уходе из-под огня, повреждения от огня) или из-за нарушений СОП по конвойным операциям (ехали близко, после лагов оказались друг в друге)</li>
+</ul>
+<p>Ре-слоттинг допускается:</p>
+<ul>
+<li>Кик от Battleye, потеря соединения с сервером, креш игры/ОС</li>
+<li>Смерть от дружественного огня в первые минуты после запуска миссии</li>
+<li>Смерть в районе стартовой точки из-за багов (заспавнился в камне/под водой, вертолет взорвался после включения двигателя и т.п.)</li>
+<li>Катастрофа вертолета/самолета при заходе и посадке на первую зону высадки из-за лагов/ошибки пилотирования</li>
+<li>Личная индульгенция от GSO (например, в сценариях, когда игроки одной из сторон исполняют роль смертников)</li>
+</ul>
+<h3 id="_6">Дебрифинг</h3>
+<p>После завершения миссии у каждого игрока есть возможность для того, чтобы:</p>
+<ul>
+<li>Краткий пересказ произошедшего со стороны PL/SL (собирались сделать так, сделали вот так потому-то)</li>
+<li>Упоминания об отличившихся игроках/подразделениях (Красная фаертима зафланговала очень и очень вовремя, это спасло наши жепы)</li>
+<li>Упоминания о действиях которые нарушают правила или СОПы (Карл постоянно терялся, не следил за своим напарником, Леонард использовал ПТ без разрешения и без соблюдения правил), тут же - пояснения со стороны нарушителей</li>
+<li>Вопросы, которые появились в ходе выполнения миссии (Почему мы пошли тудой, а не сюдой?)</li>
+</ul>
+<p>Если в ходе дебрифинга по озвученным претензиям не было дано удовлетворительных пояснений (азаза бамбанула), то претензия может быть оформлена в виде запроса(тикета) в соответствующем разделе Discord. В результате провинившийся игрок может быть отстранен от игр с необходимостью подтвердить свою компетенцию по определенным СОПам (в примере с ПТ – повторное прохождение Basic Competency).</p>
+        </div>
+    </div>
+
+    </body>
+</html>

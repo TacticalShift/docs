@@ -1,3 +1,4 @@
+@Meta(Position=1) NORENDER
 @Keywords(tco) NORENDER
 
 # Обучение на райфлмена (КМБ)

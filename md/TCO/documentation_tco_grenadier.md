@@ -1,3 +1,4 @@
+@Meta(Position=3) NORENDER
 @Keywords(tco) NORENDER
 
 # Обучение на специалиста (гренадира) и старшего второй двойки

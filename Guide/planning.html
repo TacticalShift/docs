@@ -4,11 +4,11 @@
         
     <meta charset="utf-8"/>
     
-    <meta property="title" content="tS Docs - Documentation">
-    <meta property="og:title" content="tS Docs - Documentation">
+    <meta property="title" content="tS Docs - Планирование">
+    <meta property="og:title" content="tS Docs - Планирование">
     <meta property="og:site_name" content="tS Docs">
     
-    <title>tS Docs - Documentation</title>
+    <title>tS Docs - Планирование</title>
 
     <link rel="icon" href="/docs/src/img/ts_icon.png">
     <link rel="stylesheet" href="/docs/src/style.css">
@@ -134,31 +134,100 @@
 
     <div id="wrapper">
         <div class="title">
-            <h1>Documentation</h1>
+            <h1>Планирование</h1>
             <ul>
     <li>
-        <a href="/docs/search.html?search=Whatever" target="_blank">#Whatever</a>
+        <a href="/docs/search.html?search=guide" target="_blank">#guide</a>
     </li>
 </ul>
         </div>
         <div class="toc">
 <ul>
-<li><a href="#_1">Ключевые слова</a></li>
+<li><a href="#_1">Кто планирует?</a></li>
+<li><a href="#_2">Где?</a></li>
+<li><a href="#_3">Как?</a></li>
+<li><a href="#_4">Инструменты</a><ul>
+<li><a href="#c">Cквозная нумерация маркеров</a></li>
+<li><a href="#_5">Фонетический алфавит</a></li>
+</ul>
+</li>
+<li><a href="#_6">Можно ли рисовать на карте?</a></li>
 </ul>
 </div>
 
         <div class="article">
-            <h2 id="_1">Ключевые слова</h2>
-<ul>
-<li><a href="/docs/search.html?search=ai" target="_blank">#ai</a> - ботоводство</li>
-<li><a href="/docs/search.html?search=artillery" target="_blank">#artillery</a> - арт поддержка</li>
-<li><a href="/docs/search.html?search=medevac" target="_blank">#medevac</a> - медицинская эвакуация</li>
-<li><a href="/docs/search.html?search=mmo" target="_blank">#mmo</a> - мискодельство</li>
-<li><a href="/docs/search.html?search=rto" target="_blank">#rto</a> - радиопереговоры</li>
-<li><a href="/docs/search.html?search=sop" target="_blank">#sop</a> - все стандартные операционные процедуры</li>
-<li><a href="/docs/search.html?search=srv" target="_blank">#srv</a> - сервероводство</li>
-<li><a href="/docs/search.html?search=tco" target="_blank">#tco</a> - методички для тренировок</li>
-</ul>
+            <p>Создание плана операции - это важная часть наших игр. Поэтому рассмотрим некоторые очевидные и не очень моменты, связанные с планированием.</p>
+<h3 id="_1">Кто планирует?</h3>
+<p>Командир взвода (Platoon Leader) и/или командир отделения (Squad Leader).</p>
+<h3 id="_2">Где?</h3>
+<p>Зона операции отмечена на карте незатененным прямоугольником. Внутри него могут быть размечены дополнительные границы, которые запрещено пересекать.</p>
+<p>Сухопутные силы начинают внутри зоны операции и не должны ее покидать. Воздушная техника чаще всего начинает далеко за границей зоны операции и может действовать вне ее.</p>
+<p>Конкретная миссия может вводить дополнительные ограничения на перемещения по карте.</p>
+<h3 id="_3">Как?</h3>
+<p>Сначала командир взвода составляет черновой план (на карте или в голове). Затем он прорабатывает детали каждой фазы этого плана и размечает карту с помощью маркеров (см. <a href="../SOP/graphics.html">ГМК</a>).</p>
+<p>Прочие участники могут помочь разметить кампаунды и дороги (MSR/ASR), а также напомнить о необходимости расстановки точек эвакуации раненых (MEP).</p>
+<h3 id="_4">Инструменты</h3>
+<p>Мы используем <a href="../SOP/graphics.html">стандартный набор маркеров</a>, имеющих конкретное назначение. Кроме того есть несколько облегчающих жизнь инструментов.</p>
+<h4 id="c">Cквозная нумерация маркеров</h4>
+<p>Если использовать специальные символы в имени маркера, то после создания в его имя будет подставлено следующее числовое значение из диапазона.</p>
+<p><table>
+	<tr>
+<th>Вводим</th>
+<th>Получаем (диапазон)</th>
+	</tr>
+	<tr>
+		<td><code>#</code></td>
+		<td><code>1</code> - <code>9</code></td>
+	</tr>
+	<tr>
+		<td><code>##</code></td>
+		<td><code>10</code> - <code>99</code></td>
+	</tr>
+	<tr>
+		<td><code>###</code></td>
+		<td><code>100</code> - <code>930</code></td>
+	</tr>
+	<tr>
+		<td><code>2#</code></td>
+		<td><code>20</code> - <code>29</code></td>
+	</tr>
+	<tr>
+		<td><code>1##</code></td>
+		<td><code>100</code> - <code>130</code></td>
+	</tr>
+	<tr>
+		<td><code>12#</code></td>
+		<td><code>120</code> - <code>129</code></td>
+	</tr>
+	<tr>
+		<td><code>46#</code></td>
+		<td><code>460</code> - <code>469</code></td>
+	</tr>
+	<tr>
+		<td><code>TRP 4#</code></td>
+		<td><code>TRP 40</code> - <code>TRP 49</code></td>
+	</tr>
+</table></p>
+<p>Если значения в диапазоне исчерпаны, то автозамена не произойдет (например, уже есть маркер <code>19</code> и вводим <code>1#</code>). При этом для сотен (<code>1##</code>) диапазон ограничивается 30ым значением (т.е. <code>130</code>).</p>
+<h4 id="_5">Фонетический алфавит</h4>
+<p>Специальный символ в имени маркера также может подобрать уникальное имя из фонетического алфавита стороны за которую играем. Для BLUFOR - имена типа <code>Alpha</code>, <code>Bravo</code>, <code>Charlie</code>, для OPFOR - <code>Анна</code>, <code>Борис</code>, <code>Виктор</code>.</p>
+<p><table>
+	<tr>
+<th>Вводим</th>
+<th>Получаем</th>
+	</tr>
+	<tr>
+		<td><code>$</code></td>
+		<td><code>Alpha</code>/<code>Анна</code></td>
+	</tr>
+	<tr>
+		<td><code>ABF $</code></td>
+		<td><code>ABF Bravo</code>/<code>ABF Борис</code></td>
+	</tr>
+</table></p>
+<p>При этом <code>$</code> заменяется на первое неиспользованное значение из алфавита (т.е. дубликатов не будет). </p>
+<h3 id="_6">Можно ли рисовать на карте?</h3>
+<p>Можно, но только вне зоны операции. При наличии воздушной техники - убедитесь, что ваши рисунки не мешают расстановке IP/BP и не находятся на маршруте от аэродрома до зоны операции.</p>
         </div>
     </div>
 

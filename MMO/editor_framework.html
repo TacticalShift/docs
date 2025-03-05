@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+    <meta charset="utf-8"/>
+    
+    <meta property="title" content="tS Docs - Tactical Shift Framework">
+    <meta property="og:title" content="tS Docs - Tactical Shift Framework">
+    <meta property="og:site_name" content="tS Docs">
+    
+    <title>tS Docs - Tactical Shift Framework</title>
+
+    <link rel="icon" href="/docs/src/img/ts_icon.png">
+    <link rel="stylesheet" href="/docs/src/style.css">
+
+    <script src="/docs/src/keywords.js"></script>
+    <script src="/docs/src/ruleEnum.js"></script>
+    <script src="/docs/src/autocompleter.js"></script>
+    <script src="/docs/src/searchWidget.js"></script>
+    <script src="/docs/src/animateToc.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {			
+            const url = new URL(window.location.href)
+            if (url.protocol !== "file:") return
+			
+            const urlPath = url.pathname.split("/")
+            const rootPosition = urlPath.indexOf("docs")
+			
+			let pathOffset = ""
+			let pathToSrc = "src/"
+			if ((rootPosition + 1) != (urlPath.length - 1)) {
+				const pathOffsetList = []
+				for (let i = rootPosition + 1; i < urlPath.length - 1; ++i) {
+					pathOffsetList.push("..")
+				}
+				pathOffset = pathOffsetList.join("/") 
+				pathToSrc = "/src/"
+			}
+
+			// Fixes paths for CSS and icons
+			const links = document.getElementsByTagName("link")
+			for (let el of links) {
+				el.href = pathOffset + pathToSrc + el.href.split("src/")[1]
+			}
+			
+			// Re-adds scripts by local path
+			const scripts = document.getElementsByTagName("script")
+			const localScripts = []
+			for (let el of scripts) {
+				if (el.src == "") continue;
+				const script = document.createElement("script")
+				script.src = pathOffset + pathToSrc + el.src.split("src/")[1]
+				localScripts.push(script)
+			}
+			localScripts.forEach((e)=>document.head.appendChild(e))
+        })
+    </script>
+
+    </head>
+    <body>
+        
+    
+    <div id="header">
+        <div id="header-title">
+            <span><a href="https://tacticalshift.ru" style="text-decoration: none; color: inherit;">tS</a></span> <tt id='header-sans'><a href= "/docs/" style="text-decoration: none; color: inherit;" >Docs</a></tt>
+        </div>
+        
+    <div class="navbar">
+        
+    <div class="dropdown">
+        <button class="dropbtn" title="Руководства по различным аспектам игры в нашем сообществе. Полезно для каждого игрока!">Руководство</button>
+        <div class="dropdown-content">
+          <a href="/docs/Guide/event_day.html">Event day</a><a href="/docs/Guide/doctrine.html">Доктрины</a><a href="/docs/Guide/roles.html">Роли и обязанности</a><a href="/docs/Guide/planning.html">Планирование</a><a href="/docs/Guide/orbat.html">ORBAT</a><a href="/docs/Guide/ccp_and_farp.html">CCP и FARP</a>
+    <div class="dropdown-2l">
+        <span>Документация на документацию<arrow>⇨</arrow></span>
+        <div class="dropdown-2l-content">
+            <a href="/docs/Guide/documentation_for_documentation/syntax.html">Синтаксис</a><a href="/docs/Guide/documentation_for_documentation/HowtoPics.html">Как добавить картинки?</a><a href="/docs/Guide/documentation_for_documentation/HowToUpdate.html">Как обновить документы?</a><a href="/docs/Guide/documentation_for_documentation/TablePreprocessor.html">Препроцессор таблиц</a><a href="/docs/Guide/documentation_for_documentation/tsDocs.html">tS Docs</a>
+        </div>
+    </div>
+
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <button class="dropbtn" title="Standard Operation Procedures">SOPs</button>
+        <div class="dropdown-content">
+          
+    <div class="dropdown-2l">
+        <span>Правила коммуникации<arrow>⇨</arrow></span>
+        <div class="dropdown-2l-content">
+            <a href="/docs/SOP/Communications/artillery.html">Использование артиллерии</a><a href="/docs/SOP/Communications/basics.html">Базовые правила коммуникации</a><a href="/docs/SOP/Communications/medevac.html">Медицинская эвакуация</a>
+        </div>
+    </div>
+<a href="/docs/SOP/graphics.html">Графические меры контроля</a><a href="/docs/SOP/formations.html">Formations</a><a href="/docs/SOP/cas.html">Поддержка с воздуха / Close Air Support (CAS)</a><a href="/docs/SOP/reserves_n_redeploy.html">Резервы</a>
+    <div class="dropdown-2l">
+        <span>Управление ИИ<arrow>⇨</arrow></span>
+        <div class="dropdown-2l-content">
+            <a href="/docs/SOP/AI_SOP/ai_crew.html">AI_Crew</a><a href="/docs/SOP/AI_SOP/ai_platoon_leadership.html">Командование ботовзводом</a><a href="/docs/SOP/AI_SOP/ai_squad.html">Отряд с AI-подчиненными</a>
+        </div>
+    </div>
+<a href="/docs/SOP/gso_gso_guidelines.html">GSO SOP</a>
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <button class="dropbtn" title="Training Center Office">TCO</button>
+        <div class="dropdown-content">
+          <a href="/docs/TCO/documentation_tco_rifleman.html">Обучение на райфлмена (КМБ)</a><a href="/docs/TCO/documentation_tco_grenadier.html">Обучение на специалиста (гренадира) и старшего второй двойки</a><a href="/docs/TCO/documentation_tco_rto.html">Radio Telephone Operator</a><a href="/docs/TCO/crisis_management.html">Контроль в кризисных ситуациях</a>
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <button class="dropbtn" title="Mission Making Office">MMO</button>
+        <div class="dropdown-content">
+          <a href="/docs/MMO/editor_requirements.html">Требования к оформлению миссии</a><a href="/docs/MMO/editor_framework.html">Tactical Shift Framework</a><a href="/docs/MMO/editor_concept.html">Концепт и структура миссии</a><a href="/docs/MMO/editor_production.html">Сборка миссии</a><a href="/docs/MMO/editor_misc.html">Ревью и поддержка миссии</a>
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <button class="dropbtn" title="Server magic">SRV</button>
+        <div class="dropdown-content">
+          <a href="/docs/SRV/howtoserver.html">How to server</a>
+        </div>
+    </div>
+
+
+        <div id="search-bar">
+            <input id="search-field" placeholder="Поиск по ключевым словам..."></input>
+            <button id="search-button"><img src="/docs/src/img/search.png"></button>
+        </div>
+    </div>
+
+    </div>
+
+    <div id="wrapper">
+        <div class="title">
+            <h1>Tactical Shift Framework</h1>
+            <ul>
+    <li>
+        <a href="/docs/search.html?search=mmo" target="_blank">#mmo</a>
+    </li>
+</ul>
+        </div>
+        <div class="toc">
+<ul>
+<li><a href="#tactical-shift-mission-framework">Обзор и знакомство Tactical Shift Mission Framework</a></li>
+<li><a href="#tsframework">Порядок установки tSFramework</a></li>
+<li><a href="#tsframework_1">Работа с tSFramework</a><ul>
+<li><a href="#tsframework_2">Из чего состоит tSFramework</a></li>
+<li><a href="#_1">Включение модулей</a></li>
+<li><a href="#settingsyaml">Работа с Settings.yaml</a></li>
+<li><a href="#3den-tool">3DEN Tool</a></li>
+<li><a href="#briefing">Briefing</a></li>
+<li><a href="#ccp">CCP</a></li>
+<li><a href="#editorvehiclecrew">EditorVehicleCrew</a></li>
+<li><a href="#interactives">Interactives</a></li>
+<li><a href="#aceactions">ACEActions</a></li>
+<li><a href="#intro-text">Intro Text</a></li>
+<li><a href="#jip-teleport">JIP Teleport</a></li>
+<li><a href="#mission-conditions">Mission Conditions</a></li>
+<li><a href="#mission-defaults">Mission Defaults</a></li>
+<li><a href="#platoon-operational-markers-pom">Platoon Operational Markers (POM)</a></li>
+<li><a href="#tsadmintools">tSAdminTools</a></li>
+<li><a href="#tsnotes">tSNotes</a></li>
+<li><a href="#tsnotessettings">tSNotesSettings</a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+        <div class="article">
+            <h2 id="tactical-shift-mission-framework">Обзор и знакомство Tactical Shift Mission Framework</h2>
+<p>Миссии на Tactical Shift создаются с использованием 4х скриптовых компонент:</p>
+<ul>
+<li><mark>dzn_dynai</mark>
+Скрипт генерации и поведения AI (патрули, подкрепления).</li>
+<li><mark>dzn_gear</mark>
+Скрипт для выдачи преднастроенного снаряжения AI юнитам, игрокам и технике. Интегрирован в dzn_dynai.</li>
+<li><mark>tSFramework</mark>
+Набор sqf-скриптов для поддержки базовой логики миссии, а также утилиты для создания брифингов, эндингов и проч.</li>
+<li><mark>dzn_brv</mark>
+Скрипт для логирования игровой сессии (см. <a href="https://tacticalshift.ru/aar/">tS AARs</a>)</li>
+</ul>
+<p>Этих компонентов достаточно для создания большинства миссий в короткий срок. Тем не менее вы можете использовать любые иные скриптовые решения (впрочем, желательно интегрироваться с <mark>dzn_brv</mark>, для создания AAR по вашей миссии).</p>
+<h2 id="tsframework">Порядок установки tSFramework</h2>
+<p>Инсталлятор:</p>
+<ol>
+<li>Скачать и установить последнюю версию <a href="https://www.java.com/ru/download/help/windows_manual_download.xml">Java</a></li>
+<li>Скачать и распаковать <a href="https://github.com/10Dozen/tSF_Installer/archive/master.zip">tSF_Installer</a></li>
+<li>Запустить tSF_Installer_(version).jar</li>
+<li>Выбрать путь до папки вашей миссии, выбрать нужные компоненты (при необходимости указав бранч), выбрать нужные киты из <a href="https://github.com/rempopo/Gear_Kits_Collection">коллекции</a> (скопировать ссылку KitLink нужного набора)</li>
+</ol>
+<p>Руками:</p>
+<ol>
+<li>Скачать:<ul>
+<li><a href="https://github.com/10Dozen/dzn_commonFunctions">dzn_commonFunctions</a></li>
+<li><a href="https://github.com/10Dozen/dzn_dynai">dzn_dynai</a></li>
+<li><a href="https://github.com/10Dozen/dzn_gear">dzn_gear</a></li>
+<li><a href="https://github.com/10Dozen/dzn_tSFramework">tS Framework (включает dzn_brv)</a></li>
+</ul>
+</li>
+<li>Распакуйте архивы в отдельные папки, а затем скопируйте содержимое каждого архива в папку с вашей миссии (в порядке скачивания). Подтвердите замену всех файлов.</li>
+</ol>
+<h2 id="tsframework_1">Работа с tSFramework</h2>
+<h3 id="tsframework_2">Из чего состоит tSFramework</h3>
+<p>Ссылка: <a href="https://github.com/10Dozen/dzn_tSFramework">GitHub</a></p>
+<p>tSFramework это набор sqf-скриптов и html-утилит для создания миссий в Arma 3.</p>
+<h3 id="_1">Включение модулей</h3>
+<p>В файле <mark>dzn_tSFramework/Settings.yaml</mark> можно задать какие из модулей будут включены в миссии. Впоследующем неактивные модули будут удалены утилитой <code>tSFileSweeper.bat</code>, что позволит уменьшить итоговый размер файла миссии.</p>
+<h3 id="settingsyaml">Работа с Settings.yaml</h3>
+<p>Некоторые модули используют специфичный формат данных для собственной настройки. Изучите <a href="https://github.com/10Dozen/dzn_commonFunctions/wiki/Settings-File-Markup-Language-(SFML)">инструкцию</a> перед тем как начать работать с этими файлами!</p>
+<h3 id="3den-tool">3DEN Tool</h3>
+<p>См. <a href="https://docs.google.com/presentation/d/1-hwUq2sYlP9BzIy4GzOBALAaTHpBOzPOXhZyXPhatXQ/edit?usp=sharing">Обзор tSF 3DEN Tool</a></p>
+<p>Скрипт расширяющий функциональность 3DEN (3д редактор Армы 3). С помощью этого скрипта вы сможете быстро расставить преднастроенных игровых юнитов (согласно выбранной доктрине), разместить зоны dzn_dynai, добавить настроенный модуль Zeus, преднастроить миссию для JIP-совместимости, добавить к юнитам созданным в редакторе специфичные настройки dzn_gear/dzn_dynai</p>
+<h3 id="briefing">Briefing</h3>
+<p>Утилита для создания брифинга в стандартном формате, а также скрипт для отображения брифинга.</p>
+<p>Расположение модуля: <mark>dzn_tSFramework/Modules/Briefing/</mark>
+При помощи Helper создайте файл брифинга и замените им файл <mark>tSF_briefing.sqf</mark>. О требованиях к брифингу читайте <a href="editor_requirements.html">тут</a>.</p>
+<h3 id="ccp">CCP</h3>
+<p>Создает композицию объектов, позволяющих лечится раненым. Опционально позволяет выбрать местоположение точки во время брифинга.</p>
+<p>Расположение модуля: <mark>dzn_tSFramework/Modules/CCP/</mark>
+Разместите все необходимые триггеры и свяжите их (синхронизация) с объектом tsf_CCP.
+Произведите настройку модуля в файле <mark>Settings.sqf</mark>:</p>
+<ul>
+<li><mark>tSF_CCP_TimeToHeal</mark> – время в секундах для полного излечения игрока на CCP</li>
+<li><mark>tSF_CCP_TimeToHold</mark> – время в секундах, которое игрок вынужден провести на CCP после излечения</li>
+<li><mark>dzn_tsf_CCP_DefaultComposition</mark> – название композиции (набора объектов), которая будет размещена в зоне CCP (список названий можно посмотреть в файле DefaultCompositions.sqf)</li>
+</ul>
+<h3 id="editorvehiclecrew">EditorVehicleCrew</h3>
+<p>Модуль для создания экипажа для техники установленной в редакторе, с возможность назначения dzn_gear кита и dzn_dynai поведения типа vehicle hold.</p>
+<p>Расположение модуля: <mark>dzn_tSFramework/Modules/EditorVehicleCrew/</mark>
+Используйте 3DEN Tool для создания связки с юнитами.
+Произведите настройку модуля в файле <mark>Settings.yaml</mark>.</p>
+<h3 id="interactives">Interactives</h3>
+<p>Скрипт исполняющий ваш код на выбранных объектах или объектах указанных классов. Например, если вы хотите добавить ко всем ящикам в миссии определенное действие.</p>
+<p>Расположение модуля: <mark>dzn_tSFramework/Modules/Interactives/</mark>
+В файле Settings.sqf есть только массив в котором можно указать объекты и код, который нужно на них выполнить. Рассмотрим по-ближе как выглядит элемент данного массива:
+<mark><code>[ [″Land_ToiletBox_F″], { _this addAction [″Check″, {hint ″This is the toilet box″;}] }, ″client″, true ]</code></mark>
+, где:</p>
+<ul>
+<li><mark>[″Land_ToiletBox_F″]</mark> – список классов или имен объектов, для которых будет выполнен кол;</li>
+<li><mark>{ _this addAction [″Check″, {hint ″This is the toilet box″;}] }</mark> – sqf-код, который будет выполнен. <mark>_this</mark> в коде будет ссылкой на сам объект.</li>
+<li><mark>″client″</mark> – где будет выполнен код - только на клиентах-игроках <mark>(client)</mark>, только на сервере <mark>(server)</mark> или везде <mark>(global)</mark></li>
+<li><mark>true</mark> – если <mark>true</mark>, то код будет выполняться также для всех объектов указанных классов, которые будут созданы в течении игры (например, зевсом или объекты которые игроки выкинули из своего инвентаря).</li>
+</ul>
+<h3 id="aceactions">ACEActions</h3>
+<p>Модуль предоставляющий простой способ добавить кастомизированные ACE Interaction и ACE Self-Interaction действия на объекты или классы.</p>
+<p>Расположение модуля: <mark>dzn_tSFramework/Modules/ACEActions/</mark>
+В файле <mark>Settings.sqf</mark> есть только массив в котором можно указать описать добавляемый действия. Действия бывают 2 типов - для self-interaction меню и для interaction (т.е. на других объектах) - и 2 уровней вложенности (в первичном меню по кнопке WIN / CTRL+WIN или в подменю).
+Рассмотрим по-ближе как выглядят элементы данного массива:
+<mark>[ ″SELF″, ″Check my ass″, ″ass_action_core″, ″″, { hint ″Your ass is OK″ }, { true }]</mark>
+<mark>[ ″SELF″, ″Check my ass more closely″, ″ass_action_extra″, ″ass_action_core″, { hint ″Your ass is OK″ }, { true }]</mark>
+, где:</p>
+<ul>
+<li><mark>[″SELF″]</mark> – тип действия: SELF - для self-interaction menu; [@Classnames] - список классов для interaction menu;</li>
+<li><mark>″Check my ass″</mark> – отображаемое название;</li>
+<li><mark>″ass_action_core″ / ″ass_action_extra″</mark> – идентификатор действия;</li>
+<li><mark>″″ / ″ass_action_core″</mark> – идентификатор родительского действия (если ″″ – действие добавится в корневое меню);</li>
+<li><mark>{ hint ″Your ass is OK″ }</mark> – код выполняемый при вызове действия (_target – ссылка на объект к которому привязано действие);</li>
+<li><mark>{ true }</mark> – условие отображения действия.</li>
+</ul>
+<h3 id="intro-text">Intro Text</h3>
+<p>Скрипт для отображения интро-текста в начале миссии.</p>
+<p>Расположение модуля: <mark>dzn_tSFramework/Modules/IntroText/</mark>
+Произведите настройку модуля в файле <mark>Settings.yaml</mark>:</p>
+<ul>
+<li><mark>Date</mark> – текст первой линии, Дата вида 31/12/2016 (или %1/%2/%3 если вы хотите использовать дату заданную в настройках миссии)/</li>
+<li><mark>Location</mark> – текст второй линии, Место вида "Шукуркалай, Центральный Такистан"</li>
+<li><mark>Operation</mark> – текст третьей линии, Название вида "Операция 'Восход'"</li>
+</ul>
+<h3 id="jip-teleport">JIP Teleport</h3>
+<p>Добавляет возможность JIP игрокам самостоятельно телепортироваться к своему лидеру отряда.</p>
+<p>Расположение модуля: <mark>dzn_tSFramework/Modules/JIPTeleport/</mark>
+Произведите настройку модуля в файле <mark>Settings.yaml</mark>:</p>
+<h3 id="mission-conditions">Mission Conditions</h3>
+<p>Модуль определяющий и следящий за исполнением условий завершения миссии и завершающий миссиию согласно указанным концовкам. Также утилита для генерации классов концовок.</p>
+<p>Расположение модуля: <mark>dzn_tSFramework/Modules/MissionConditions/</mark>
+При помощи Helper создайте файл концовок (дебрифингов) и замените им файл <mark>Endings.hpp</mark>.
+Произведите настройку модуля в файле <mark>Settings.yaml</mark>.</p>
+<h3 id="mission-defaults">Mission Defaults</h3>
+<p>Обязательные скрипты для каждой миссии: временное отключение управления игрой на старте миссии (чтобы облегчить серверу старт миссии), постановка оружия на предохранитель и прочие полезности.</p>
+<p>Расположение модуля: <mark>dzn_tSFramework/Modules/MissionDefaults/</mark>
+Произведите настройку модуля в файле <mark>Settings.yaml</mark>/</p>
+<h3 id="platoon-operational-markers-pom">Platoon Operational Markers (POM)</h3>
+<p>Добалвяет возможность лидеру взвода добавлять, перемещать и удалять маркеры видимые только для него.</p>
+<p>Расположение модуля: <mark>dzn_tSFramework/Modules/POM/</mark>
+Произведите настройку модуля в файле <mark>Settings.sqf</mark>:</p>
+<ul>
+<li><mark>tSF_POM_AuthorizedUsers</mark> – список ролей (названий слотов) для которых будет доступен интерфейс POM;</li>
+<li><mark>tSF_POM_GenerateMarkersFromGroups</mark> – нужно ли создавать маркеры для отрядов игроков;</li>
+<li><mark>tSF_POM_OperationalMarkers</mark> – предварительно заданные маркеры (в формате [ @Тип (“Intantry”/“Vehicle”), @Название, @Сторона (west,east…), @Защита от редактирования (true/false)]);</li>
+<li><mark>tSF_POM_TopicName</mark> – название топика на экране карты;</li>
+<li><mark>tSF_POM_InfantryMarker</mark> и tSF_POM_VehicleMarker – класс маркера для типа Infantry и Vehicle, соответственно;</li>
+<li><mark>tSF_POM_InfantryLabels</mark> и tSF_POM_VehicleLabels – доступные названия маркеров для типа Infantry и Vehicle, соответственно.</li>
+</ul>
+<h3 id="tsadmintools">tSAdminTools</h3>
+<p>Набор инструментов для залогиненного админа - выдача снаряжения, принудительное завершение миссии. А также набор диагностичеких утилит, чтобы убедиться, что ваша миссия в рабочем состоянии (см. топики Diagnostics на карте после старта миссии)</p>
+<p>Расположение модуля: <mark>dzn_tSFramework/Modules/tSAdminTools/</mark>
+Произведите настройку модуля в файле <mark>Settings.sqf</mark>:</p>
+<ul>
+<li><mark>tSF_AdminTools_TopicName</mark> – отображаемое название темы на экране карты\брифинга.</li>
+<li><mark>tSF_AdminTool_EnableMissionEndings</mark> – если true, то позволяет администратору принудительно завершать миссию одной из общих концовок, либо концовкой настроенной в модуле Mission Conditions.</li>
+<li><mark>tSF_AdminTool_EnableGATTool</mark> – если true, то позволяет администратору выдавать преднастроенные в dzn_gear наборы снаряжения игрокам (только те из них, которые были использованы в Gear Assignment Table)</li>
+</ul>
+<h3 id="tsnotes">tSNotes</h3>
+<p>Скрипт добавляющий топик с дополнительными инструкциями (формат радиоотчетов, формат запроса CAS, артиллерийского удара и т.п.)</p>
+<p>Расположение модуля: <mark>dzn_tSFramework/Modules/tSNotes/</mark>
+Произведите настройку модуля в файле <mark>Settings.yaml</mark> (доступные для вывода темы).</p>
+<h3 id="tsnotessettings">tSNotesSettings</h3>
+<p>Скрипт добавляющий топик с настройами дальности видимости и детализации ландшафта.</p>
+<p>Расположение модуля: <mark>dzn_tSFramework/Modules/tSNotesSettings/</mark>
+Произведите настройку модуля в файле <mark>Settings.yaml</mark>.</p>
+        </div>
+    </div>
+
+    </body>
+</html>

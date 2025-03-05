@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+    <meta charset="utf-8"/>
+    
+    <meta property="title" content="tS Docs - Как добавить картинки?">
+    <meta property="og:title" content="tS Docs - Как добавить картинки?">
+    <meta property="og:site_name" content="tS Docs">
+    
+    <title>tS Docs - Как добавить картинки?</title>
+
+    <link rel="icon" href="/docs/src/img/ts_icon.png">
+    <link rel="stylesheet" href="/docs/src/style.css">
+
+    <script src="/docs/src/keywords.js"></script>
+    <script src="/docs/src/ruleEnum.js"></script>
+    <script src="/docs/src/autocompleter.js"></script>
+    <script src="/docs/src/searchWidget.js"></script>
+    <script src="/docs/src/animateToc.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {			
+            const url = new URL(window.location.href)
+            if (url.protocol !== "file:") return
+			
+            const urlPath = url.pathname.split("/")
+            const rootPosition = urlPath.indexOf("docs")
+			
+			let pathOffset = ""
+			let pathToSrc = "src/"
+			if ((rootPosition + 1) != (urlPath.length - 1)) {
+				const pathOffsetList = []
+				for (let i = rootPosition + 1; i < urlPath.length - 1; ++i) {
+					pathOffsetList.push("..")
+				}
+				pathOffset = pathOffsetList.join("/") 
+				pathToSrc = "/src/"
+			}
+
+			// Fixes paths for CSS and icons
+			const links = document.getElementsByTagName("link")
+			for (let el of links) {
+				el.href = pathOffset + pathToSrc + el.href.split("src/")[1]
+			}
+			
+			// Re-adds scripts by local path
+			const scripts = document.getElementsByTagName("script")
+			const localScripts = []
+			for (let el of scripts) {
+				if (el.src == "") continue;
+				const script = document.createElement("script")
+				script.src = pathOffset + pathToSrc + el.src.split("src/")[1]
+				localScripts.push(script)
+			}
+			localScripts.forEach((e)=>document.head.appendChild(e))
+        })
+    </script>
+
+    </head>
+    <body>
+        
+    
+    <div id="header">
+        <div id="header-title">
+            <span><a href="https://tacticalshift.ru" style="text-decoration: none; color: inherit;">tS</a></span> <tt id='header-sans'><a href= "/docs/" style="text-decoration: none; color: inherit;" >Docs</a></tt>
+        </div>
+        
+    <div class="navbar">
+        
+    <div class="dropdown">
+        <button class="dropbtn" title="Руководства по различным аспектам игры в нашем сообществе. Полезно для каждого игрока!">Руководство</button>
+        <div class="dropdown-content">
+          <a href="/docs/Guide/event_day.html">Event day</a><a href="/docs/Guide/doctrine.html">Доктрины</a><a href="/docs/Guide/roles.html">Роли и обязанности</a><a href="/docs/Guide/planning.html">Планирование</a><a href="/docs/Guide/orbat.html">ORBAT</a><a href="/docs/Guide/ccp_and_farp.html">CCP и FARP</a>
+    <div class="dropdown-2l">
+        <span>Документация на документацию<arrow>⇨</arrow></span>
+        <div class="dropdown-2l-content">
+            <a href="/docs/Guide/documentation_for_documentation/syntax.html">Синтаксис</a><a href="/docs/Guide/documentation_for_documentation/HowtoPics.html">Как добавить картинки?</a><a href="/docs/Guide/documentation_for_documentation/HowToUpdate.html">Как обновить документы?</a><a href="/docs/Guide/documentation_for_documentation/TablePreprocessor.html">Препроцессор таблиц</a><a href="/docs/Guide/documentation_for_documentation/tsDocs.html">tS Docs</a>
+        </div>
+    </div>
+
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <button class="dropbtn" title="Standard Operation Procedures">SOPs</button>
+        <div class="dropdown-content">
+          
+    <div class="dropdown-2l">
+        <span>Правила коммуникации<arrow>⇨</arrow></span>
+        <div class="dropdown-2l-content">
+            <a href="/docs/SOP/Communications/artillery.html">Использование артиллерии</a><a href="/docs/SOP/Communications/basics.html">Базовые правила коммуникации</a><a href="/docs/SOP/Communications/medevac.html">Медицинская эвакуация</a>
+        </div>
+    </div>
+<a href="/docs/SOP/graphics.html">Графические меры контроля</a><a href="/docs/SOP/formations.html">Formations</a><a href="/docs/SOP/cas.html">Поддержка с воздуха / Close Air Support (CAS)</a><a href="/docs/SOP/reserves_n_redeploy.html">Резервы</a>
+    <div class="dropdown-2l">
+        <span>Управление ИИ<arrow>⇨</arrow></span>
+        <div class="dropdown-2l-content">
+            <a href="/docs/SOP/AI_SOP/ai_crew.html">AI_Crew</a><a href="/docs/SOP/AI_SOP/ai_platoon_leadership.html">Командование ботовзводом</a><a href="/docs/SOP/AI_SOP/ai_squad.html">Отряд с AI-подчиненными</a>
+        </div>
+    </div>
+<a href="/docs/SOP/gso_gso_guidelines.html">GSO SOP</a>
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <button class="dropbtn" title="Training Center Office">TCO</button>
+        <div class="dropdown-content">
+          <a href="/docs/TCO/documentation_tco_rifleman.html">Обучение на райфлмена (КМБ)</a><a href="/docs/TCO/documentation_tco_grenadier.html">Обучение на специалиста (гренадира) и старшего второй двойки</a><a href="/docs/TCO/documentation_tco_rto.html">Radio Telephone Operator</a><a href="/docs/TCO/crisis_management.html">Контроль в кризисных ситуациях</a>
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <button class="dropbtn" title="Mission Making Office">MMO</button>
+        <div class="dropdown-content">
+          <a href="/docs/MMO/editor_requirements.html">Требования к оформлению миссии</a><a href="/docs/MMO/editor_framework.html">Tactical Shift Framework</a><a href="/docs/MMO/editor_concept.html">Концепт и структура миссии</a><a href="/docs/MMO/editor_production.html">Сборка миссии</a><a href="/docs/MMO/editor_misc.html">Ревью и поддержка миссии</a>
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <button class="dropbtn" title="Server magic">SRV</button>
+        <div class="dropdown-content">
+          <a href="/docs/SRV/howtoserver.html">How to server</a>
+        </div>
+    </div>
+
+
+        <div id="search-bar">
+            <input id="search-field" placeholder="Поиск по ключевым словам..."></input>
+            <button id="search-button"><img src="/docs/src/img/search.png"></button>
+        </div>
+    </div>
+
+    </div>
+
+    <div id="wrapper">
+        <div class="title">
+            <h1>Как добавить картинки?</h1>
+            <ul></ul>
+        </div>
+        <div class="toc">
+<ul>
+<li><a href="#_1">Варианты добавления картинок</a><ul>
+<li><a href="#_2">Ссылка на картинку из репозитория</a></li>
+<li><a href="#-">Прямая веб-ссылка</a></li>
+<li><a href="#base64">Base64</a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+        <div class="article">
+            <p>Общий Mardown синтаксис для картинок:</p>
+<pre><code class="language-md">![Image_name](image_URL_or_path &quot;Image tytle&quot;)
+</code></pre>
+<p>Где <mark>Image_name</mark> - обязательное название картинки, <mark>image_URL_or_path</mark> - собственно ссылка или путь до картинки, <mark>"Image tytle"</mark> - опциональное поле для отображение текста при наведении на картинку.</p>
+<h2 id="_1">Варианты добавления картинок</h2>
+<h3 id="_2">Ссылка на картинку из репозитория</h3>
+<p>Картинки в репозитории хранятся по пути <mark>src/media</mark>, для добавлении картинки её нужно скопировать в эту папку, а при использовании в документах ссылку формировать как <mark>/docs/src/media/название_картинки.расширение</mark>.
+К сожалению, локально проверить работоспособность картинки не получится, только после деплоя.
+Пример:</p>
+<pre><code class="language-md">![Carl](/docs/src/media/Carl.png &quot;Carl&quot;)
+или для любителей html
+&lt;img src=&quot;/docs/src/media/Carl.png&quot; alt=&quot;Carl&quot; /&gt;
+</code></pre>
+<h3 id="-">Прямая веб-ссылка</h3>
+<p>Способ самый простой, но всегда есть вероятность, что ссылка перестанет быть доступной - картинку перенесут, удалят, etc.
+Пример:</p>
+<pre><code class="language-md">![Шеврон](https://lh7-us.googleusercontent.com/VvbRQd0kaMwY9fVojzfO_fV56qWV82WflilazsuF-ArArLmqSRB2HIRx0kpW34dQkjGG5UOjecQYq6okOVVptNmWoCvAyb2zNOkVbXjX4Bt9oQQmuLdDLbdBsZNYOvolHC7q-c5xrYzGfRXMPvy0wHA)
+</code></pre>
+<h3 id="base64">Base64</h3>
+<p>Способ подразумевает текстовую репрезентацию картинки внутри markdown-документа.</p>
+<p>Первый вариант - embedded html code, а поэтому не рекомендуется для новых статей, так как сильно затрудняет редактирование (примеры в "старых" статьях - documentation_sop_graphics.md).</p>
+<p>Второй вариант - собственно markdown image, который позволяет разделить место вставки картинки и её "определение".
+Пример (взят из documentation_sop_communications.md):</p>
+<pre><code class="language-md">![kompas]
+Текст Текст Текст
+...
+...
+В конце страницы:
+[kompas]: data:image/jpeg;base64,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
+</code></pre>
+        </div>
+    </div>
+
+    </body>
+</html>

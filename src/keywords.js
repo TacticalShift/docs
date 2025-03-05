@@ -2,71 +2,114 @@
 const ARTICLES = 
     [
     {
-        "title": "Роли и обязанности",
+        "title": "Event day",
         "section": [
-            "Docs"
+            "Guide"
         ],
-        "url": "/docs/Docs/documentation_roles.html",
-        "keywords": []
+        "url": "/docs/Guide/event_day.html",
+        "keywords": [
+            "guide"
+        ]
     },
     {
         "title": "Доктрины",
         "section": [
-            "Docs"
+            "Guide"
         ],
-        "url": "/docs/Docs/documentation_doctrine.html",
+        "url": "/docs/Guide/doctrine.html",
+        "keywords": [
+            "guide"
+        ]
+    },
+    {
+        "title": "Роли и обязанности",
+        "section": [
+            "Guide"
+        ],
+        "url": "/docs/Guide/roles.html",
         "keywords": []
     },
     {
-        "title": "Event day",
+        "title": "Планирование",
         "section": [
-            "Docs"
+            "Guide"
         ],
-        "url": "/docs/Docs/documentation_event_day.html",
-        "keywords": []
+        "url": "/docs/Guide/planning.html",
+        "keywords": [
+            "guide"
+        ]
+    },
+    {
+        "title": "ORBAT",
+        "section": [
+            "Guide"
+        ],
+        "url": "/docs/Guide/orbat.html",
+        "keywords": [
+            "guide"
+        ]
+    },
+    {
+        "title": "CCP и FARP",
+        "section": [
+            "Guide"
+        ],
+        "url": "/docs/Guide/ccp_and_farp.html",
+        "keywords": [
+            "guide"
+        ]
     },
     {
         "title": "Документация на документацию",
         "section": [
-            "Docs"
+            "Guide"
         ],
-        "url": "/docs/Docs/documentation_for_documentation.html",
+        "url": "/docs/Guide/documentation_for_documentation.html",
         "keywords": []
     },
     {
-        "title": "Как обновить документы?",
+        "title": "Синтаксис",
         "section": [
-            "Docs",
+            "Guide",
             "documentation_for_documentation"
         ],
-        "url": "/docs/Docs/documentation_for_documentation/HowToUpdate.html",
+        "url": "/docs/Guide/documentation_for_documentation/syntax.html",
         "keywords": []
     },
     {
         "title": "Как добавить картинки?",
         "section": [
-            "Docs",
+            "Guide",
             "documentation_for_documentation"
         ],
-        "url": "/docs/Docs/documentation_for_documentation/HowtoPics.html",
+        "url": "/docs/Guide/documentation_for_documentation/HowtoPics.html",
+        "keywords": []
+    },
+    {
+        "title": "Как обновить документы?",
+        "section": [
+            "Guide",
+            "documentation_for_documentation"
+        ],
+        "url": "/docs/Guide/documentation_for_documentation/HowToUpdate.html",
         "keywords": []
     },
     {
         "title": "Препроцессор таблиц",
         "section": [
-            "Docs",
+            "Guide",
             "documentation_for_documentation"
         ],
-        "url": "/docs/Docs/documentation_for_documentation/TablePreprocessor.html",
+        "url": "/docs/Guide/documentation_for_documentation/TablePreprocessor.html",
         "keywords": []
     },
     {
         "title": "tS Docs",
         "section": [
-            "Docs",
+            "Guide",
             "documentation_for_documentation"
         ],
-        "url": "/docs/Docs/documentation_for_documentation/tsDocs.html",
+        "url": "/docs/Guide/documentation_for_documentation/tsDocs.html",
         "keywords": []
     },
     {
@@ -74,8 +117,21 @@ const ARTICLES =
         "section": [
             "SOP"
         ],
-        "url": "/docs/SOP/documentation_sop_communications.html",
+        "url": "/docs/SOP/communications.html",
         "keywords": []
+    },
+    {
+        "title": "Использование артиллерии",
+        "section": [
+            "SOP",
+            "Communications"
+        ],
+        "url": "/docs/SOP/Communications/artillery.html",
+        "keywords": [
+            "artillery",
+            "rto",
+            "sop"
+        ]
     },
     {
         "title": "Базовые правила коммуникации",
@@ -90,25 +146,12 @@ const ARTICLES =
         ]
     },
     {
-        "title": "Использование артиллерии",
-        "section": [
-            "SOP",
-            "Communications"
-        ],
-        "url": "/docs/SOP/Communications/documentation_sop_artillery.html",
-        "keywords": [
-            "artillery",
-            "rto",
-            "sop"
-        ]
-    },
-    {
         "title": "Медицинская эвакуация",
         "section": [
             "SOP",
             "Communications"
         ],
-        "url": "/docs/SOP/Communications/documentation_sop_medevac.html",
+        "url": "/docs/SOP/Communications/medevac.html",
         "keywords": [
             "medevac",
             "rto",
@@ -120,7 +163,7 @@ const ARTICLES =
         "section": [
             "SOP"
         ],
-        "url": "/docs/SOP/documantation_sop_graphics.html",
+        "url": "/docs/SOP/graphics.html",
         "keywords": []
     },
     {
@@ -128,7 +171,7 @@ const ARTICLES =
         "section": [
             "SOP"
         ],
-        "url": "/docs/SOP/documantation_sop_formations.html",
+        "url": "/docs/SOP/formations.html",
         "keywords": []
     },
     {
@@ -136,7 +179,7 @@ const ARTICLES =
         "section": [
             "SOP"
         ],
-        "url": "/docs/SOP/documentation_sop_cas.html",
+        "url": "/docs/SOP/cas.html",
         "keywords": [
             "cas",
             "sop"
@@ -147,7 +190,7 @@ const ARTICLES =
         "section": [
             "SOP"
         ],
-        "url": "/docs/SOP/documentation_sop_reserves_n_redeploy.html",
+        "url": "/docs/SOP/reserves_n_redeploy.html",
         "keywords": [
             "redeploy",
             "sop"
@@ -167,7 +210,7 @@ const ARTICLES =
             "SOP",
             "AI_SOP"
         ],
-        "url": "/docs/SOP/AI_SOP/documentation_sop_aircrew.html",
+        "url": "/docs/SOP/AI_SOP/ai_crew.html",
         "keywords": []
     },
     {
@@ -176,7 +219,7 @@ const ARTICLES =
             "SOP",
             "AI_SOP"
         ],
-        "url": "/docs/SOP/AI_SOP/AI_Platoon_leadership.html",
+        "url": "/docs/SOP/AI_SOP/ai_platoon_leadership.html",
         "keywords": [
             "ai",
             "sop"
@@ -188,7 +231,7 @@ const ARTICLES =
             "SOP",
             "AI_SOP"
         ],
-        "url": "/docs/SOP/AI_SOP/documentation_aisquad.html",
+        "url": "/docs/SOP/AI_SOP/ai_squad.html",
         "keywords": []
     },
     {
@@ -200,21 +243,21 @@ const ARTICLES =
         "keywords": []
     },
     {
-        "title": "Обучение на специалиста (гренадира) и старшего второй двойки",
-        "section": [
-            "TCO"
-        ],
-        "url": "/docs/TCO/documentation_tco_grenadier.html",
-        "keywords": [
-            "tco"
-        ]
-    },
-    {
         "title": "Обучение на райфлмена (КМБ)",
         "section": [
             "TCO"
         ],
         "url": "/docs/TCO/documentation_tco_rifleman.html",
+        "keywords": [
+            "tco"
+        ]
+    },
+    {
+        "title": "Обучение на специалиста (гренадира) и старшего второй двойки",
+        "section": [
+            "TCO"
+        ],
+        "url": "/docs/TCO/documentation_tco_grenadier.html",
         "keywords": [
             "tco"
         ]
@@ -236,7 +279,7 @@ const ARTICLES =
         "section": [
             "TCO"
         ],
-        "url": "/docs/TCO/tco_crisis_management.html",
+        "url": "/docs/TCO/crisis_management.html",
         "keywords": [
             "rto",
             "tco",
@@ -248,7 +291,7 @@ const ARTICLES =
         "section": [
             "MMO"
         ],
-        "url": "/docs/MMO/mission_making_missions_editor_requirements.html",
+        "url": "/docs/MMO/editor_requirements.html",
         "keywords": [
             "mmo"
         ]
@@ -258,7 +301,7 @@ const ARTICLES =
         "section": [
             "MMO"
         ],
-        "url": "/docs/MMO/mission_making_missions_editor_framework.html",
+        "url": "/docs/MMO/editor_framework.html",
         "keywords": [
             "mmo"
         ]
@@ -268,7 +311,7 @@ const ARTICLES =
         "section": [
             "MMO"
         ],
-        "url": "/docs/MMO/mission_making_missions_editor_concept.html",
+        "url": "/docs/MMO/editor_concept.html",
         "keywords": [
             "mmo"
         ]
@@ -278,7 +321,7 @@ const ARTICLES =
         "section": [
             "MMO"
         ],
-        "url": "/docs/MMO/mission_making_missions_editor_production.html",
+        "url": "/docs/MMO/editor_production.html",
         "keywords": [
             "mmo"
         ]
@@ -288,7 +331,7 @@ const ARTICLES =
         "section": [
             "MMO"
         ],
-        "url": "/docs/MMO/mission_making_missions_editor_misc.html",
+        "url": "/docs/MMO/editor_misc.html",
         "keywords": [
             "mmo"
         ]
@@ -307,9 +350,10 @@ const ARTICLES =
 
 const KEYWORDS  =
 {
+    "guide": 5,
+    "artillery": 1,
     "rto": 5,
     "sop": 8,
-    "artillery": 1,
     "medevac": 1,
     "cas": 1,
     "redeploy": 1,

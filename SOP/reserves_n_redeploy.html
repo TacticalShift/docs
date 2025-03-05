@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+    <meta charset="utf-8"/>
+    
+    <meta property="title" content="tS Docs - Резервы">
+    <meta property="og:title" content="tS Docs - Резервы">
+    <meta property="og:site_name" content="tS Docs">
+    
+    <title>tS Docs - Резервы</title>
+
+    <link rel="icon" href="/docs/src/img/ts_icon.png">
+    <link rel="stylesheet" href="/docs/src/style.css">
+
+    <script src="/docs/src/keywords.js"></script>
+    <script src="/docs/src/ruleEnum.js"></script>
+    <script src="/docs/src/autocompleter.js"></script>
+    <script src="/docs/src/searchWidget.js"></script>
+    <script src="/docs/src/animateToc.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {			
+            const url = new URL(window.location.href)
+            if (url.protocol !== "file:") return
+			
+            const urlPath = url.pathname.split("/")
+            const rootPosition = urlPath.indexOf("docs")
+			
+			let pathOffset = ""
+			let pathToSrc = "src/"
+			if ((rootPosition + 1) != (urlPath.length - 1)) {
+				const pathOffsetList = []
+				for (let i = rootPosition + 1; i < urlPath.length - 1; ++i) {
+					pathOffsetList.push("..")
+				}
+				pathOffset = pathOffsetList.join("/") 
+				pathToSrc = "/src/"
+			}
+
+			// Fixes paths for CSS and icons
+			const links = document.getElementsByTagName("link")
+			for (let el of links) {
+				el.href = pathOffset + pathToSrc + el.href.split("src/")[1]
+			}
+			
+			// Re-adds scripts by local path
+			const scripts = document.getElementsByTagName("script")
+			const localScripts = []
+			for (let el of scripts) {
+				if (el.src == "") continue;
+				const script = document.createElement("script")
+				script.src = pathOffset + pathToSrc + el.src.split("src/")[1]
+				localScripts.push(script)
+			}
+			localScripts.forEach((e)=>document.head.appendChild(e))
+        })
+    </script>
+
+    </head>
+    <body>
+        
+    
+    <div id="header">
+        <div id="header-title">
+            <span><a href="https://tacticalshift.ru" style="text-decoration: none; color: inherit;">tS</a></span> <tt id='header-sans'><a href= "/docs/" style="text-decoration: none; color: inherit;" >Docs</a></tt>
+        </div>
+        
+    <div class="navbar">
+        
+    <div class="dropdown">
+        <button class="dropbtn" title="Руководства по различным аспектам игры в нашем сообществе. Полезно для каждого игрока!">Руководство</button>
+        <div class="dropdown-content">
+          <a href="/docs/Guide/event_day.html">Event day</a><a href="/docs/Guide/doctrine.html">Доктрины</a><a href="/docs/Guide/roles.html">Роли и обязанности</a><a href="/docs/Guide/planning.html">Планирование</a><a href="/docs/Guide/orbat.html">ORBAT</a><a href="/docs/Guide/ccp_and_farp.html">CCP и FARP</a>
+    <div class="dropdown-2l">
+        <span>Документация на документацию<arrow>⇨</arrow></span>
+        <div class="dropdown-2l-content">
+            <a href="/docs/Guide/documentation_for_documentation/syntax.html">Синтаксис</a><a href="/docs/Guide/documentation_for_documentation/HowtoPics.html">Как добавить картинки?</a><a href="/docs/Guide/documentation_for_documentation/HowToUpdate.html">Как обновить документы?</a><a href="/docs/Guide/documentation_for_documentation/TablePreprocessor.html">Препроцессор таблиц</a><a href="/docs/Guide/documentation_for_documentation/tsDocs.html">tS Docs</a>
+        </div>
+    </div>
+
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <button class="dropbtn" title="Standard Operation Procedures">SOPs</button>
+        <div class="dropdown-content">
+          
+    <div class="dropdown-2l">
+        <span>Правила коммуникации<arrow>⇨</arrow></span>
+        <div class="dropdown-2l-content">
+            <a href="/docs/SOP/Communications/artillery.html">Использование артиллерии</a><a href="/docs/SOP/Communications/basics.html">Базовые правила коммуникации</a><a href="/docs/SOP/Communications/medevac.html">Медицинская эвакуация</a>
+        </div>
+    </div>
+<a href="/docs/SOP/graphics.html">Графические меры контроля</a><a href="/docs/SOP/formations.html">Formations</a><a href="/docs/SOP/cas.html">Поддержка с воздуха / Close Air Support (CAS)</a><a href="/docs/SOP/reserves_n_redeploy.html">Резервы</a>
+    <div class="dropdown-2l">
+        <span>Управление ИИ<arrow>⇨</arrow></span>
+        <div class="dropdown-2l-content">
+            <a href="/docs/SOP/AI_SOP/ai_crew.html">AI_Crew</a><a href="/docs/SOP/AI_SOP/ai_platoon_leadership.html">Командование ботовзводом</a><a href="/docs/SOP/AI_SOP/ai_squad.html">Отряд с AI-подчиненными</a>
+        </div>
+    </div>
+<a href="/docs/SOP/gso_gso_guidelines.html">GSO SOP</a>
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <button class="dropbtn" title="Training Center Office">TCO</button>
+        <div class="dropdown-content">
+          <a href="/docs/TCO/documentation_tco_rifleman.html">Обучение на райфлмена (КМБ)</a><a href="/docs/TCO/documentation_tco_grenadier.html">Обучение на специалиста (гренадира) и старшего второй двойки</a><a href="/docs/TCO/documentation_tco_rto.html">Radio Telephone Operator</a><a href="/docs/TCO/crisis_management.html">Контроль в кризисных ситуациях</a>
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <button class="dropbtn" title="Mission Making Office">MMO</button>
+        <div class="dropdown-content">
+          <a href="/docs/MMO/editor_requirements.html">Требования к оформлению миссии</a><a href="/docs/MMO/editor_framework.html">Tactical Shift Framework</a><a href="/docs/MMO/editor_concept.html">Концепт и структура миссии</a><a href="/docs/MMO/editor_production.html">Сборка миссии</a><a href="/docs/MMO/editor_misc.html">Ревью и поддержка миссии</a>
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <button class="dropbtn" title="Server magic">SRV</button>
+        <div class="dropdown-content">
+          <a href="/docs/SRV/howtoserver.html">How to server</a>
+        </div>
+    </div>
+
+
+        <div id="search-bar">
+            <input id="search-field" placeholder="Поиск по ключевым словам..."></input>
+            <button id="search-button"><img src="/docs/src/img/search.png"></button>
+        </div>
+    </div>
+
+    </div>
+
+    <div id="wrapper">
+        <div class="title">
+            <h1>Резервы</h1>
+            <ul>
+    <li>
+        <a href="/docs/search.html?search=redeploy" target="_blank">#redeploy</a>
+    </li>
+
+    <li>
+        <a href="/docs/search.html?search=sop" target="_blank">#sop</a>
+    </li>
+</ul>
+        </div>
+        <div class="toc">
+<ul>
+<li><a href="#_1">Процедура доукомплектации отрядов</a><ul>
+<li><a href="#_2">Варианты доукомплектации</a></li>
+<li><a href="#_3">Выполнение доукомплектации</a></li>
+</ul>
+</li>
+<li><a href="#_4">Процедура развертывания резервов</a><ul>
+<li><a href="#_5">Варианты развёртывания</a></li>
+<li><a href="#_6">Выполнение развёртывания</a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+        <div class="article">
+            <p>Большинство миссий по умолчанию подразумевают, что кроме непосредственно задействованных в выполнении отрядов существует еще некоторое количество резервов, которые могут быть введены по ходу выполнения заданий. Доступность резервов определяется (согласно приоритету):</p>
+<ol>
+<li><em>Явным указанием в брифинге</em>
+Пункт Поддержка содержит описание доступных резервов (пехоты и техники);</li>
+<li><em>В миссии участвует часть взвода</em>
+Так как обычно взвод состоит из 4-5 отделений, то участие в миссии 2х отделений подразумевает, что еще как минимум 2 отделения находятся в резерве;</li>
+<li><em>Максимальным количеством слотов</em>
+В первую очередь для спецопераций, если по условиям миссии участвуют 22 слота, а фактически участвуют 15 человек, то примерно 7 юнитов остаются в резерве.</li>
+</ol>
+<p><table class=".comm-table">
+	<tr>
+		<td style="text-align:left;">Замечание 1: Для пехотных отрядов допускается упрощенно считать, что если резервы есть, то на каждый отряд приходиться по одному резервному.</td>
+	</tr>
+</table></p>
+<p><table class=".comm-table">
+	<tr>
+		<td style="text-align:left;">Замечание 2: Под спецоперацией подразумеваются миссии за линией фронта, в отрыве от основных сил, когда отсутствует возможность получить дополнительные ресурсы безопасным способом. Если не указано в брифинге, то доступность резервов для развертывания и возможность доукомплектации для таких миссий определяется каждый раз индивидуально (например, воздушный десант мог высадить взвод целиком, но в миссии участвует только его часть - следовательно такая миссия не спецоперация, есть резервы в зоне операции), но как минимум PL может развернуть доп отряды за счет неиспользованных слотов. При этом последнее слово остается за GSO.</td>
+	</tr>
+</table></p>
+<h2 id="_1">Процедура доукомплектации отрядов</h2>
+<p>Каждая выполненная задача миссии позволяет вернуть всех погибших игроков в свои отряды. Т.е. после выполнения задачи - становится доступна одна волна респауна, при этом волны не накапливаются.
+По умолчанию доукомплектация не расходует ресурсы.
+(Опционально) Для спецопераций доукомплектация может “расходовать” незанятые слоты. По исчерпанию слотов - умершие больше не смогут вернуться в игру, развертывание резервов также будет недоступно.</p>
+<h3 id="_2">Варианты доукомплектации</h3>
+<p><table class="zebra-table-ts">
+	<tr>
+		<td style="">Роль игрока</td>
+		<td>Условие</td>
+		<td>Вариант</td>
+	</tr>
+	<tr>
+		<td>игроки из пехотного отряда</td>
+		<td>• наличие родного боеспособного отряда</td>
+		<td>возрождение в той же роли</td>
+	</tr>
+	<tr>
+		<td>пилоты/экипажи</td>
+		<td>• наличие доп. техники на базе</td>
+		<td>возрождение в той же роли</td>
+	</tr>
+	<tr>
+		<td>пилоты/экипажи</td>
+		<td>• отсутствие доп. техники на базе<br>• наличие недоукомплектованных отрядов</td>
+		<td>возрождение, смена роли и присоединение к другому отряду</td>
+	</tr>
+</table></p>
+<p><table class=".comm-table">
+	<tr>
+		<td style="text-align:left;">Замечание 3: Условия являются подсказкой для GSO и позволят решать - когда следует повторно развертывать отряд, а когда еще можно доукомплектовывать.</td>
+	</tr>
+</table></p>
+<h3 id="_3">Выполнение доукомплектации</h3>
+<ol>
+<li>После выполнения задачи PL делает запрос к GSO о доукомплектации</li>
+<li>GSO, по мере возможности, возрождает игроков на базе/стартовой точке, после чего игроки ожидают дальнейших указаний от GSO, не покидая позицию</li>
+<li>GSO производит смену снаряжения и выдачу необходимых ассетов возрожденных игроков</li>
+<li>По договоренности GSO и PL'а возрожденные игроки могут быть перемещены на CCP или безопасный MEP</li>
+</ol>
+<h2 id="_4">Процедура развертывания резервов</h2>
+<p>Если по условиям миссии существуют резервы, то у каждого отряда появляется возможность 1 раз совершить повторное развертывание (redeploy) - возродиться целиком и обновить свое снаряжение.</p>
+<p>Запрашивать развертывание резервов может только PL, при условии, что он жив и имеет ДВ рацию.
+Лидеры отрядов могут информировать PL'а о полной потере боеспособности своего или союзного отряда (например, если лидер и большая часть отряда погибли).</p>
+<h3 id="_5">Варианты развёртывания</h3>
+<p><table class="zebra-table-ts">
+	<tr>
+		<td style="">Вариант</td>
+		<td>Условие</td>
+		<td>Как делать</td>
+	</tr>
+	<tr>
+		<td>Отступление отряда</td>
+		<td>• отряд отступил в безопасную зону</td>
+		<td>‣ переместить отряд на базу/стартовую точку<br>‣ вылечить игроков отряда<br>‣ обновить снаряжение игроков отряда<br>‣ возродить умерших членов отряда<br>‣ выдать необходимые ассеты (киты, техника, доп. снаряжение)</td>
+	</tr>
+	<tr>
+		<td>Уничтожение отряда</td>
+		<td>• отряд не будет отступать</td>
+		<td><br>‣ убить оставшихся игроков отряда на месте<br>‣ возродить умерших членов отряда<br>‣ выдать необходимые ассеты (киты, техника, доп. снаряжение)</td>
+	</tr>
+</table></p>
+<p><table class=".comm-table">
+	<tr>
+		<td style="text-align:left;">Замечание 4: Если PL не имеет информации о состоянии отряда, но уверен, что отряд уничтожен, то развертывание следует производить по варианту “уничтожение отряда” (даже если фактически отряд еще боеспособен)</td>
+	</tr>
+</table></p>
+<p><table class=".comm-table">
+	<tr>
+		<td style="text-align:left;">Замечание 5: Вариант “Отступление отряда” следует рассматривать как основной сценарий для развертывания, если в живых и в сознании есть хотя бы несколько человек.</td>
+	</tr>
+</table></p>
+<p><table class=".comm-table">
+	<tr>
+		<td style="text-align:left;">Замечание 6: Вариант “Уничтожение отряда” предполагается для случаев, когда большая часть отряда погибла, а выжившие находятся без сознания.</td>
+	</tr>
+</table></p>
+<h3 id="_6">Выполнение развёртывания</h3>
+<ol>
+<li>(опционально) SL сообщает PL'у о полной потере боеспособности отряда:<br>&gt; 1'6, это 1'1, отряд разбит, много потерь, мы не можем продолжать дальше.</li>
+<li>(опционально) PL приказывает отряду отступить</li>
+<li>PL по SUPNet запрашивает подкрепление на замену отряду (после отступления, либо, подразумевая что весь отряд погиб, сразу):<br>&gt; 1'5, это 1'6, запрашиваю подкрепление на замену 1'1</li>
+<li>GSO, по мере возможности, проводит развертывание отряда согласно варианту развертывания</li>
+<li>После завершения развертывания (все возрождены, снаряжение и техника выданы), GSO сообщает в SUPNet о готовности отряда</li>
+<li>По договоренности GSO и PL'а отряд может быть перемещен на CCP или безопасный MEP</li>
+</ol>
+        </div>
+    </div>
+
+    </body>
+</html>

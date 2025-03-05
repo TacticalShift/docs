@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+    <meta charset="utf-8"/>
+    
+    <meta property="title" content="tS Docs - tS Docs">
+    <meta property="og:title" content="tS Docs - tS Docs">
+    <meta property="og:site_name" content="tS Docs">
+    
+    <title>tS Docs - tS Docs</title>
+
+    <link rel="icon" href="/docs/src/img/ts_icon.png">
+    <link rel="stylesheet" href="/docs/src/style.css">
+
+    <script src="/docs/src/keywords.js"></script>
+    <script src="/docs/src/ruleEnum.js"></script>
+    <script src="/docs/src/autocompleter.js"></script>
+    <script src="/docs/src/searchWidget.js"></script>
+    <script src="/docs/src/animateToc.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {			
+            const url = new URL(window.location.href)
+            if (url.protocol !== "file:") return
+			
+            const urlPath = url.pathname.split("/")
+            const rootPosition = urlPath.indexOf("docs")
+			
+			let pathOffset = ""
+			let pathToSrc = "src/"
+			if ((rootPosition + 1) != (urlPath.length - 1)) {
+				const pathOffsetList = []
+				for (let i = rootPosition + 1; i < urlPath.length - 1; ++i) {
+					pathOffsetList.push("..")
+				}
+				pathOffset = pathOffsetList.join("/") 
+				pathToSrc = "/src/"
+			}
+
+			// Fixes paths for CSS and icons
+			const links = document.getElementsByTagName("link")
+			for (let el of links) {
+				el.href = pathOffset + pathToSrc + el.href.split("src/")[1]
+			}
+			
+			// Re-adds scripts by local path
+			const scripts = document.getElementsByTagName("script")
+			const localScripts = []
+			for (let el of scripts) {
+				if (el.src == "") continue;
+				const script = document.createElement("script")
+				script.src = pathOffset + pathToSrc + el.src.split("src/")[1]
+				localScripts.push(script)
+			}
+			localScripts.forEach((e)=>document.head.appendChild(e))
+        })
+    </script>
+
+    </head>
+    <body>
+        
+    
+    <div id="header">
+        <div id="header-title">
+            <span><a href="https://tacticalshift.ru" style="text-decoration: none; color: inherit;">tS</a></span> <tt id='header-sans'><a href= "/docs/" style="text-decoration: none; color: inherit;" >Docs</a></tt>
+        </div>
+        
+    <div class="navbar">
+        
+    <div class="dropdown">
+        <button class="dropbtn" title="Руководства по различным аспектам игры в нашем сообществе. Полезно для каждого игрока!">Руководство</button>
+        <div class="dropdown-content">
+          <a href="/docs/Guide/event_day.html">Event day</a><a href="/docs/Guide/doctrine.html">Доктрины</a><a href="/docs/Guide/roles.html">Роли и обязанности</a><a href="/docs/Guide/planning.html">Планирование</a><a href="/docs/Guide/orbat.html">ORBAT</a><a href="/docs/Guide/ccp_and_farp.html">CCP и FARP</a>
+    <div class="dropdown-2l">
+        <span>Документация на документацию<arrow>⇨</arrow></span>
+        <div class="dropdown-2l-content">
+            <a href="/docs/Guide/documentation_for_documentation/syntax.html">Синтаксис</a><a href="/docs/Guide/documentation_for_documentation/HowtoPics.html">Как добавить картинки?</a><a href="/docs/Guide/documentation_for_documentation/HowToUpdate.html">Как обновить документы?</a><a href="/docs/Guide/documentation_for_documentation/TablePreprocessor.html">Препроцессор таблиц</a><a href="/docs/Guide/documentation_for_documentation/tsDocs.html">tS Docs</a>
+        </div>
+    </div>
+
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <button class="dropbtn" title="Standard Operation Procedures">SOPs</button>
+        <div class="dropdown-content">
+          
+    <div class="dropdown-2l">
+        <span>Правила коммуникации<arrow>⇨</arrow></span>
+        <div class="dropdown-2l-content">
+            <a href="/docs/SOP/Communications/artillery.html">Использование артиллерии</a><a href="/docs/SOP/Communications/basics.html">Базовые правила коммуникации</a><a href="/docs/SOP/Communications/medevac.html">Медицинская эвакуация</a>
+        </div>
+    </div>
+<a href="/docs/SOP/graphics.html">Графические меры контроля</a><a href="/docs/SOP/formations.html">Formations</a><a href="/docs/SOP/cas.html">Поддержка с воздуха / Close Air Support (CAS)</a><a href="/docs/SOP/reserves_n_redeploy.html">Резервы</a>
+    <div class="dropdown-2l">
+        <span>Управление ИИ<arrow>⇨</arrow></span>
+        <div class="dropdown-2l-content">
+            <a href="/docs/SOP/AI_SOP/ai_crew.html">AI_Crew</a><a href="/docs/SOP/AI_SOP/ai_platoon_leadership.html">Командование ботовзводом</a><a href="/docs/SOP/AI_SOP/ai_squad.html">Отряд с AI-подчиненными</a>
+        </div>
+    </div>
+<a href="/docs/SOP/gso_gso_guidelines.html">GSO SOP</a>
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <button class="dropbtn" title="Training Center Office">TCO</button>
+        <div class="dropdown-content">
+          <a href="/docs/TCO/documentation_tco_rifleman.html">Обучение на райфлмена (КМБ)</a><a href="/docs/TCO/documentation_tco_grenadier.html">Обучение на специалиста (гренадира) и старшего второй двойки</a><a href="/docs/TCO/documentation_tco_rto.html">Radio Telephone Operator</a><a href="/docs/TCO/crisis_management.html">Контроль в кризисных ситуациях</a>
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <button class="dropbtn" title="Mission Making Office">MMO</button>
+        <div class="dropdown-content">
+          <a href="/docs/MMO/editor_requirements.html">Требования к оформлению миссии</a><a href="/docs/MMO/editor_framework.html">Tactical Shift Framework</a><a href="/docs/MMO/editor_concept.html">Концепт и структура миссии</a><a href="/docs/MMO/editor_production.html">Сборка миссии</a><a href="/docs/MMO/editor_misc.html">Ревью и поддержка миссии</a>
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <button class="dropbtn" title="Server magic">SRV</button>
+        <div class="dropdown-content">
+          <a href="/docs/SRV/howtoserver.html">How to server</a>
+        </div>
+    </div>
+
+
+        <div id="search-bar">
+            <input id="search-field" placeholder="Поиск по ключевым словам..."></input>
+            <button id="search-button"><img src="/docs/src/img/search.png"></button>
+        </div>
+    </div>
+
+    </div>
+
+    <div id="wrapper">
+        <div class="title">
+            <h1>tS Docs</h1>
+            <ul></ul>
+        </div>
+        <div class="toc">
+<ul>
+<li><a href="#table-of-content">Table of content</a></li>
+<li><a href="#_1">Структура репозитория</a></li>
+<li><a href="#md">MD страницы</a><ul>
+<li><a href="#metadata">Metadata</a></li>
+<li><a href="#_2">Расширенный синтаксис</a></li>
+</ul>
+</li>
+<li><a href="#_3">Структура и дропдауны</a><ul>
+<li><a href="#1-">Секции (дропдауны 1-го уровня)</a></li>
+<li><a href="#2-">Дропдауны 2-го уровня</a></li>
+</ul>
+</li>
+<li><a href="#-">Билд-скрипт</a><ul>
+<li><a href="#_4">Общая схема работы</a></li>
+<li><a href="#markdown">Парсинг markdown</a><ul>
+<li><a href="#_5">Препроцессинг</a></li>
+</ul>
+</li>
+<li><a href="#html">HTML</a></li>
+</ul>
+</li>
+<li><a href="#_6">Шаблоны</a><ul>
+<li><a href="#_7">Страница</a></li>
+<li><a href="#_8">Заголовок страницы</a></li>
+<li><a href="#_9">Тело страницы</a></li>
+<li><a href="#navbar">Navbar</a></li>
+<li><a href="#1">Секция (Дропдаун 1го уровня)</a></li>
+<li><a href="#-_1">Элемент-ссылка дропдауна</a></li>
+<li><a href="#-2">Элемент-ссылка списка с дропдауном 2го уровня</a></li>
+<li><a href="#2">Элемент списка (неактивный) с дропдауном 2го уровня</a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+        <div class="article">
+            <h3 id="table-of-content">Table of content</h3>
+<ul>
+<li><a href="#struct">Структура репозитория</a></li>
+<li><a href="#md">MD страницы</a></li>
+<li><a href="#md_meta">Metadata</a></li>
+<li><a href="#md_syntax">Расширенный синтаксис</a></li>
+<li><a href="#dd">Структура и дропдауны</a></li>
+<li><a href="#dd_1st_level">Секции (дропдауны 1-го уровня)</a></li>
+<li>
+<p><a href="#dd_2nd_level">Дропдауны 2-го уровня</a></p>
+</li>
+<li>
+<p><a href="#t">Шаблоны</a></p>
+</li>
+<li><a href="#t_page">Страница</a></li>
+<li><a href="#t_head">HEAD</a></li>
+<li><a href="#t_body">BODY</a></li>
+<li><a href="#t_navbar">Navbar</a></li>
+<li><a href="#t_dd">Секция (Дропдаун 1го уровня)</a></li>
+<li><a href="#t_dd_element">Элемент-ссылка дропдауна</a></li>
+<li><a href="#t_dd2">Элемент-ссылка списка с дропдауном 2го уровня</a></li>
+<li><a href="#t_dd2_inactive">Элемент списка (неактивный) с дропдауном 2го уровня</a></li>
+</ul>
+<p>Сборник документации в виде статичных html страниц размещенных на github pages.</p>
+<p>Для добавления и редактирвания страниц используются .md файлы (файлы разметки markdown) и особый билд-скрипт на python3, который конвертирует файлы в html. Все файлы лежат в одном репозитории.</p>
+<h2 id="_1"><a name="struct"></a>Структура репозитория</h2>
+<pre><code>.
+|   
+├── src
+│   ├── style.css              // Таблица стилей
+│   ├── keywords.js            // Автогенерируемый файл для поисковика
+│   ├── searchWidget.js        // Скрипт виджета поиска
+│   ├── autocompleter.js       // Вспомогательный скрипт поиска (автозаполнение ключевыъ слов)
+│   └── searcher.js            // Скрипт поиска и фильтрации
+|
+|   // Структура исходных файлов
+├── md
+│   ├── Section1        // Раздел 1 и страницы раздела
+│   │   ├── page1.md
+│   │   └── page2.md
+│   ├── Section2
+|   |   ├── SubSection1
+│   │   │   └── page5.md
+│   │   ├── page3.md
+│   │   └── page4.md
+│   ├── build.py        // Билд-скрипт
+│   └── validate.py     // Скрипт для валидации страницы
+|
+|   // Готовые html-страницы
+├── index.html
+├── Section1
+│   ├── page1.html
+│   └── page2.html
+├── Section2
+|   ├── SubSection1
+│   │   └── page5.html
+│   ├── page3.html
+│   └── page4.html
+</code></pre>
+<p>Исходные .md файлы рассортированы в папки, не более 2х уровней глубины.
+В конфиге билд-скрипте задана структура первого уровня, структуры второго уровня задаются непосредственно в метаданных головной страницы.</p>
+<h2 id="md"><a name="md"></a>MD страницы</h2>
+<p>Данные хранятся и редактируются в .md страницах, которые затем будут конвертирваны в html страницы билд-скриптом.
+Страницы должны использовать стандартный markdown syntax с некоторыми расширениями.</p>
+<h3 id="metadata"><a name="md_meta"></a>Metadata</h3>
+<p>Первой строкой должна идти строка метаданных вида</p>
+<pre><code class="language-md">@Meta(key1=value1, key2=value2, key3=value3) NORENDER
+</code></pre>
+<p>пары ключ-значения разделяются запятыми.
+Ключи:</p>
+<ul>
+<li><code>Position=1...n</code> - определяет положение страницы в дропдауне, чем меньше значение, тем выше в дропдауне будет отображена страница;</li>
+<li><code>Hide=1/0</code> - при значении 1 - исключает страницу из дропдауна;</li>
+<li><code>Title=some text</code> - имя страницы в дропдауне (если не задано, то берем заголовок первого уровня);</li>
+<li><code>Subpages=Name</code> - имя директории со страницами для второго уровня дропдаунов.</li>
+</ul>
+<h3 id="_2"><a name="md_syntax"></a>Расширенный синтаксис</h3>
+<ul>
+<li><code>~Shift~</code> — кнопки клавиатуры (тег <code>&lt;kbd&gt;&lt;/kbd&gt;</code>)</li>
+<li><code>^mark^</code> — выделение текста серым фоном (тег <code>&lt;mark&gt;&lt;/mark&gt;</code>)</li>
+<li><code>^^highlight^^</code> — выделение текста "маркером" (тег <code>&lt;highlight&gt;&lt;/highlight&gt;</code>)</li>
+<li><code>!warn!</code> — выделение текста красным (тег <code>&lt;warn&gt;&lt;/warn&gt;</code>)</li>
+<li><code>^warn^[%color%]</code> — выделение текста цветом (тег <code>&lt;warn&gt;&lt;/warn&gt;</code>)</li>
+<li>Таблицы: ???</li>
+</ul>
+<h2 id="_3"><a name="dd"></a>Структура и дропдауны</h2>
+<h3 id="1-"><a name="dd_1st_level"></a>Секции (дропдауны 1-го уровня)</h3>
+<p>Список секций хардкодится в билд-скрипт - имя дропдауна и папка для страниц.
+Порядок секций в навигационной панели тоже задается в билд-скрипте.</p>
+<pre><code class="language-py">SECTION_CONFIGURATION = {
+ &quot;order&quot;: [&quot;_docs&quot;, &quot;_sop&quot;, &quot;_tco&quot;, &quot;_mmo&quot;, &quot;_srv&quot;],  # Порядок следования секций в navbar'е
+
+ # Описание секции
+ &quot;_sop&quot;: {
+  &quot;title&quot;: &quot;SOPs&quot;,  # Отображаемое название секции в navbar'e
+  &quot;tooltip&quot;: &quot;Standard Operation Procedures&quot;,  # Текст для всплывающего текста при наведении (опционально), html-свойство title
+  &quot;src&quot;: &quot;SOP&quot;  # Имя папки первого уровня где хранятся страницы
+ },
+ &quot;_docs&quot;: {
+  &quot;title&quot;: &quot;Документация&quot;,
+  &quot;src&quot;: &quot;Docs&quot;
+ },
+ &quot;_tco&quot;: {
+  &quot;title&quot;: &quot;TCO&quot;,
+  &quot;tooltip&quot;: &quot;Training Center Office&quot;,
+  &quot;src&quot;: &quot;TCO&quot;
+ }
+ ...
+};
+</code></pre>
+<p>Все страницы в указанной папке для секции рассматриваются как элементы дропдауна. При этом исходя из метаданныз конкретной страницы задается сам факт добавления страницы в дропдаун (флаг <code>Hide</code>), положение страницы в дропдауне (ключ <code>Position</code>) и отображаемое название страницы в дропдауне (ключ <code>Title</code>).</p>
+<h3 id="2-"><a name="dd_2nd_level"></a>Дропдауны 2-го уровня</h3>
+<p>Если в метаданных страницы имеется не пустой ключ <code>Subpages</code>, то для данной страницы в дропдауне добавляется дропдаун 2го уровня и наполняется страницами найденными в директории <code>/md/&lt;SomeSection&gt;/&lt;Subpages_Value&gt;/</code> (например, на странице <code>/md/MMO/tsFramework.md</code> в метаданных указано <code>Subpages=tSF</code>, дропдаун 2го уровня будет собран из страниц в <code>/md/MMO/tSF/*.md</code>).</p>
+<p>Дропдаун 2-го уровня может быть двух видов:</p>
+<ul>
+<li>если страница имеет в метаданных не пустой ключ <code>Subpages</code> и ключ <code>Hide=0</code> (или не имеет ключа <code>Hide</code>) - то дропдаун второго уровня начинается на кликабельном элементе (шаблон <code>HTML_DROPDOWN_EXTENDED</code>) (т.е. можно как открыть корневую страницу, так и подстраницы)</li>
+<li>если страница имеет в метаданных не пустой ключ <code>Subpages</code> и ключ <code>Hide=1</code> - то дропдаун второго уровня начинается на некликабельном элементе (шаблон <code>HTML_DROPDOWN_EXTENDED_INACTIVE</code>) (т.е. корневая страница не доступна, открыть можно только подстраницы)</li>
+</ul>
+<h2 id="-"><a name='build'></a>Билд-скрипт</h2>
+<h3 id="_4">Общая схема работы</h3>
+<ol>
+<li>Считывается <code>SECTION_CONFIGURATION</code> и формируется базовая структура navbar'а</li>
+<li>Для каждой заданной секции вычитываем все .md файлы в директории</li>
+<li>Для каждого .md файла считываем метаданные<ul>
+<li>если в метаданных нет ключа <code>Title</code>, то найти и вычитать заголовок первого уровня</li>
+</ul>
+</li>
+<li>Для каждого .md файла имеющего не пустой <code>Subpages</code> - считываем все .md файлы в соответствующей суб-директории</li>
+<li>Формируем navbar учитывая:<ul>
+<li>секцию к которой относится страница</li>
+<li>желаемую позицию страницы в дропдауне (ключ <code>Position</code>)</li>
+<li>желаемое имя страницы (ключ <code>Title</code> или заголовок первого уровня)</li>
+<li>наличие дропдауна второго уровня (ключ <code>Subpages</code>)</li>
+<li>необходимость отображать страницу в дропдауне (ключ <code>Hide=1</code>, тем не менее если одновременно есть непустой ключ <code>Subpages</code> - то добавляем элемент по шаблону HTML_DROPDOWN_EXTENDED_INACTIVE - т.е. не выбираемый элемент с дропдауном второго уровня)</li>
+<li>известную структуру файлов для задания ссылок на страницу</li>
+</ul>
+</li>
+<li>Вновь проходим по всем страницам всех секций:<ul>
+<li>пррепроцессим</li>
+<li>конвертируем markdown в html (также получаем table of content из расширения toc)</li>
+</ul>
+</li>
+<li>Использя общий шаблон html страницы, сформированный navbar и конвертированный markdown - форматируем готовую html страницу и сохраняем ее в соответствующую папку в корне</li>
+</ol>
+<h3 id="markdown">Парсинг markdown</h3>
+<h4 id="_5">Препроцессинг</h4>
+<ul>
+<li>
+<p>Из метаданных берем значение ключа Title (если есть)</p>
+</li>
+<li>
+<p>Удаляем метаданные (<code>@Meta(...)</code>)</p>
+</li>
+<li>Находим первый заголовок первого уровня (в дальнейшем он будет применен), берем его значение и удаляем его из текста</li>
+<li>Парсим и заменяем таблицы (<code>|...|...|</code>)</li>
+<li>Парсим и заменяем расширения для markdown (см. <a href="#md_syntax">Расширенный синтаксис</a>)</li>
+</ul>
+<p>Вычлененные заголовки (Mata.Title или заголовок <code>#</code>) имеют отдельную роль в формировании страницы. Если значение Meta.Title задано, то используем его в HTML-заголовке страницы (чтобы на вкладке браузера было видно что за страница открыта). Если Meta.Title не задан, то везде используется первый найденный заголовок первого уровня - в HTML-заголовке страницы и как название статьи (выделено отдельным элементом, см. шаблоны).</p>
+<h3 id="html"><a name="html"></a>HTML</h3>
+<pre><code class="language-html">&lt;div class=&quot;navbar&quot;&gt; &lt;!-- Собственно панель с разделами --&gt;
+    &lt;div class=&quot;dropdown&quot;&gt; &lt;!-- Блок задающий раздел --&gt;
+        &lt;button class=&quot;dropbtn&quot;&gt;SOP&lt;/button&gt;  &lt;!-- Заголовок раздела - тут SOP --&gt;
+            &lt;div class=&quot;dropdown-content&quot;&gt;  &lt;!-- Блок элементов дропдауна --&gt;
+                &lt;a href=&quot;#&quot;&gt;Графические меры контроля&lt;/a&gt;  &lt;!-- Элемент дропдауна, где href = ссылка на соответствующую страницу--&gt;
+                &lt;a href=&quot;#&quot;&gt;Формации&lt;/a&gt;    
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<h2 id="_6"><a name='t'></a>Шаблоны</h2>
+<h3 id="_7"><a name='t_page'></a>Страница</h3>
+<ul>
+<li><code>{head}</code> - шаблон <code>HTML_HEAD</code></li>
+<li><code>{body}</code> - шаблон <code>HTML_BODY</code></li>
+</ul>
+<pre><code class="language-py">HTML_PAGE = '''&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        {head}
+    &lt;/head&gt;
+    &lt;body&gt;
+        {body}
+    &lt;/body&gt;
+&lt;/html&gt;'''
+</code></pre>
+<h3 id="_8"><a name='t_head'></a>Заголовок страницы</h3>
+<ul>
+<li><code>{title}</code> -- заголовок страницы (Meta.Title или первый <code>#</code>)</li>
+</ul>
+<pre><code class="language-py">HTML_HEAD = '''
+ &lt;meta charset=&quot;utf-8&quot;/&gt;
+ &lt;title&gt;tS Docs - {title}&lt;/title&gt;  
+
+ &lt;link rel=&quot;icon&quot; href=&quot;src/img/ts_icon.png&quot;&gt;
+ &lt;link rel=&quot;stylesheet&quot; href=&quot;src/style.css&quot;&gt;
+ &lt;script src=&quot;https://code.jquery.com/jquery-3.4.1.min.js&quot;
+ integrity=&quot;sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=&quot;
+ crossorigin=&quot;anonymous&quot;&gt;&lt;/script&gt;
+'''
+</code></pre>
+<h3 id="_9"><a name='t_body'></a>Тело страницы</h3>
+<ul>
+<li><code>{navbar}</code> -- навигационная панель</li>
+<li><code>{title}</code> -- заголовок страницы (первый <code>#</code>)</li>
+<li><code>{toc}</code> -- table of content страницы</li>
+<li><code>{article}</code> -- сам текст страницы (распаршенный markdown)</li>
+</ul>
+<pre><code class="language-py">HTML_BODY = '''
+&lt;div id=&quot;header&quot;&gt;
+ &lt;div id=&quot;header-title&quot;&gt;
+  &lt;span&gt;&lt;a href=&quot;https://tacticalshift.github.io&quot; style=&quot;text-decoration: none; color: inherit;&quot;&gt;tS&lt;/a&gt;&lt;/span&gt; &lt;tt id='header-sans'&gt;Docs&lt;/tt&gt;
+ &lt;/div&gt;
+ {navbar}
+&lt;/div&gt;
+&lt;div id=&quot;wrapper&quot;&gt;
+ &lt;div class=&quot;title&quot;&gt;&lt;h1&gt;{title}&lt;/h1&gt;&lt;/div&gt;
+ &lt;div class=&quot;toc&quot;&gt;
+  {toc}
+ &lt;/div&gt;
+ &lt;div class=&quot;article&quot;&gt;
+  {article}
+ &lt;/div&gt;
+&lt;/div&gt;
+'''
+</code></pre>
+<h3 id="navbar"><a name='t_navbar'></a>Navbar</h3>
+<ul>
+<li><code>{dropdowns}</code> -- секции-дропдауны</li>
+</ul>
+<pre><code class="language-py">HTML_NAVBAR_SECTION = '''
+ &lt;div class=&quot;navbar&quot;&gt;
+  {dropdowns}
+ &lt;/div&gt;
+'''
+</code></pre>
+<h3 id="1"><a name='t_dd'></a>Секция (Дропдаун 1го уровня)</h3>
+<ul>
+<li><code>{title}</code> -- название секции (из <code>SECTION_CONFIGURATION</code>)</li>
+<li><code>{tooltip}</code> -- подсказка для названия секции (из <code>SECTION_CONFIGURATION[sectionName]["tooltip"]</code>)</li>
+<li><code>{elements}</code> -- элементы списка</li>
+</ul>
+<pre><code class="language-py">HTML_DROPDOWN_SECTION = '''
+    &lt;div class=&quot;dropdown&quot;&gt;
+        &lt;button class=&quot;dropbtn&quot; title=&quot;{tooltip}&quot;&gt;{title}&lt;/button&gt;
+        &lt;div class=&quot;dropdown-content&quot;&gt;
+          {elements}
+        &lt;/div&gt;
+    &lt;/div&gt;
+'''
+</code></pre>
+<h3 id="-_1"><a name='t_dd_element'></a>Элемент-ссылка дропдауна</h3>
+<ul>
+<li><code>{url}</code> -- относительная ссылка на страницу</li>
+<li><code>{title}</code> -- заголовок страницы (из Meta.Title или первого <code>#</code>)</li>
+</ul>
+<pre><code class="language-py">HTML_DROPDOWN_ELEMENT = '&lt;a href=&quot;{url}&quot;&gt;{title}&lt;/a&gt;'
+</code></pre>
+<h3 id="-2"><a name='t_dd2'></a>Элемент-ссылка списка с дропдауном 2го уровня</h3>
+<ul>
+<li><code>{url}</code> -- относительная ссылка на страницу</li>
+<li><code>{title}</code> -- заголовок страницы (из Meta.Title или первого <code>#</code>)</li>
+<li><code>{subpages}</code> -- элементы дропдауна второго уровня (элементы по шаблону <code>HTML_DROPDOWN_ELEMENT</code>)</li>
+</ul>
+<pre><code class="language-py">HTML_DROPDOWN_EXTENDED = '''
+ &lt;div class=&quot;dropdown-2l&quot;&gt;
+  &lt;a href=&quot;{url}&quot;&gt;{title}&lt;arrow&gt;⇨&lt;/arrow&gt;&lt;/a&gt;
+  &lt;div class=&quot;dropdown-2l-content&quot;&gt;
+   {subpages}
+  &lt;/div&gt;
+ &lt;/div&gt;
+'''
+</code></pre>
+<h3 id="2"><a name='t_dd2_inactive'></a>Элемент списка (неактивный) с дропдауном 2го уровня</h3>
+<ul>
+<li><code>{title}</code> -- заголовок страницы (из Meta.Title или первого <code>#</code>)</li>
+<li><code>{subpages}</code> -- элементы дропдауна второго уровня (элементы по шаблону <code>HTML_DROPDOWN_ELEMENT</code>)</li>
+</ul>
+<pre><code class="language-py">HTML_DROPDOWN_EXTENDED_INACTIVE = '''
+ &lt;div class=&quot;dropdown-2l&quot;&gt;
+  &lt;span&gt;{title}&lt;arrow&gt;⇨&lt;/arrow&gt;&lt;/span&gt;
+  &lt;div class=&quot;dropdown-2l-content&quot;&gt;
+   {subpages}
+  &lt;/div&gt;
+ &lt;/div&gt;
+'''
+</code></pre>
+        </div>
+    </div>
+
+    </body>
+</html>
